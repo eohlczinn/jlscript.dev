@@ -1,4 +1,4 @@
-const links = [["Home", "#/"], ["Sobre", "#/sobre"], ["Documentação", "#/docs"], ["Download", "#/download"], ["Playground", "#/playground"], ["Biblioteca", "#/biblioteca"], ["Roadmap", "#/roadmap"], ["Suporte", "#/suporte"]];
+const links = [["Home", "#/"], ["Sobre", "#/sobre"], ["Documentação", "#/docs"], ["Terminal", "#/terminal"], ["Download", "#/download"], ["Playground", "#/playground"], ["Biblioteca", "#/biblioteca"], ["Roadmap", "#/roadmap"], ["Atualizações", "#/atualizacoes"], ["Suporte", "#/suporte"]];
 
 export default function Navbar({ route, theme, onThemeChange }) {
   return <nav className="navbar" aria-label="Navegação principal">

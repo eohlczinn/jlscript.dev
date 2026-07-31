@@ -21,6 +21,9 @@ import Playground from "./pages/Playground";
 import Library from "./pages/Library";
 import Roadmap from "./pages/Roadmap";
 import Support from "./pages/Support";
+import Terminal from "./pages/Terminal";
+import Updates from "./pages/Updates";
+import "./styles/terminal.css";
 
 export default function App() {
   const [theme, setTheme] = useState("dark");
@@ -36,7 +39,8 @@ export default function App() {
 
   const pages = {
     "/": <Home />, "/docs": <Docs />, "/download": <DownloadPage />, "/sobre": <About />,
-    "/playground": <Playground />, "/biblioteca": <Library />, "/roadmap": <Roadmap />, "/suporte": <Support />
+    "/playground": <Playground />, "/biblioteca": <Library />, "/roadmap": <Roadmap />, "/suporte": <Support />,
+    "/terminal": <Terminal />, "/atualizacoes": <Updates />
   };
 
   return <>
