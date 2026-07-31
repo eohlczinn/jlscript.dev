@@ -10,6 +10,7 @@ import "./styles/support.css";
 import "./styles/library.css";
 import "./styles/roadmap.css";
 import "./styles/hero-art.css";
+import "./styles/page-motion.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";

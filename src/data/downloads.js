@@ -1,4 +1,4 @@
-export const VERSION = "1.0.0";
+export const VERSION = "2.1.0";
 export const RELEASE_BASE = "https://github.com/eohlczinn/JLScript/releases/latest/download";
 
 export const downloads = [
