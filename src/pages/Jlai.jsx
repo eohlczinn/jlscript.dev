@@ -1,8 +1,19 @@
 import { useState } from "react";
 import { PageHeading } from "../components/Ecosystem";
 
-const endpoint = "http://127.0.0.1:8765/api/chat";
+const endpoint = import.meta.env.VITE_JLAI_API_URL || (location.hostname === "localhost" || location.hostname === "127.0.0.1" ? "http://127.0.0.1:8765/api/chat" : null);
 const greeting = "Olá! Sou a JLAI, a central de suporte da JLScript. Posso explicar como a linguagem funciona, para que serve, onde usar, como instalar e como resolver dúvidas de código.";
+
+function responderNoSite(question) {
+  const texto = question.toLowerCase();
+  if (/^(oi|olá|ola|bom dia|boa tarde|boa noite)/.test(texto)) return "Olá! Tudo bem? Sou a JLAI, o suporte oficial da JLScript. Posso explicar a linguagem, ajudar com código, APIs, bibliotecas, instalação e erros.";
+  if (/(api|servidor|rota)/.test(texto)) return "A JLScript permite criar APIs com o módulo #api. Você cria uma aplicação, registra rotas como app.get() e inicia o servidor com app.listen() ou app.iniciar(). Consulte a seção Biblioteca para ver exemplos.";
+  if (/(instal|download|windows|linux|termux|mac)/.test(texto)) return "Você encontra os instaladores e os comandos para Windows, Linux, macOS e Termux na página Download. Depois de instalar, confirme com: jls --version.";
+  if (/(variável|variavel|va |constante|ins )/.test(texto)) return "Use va para uma variável, por exemplo: va nome = \"Lucas\". Para um valor constante, use ins: ins PI = 3.1415.";
+  if (/(função|funcao|func )/.test(texto)) return "Funções na JLScript usam func: func saudacao(nome){ mostrar(\"Olá \" + nome) }. Depois, chame saudacao(\"Lucas\").";
+  if (/(erro|erro de|corrigir)/.test(texto)) return "Para entender erros, leia a mensagem com arquivo, linha e coluna. A CLI também pode tentar ajustes simples usando: jls run app.jls --fix.";
+  return "Posso ajudar você com a JLScript. Pergunte, por exemplo: “Como criar uma função?”, “Como instalar no Termux?” ou “Como criar uma API?”";
+}
 
 export default function Jlai() {
   const [messages, setMessages] = useState([{ role: "assistant", content: greeting }]);
@@ -22,6 +33,7 @@ export default function Jlai() {
     setError("");
 
     try {
+      if (!endpoint) throw new Error("Suporte online");
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -31,7 +43,7 @@ export default function Jlai() {
       if (!response.ok) throw new Error(data.error || "Não foi possível consultar a JLAI.");
       setMessages((current) => [...current, { role: "assistant", content: data.text, sources: data.sources }]);
     } catch {
-      setError("A central local não está ativa. No seu computador, execute: jls ai serve");
+      setMessages((current) => [...current, { role: "assistant", content: responderNoSite(text) }]);
     } finally {
       setLoading(false);
     }
