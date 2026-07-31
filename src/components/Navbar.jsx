@@ -17,7 +17,7 @@ export default function Navbar({ route, theme, onThemeChange }) {
         <a className="mobile-download" href="#/download" onClick={() => setOpen(false)}>Baixar JLScript ↓</a>
       </div>
       <div className="nav-actions">
-        <a className="navbar-jlai" href="#/jlai">Suporte JLAI</a>
+        <button className="navbar-jlai" type="button" onClick={() => setSupportOpen(true)}>Suporte JLAI</button>
         <button className="theme-toggle" onClick={onThemeChange} aria-label="Alternar tema">{theme === "dark" ? "☀" : "☾"}</button>
         <a className="github-link" href="https://github.com/eohlczinn/JLScript" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
