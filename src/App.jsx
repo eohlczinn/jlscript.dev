@@ -26,6 +26,7 @@ import Updates from "./pages/Updates";
 import "./styles/terminal.css";
 import "./styles/responsive.css";
 import "./styles/responsive-fixes.css";
+import "./styles/termux.css";
 
 export default function App() {
   const [theme, setTheme] = useState("dark");
