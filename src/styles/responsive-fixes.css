@@ -1,0 +1,1 @@
+.download-details article,.download-docs article{min-width:0}.download-details .doc-code,.download-docs .doc-code{max-width:100%;overflow:auto}@media(max-width:480px){.download-docs{grid-template-columns:minmax(0,1fr)!important}.download-docs article{width:100%;min-width:0}}
