@@ -4,6 +4,7 @@ const links = [["Home", "#/"], ["Sobre", "#/sobre"], ["Documentação", "#/docs"
 
 export default function Navbar({ route, theme, onThemeChange }) {
   const [open, setOpen] = useState(false);
+  const [supportOpen, setSupportOpen] = useState(false);
 
   return <>
     <nav className="navbar" aria-label="Navegação principal">
@@ -21,6 +22,13 @@ export default function Navbar({ route, theme, onThemeChange }) {
         <a className="github-link" href="https://github.com/eohlczinn/JLScript" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </nav>
-    {route !== "/jlai" && <a className="jlai-fab" href="#/jlai" aria-label="Abrir suporte JLAI"><span>✦</span><b>JLAI</b><small>Suporte inteligente</small></a>}
+    {route !== "/jlai" && <div className="jlai-widget">
+      {supportOpen && <section className="jlai-popover" aria-label="Chat rápido da JLAI">
+        <header><img src="/jlai-support.png" alt="" /><div><b>JLAI</b><small>Especialista em JLScript</small></div><button type="button" onClick={() => setSupportOpen(false)} aria-label="Fechar suporte">×</button></header>
+        <div className="jlai-popover-body"><p>Olá! Sou a JLAI.</p><p>Posso ajudar com:</p><ul><li>JLScript e sintaxe</li><li>Código, APIs e bibliotecas</li><li>Erros e documentação</li></ul><p>Como posso ajudar?</p></div>
+        <a className="jlai-popover-input" href="#/jlai">Escreva sua dúvida aqui… <span>→</span></a>
+      </section>}
+      <button className="jlai-fab" type="button" onClick={() => setSupportOpen(!supportOpen)} aria-label="Abrir suporte JLAI" aria-expanded={supportOpen}><img src="/jlai-support.png" alt="" /><b>JLAI</b><small>Suporte inteligente</small></button>
+    </div>}
   </>;
 }
