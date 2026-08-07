@@ -1,6 +1,10 @@
 import { PageHeading } from "../components/Ecosystem";
 
 const updates = [
+  ["2.3.0", "API HTTPS nativa", "A nova sintaxe api(url) realiza consultas GET HTTPS e retorna dados estruturados com status, fonte e tempo de resposta."],
+  ["2.3.0", "Biblioteca #watch", "Monitoramento de APIs e sites com filtros de texto, status HTTP, conteúdo e metadados de atualização."],
+  ["2.3.0", "Recursos nativos", "Novas funções de console, confirmação, progresso, pausas e conversões integradas ao runtime."],
+  ["2.3.0", "Sintaxe e VS Code", "Funções curtas nome() {}, destaque ampliado, hover e snippets para API e sintaxe assíncrona planejada."],
   ["2.1.0", "Atualização do ecossistema", "Nova identidade visual do site oficial, página de Downloads por plataforma, scripts de instalação e guia de terminal."],
   ["2.1.0", "JLAI e documentação", "A JLAI agora usa a documentação oficial como base de conhecimento e ajuda a explicar erros e sintaxe."],
   ["2.1.0", "CLI mais completa", "Comandos para projetos, compilação, bytecode, testes, análise, formatação, correções e diagnóstico."],

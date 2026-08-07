@@ -40,3 +40,11 @@ code {
     background: var(--violet);
     color: var(--text)
 }
+
+.release-state{color:var(--muted);margin:-1rem auto 1.5rem;width:min(1180px,92%)}
+.release-state--error{color:#fca5a5}
+.download-unavailable{display:inline-block;margin-top:1.3rem;color:var(--muted);font-size:.78rem;font-weight:700}
+.page-loading,.app-error{width:min(900px,92%);margin:7rem auto;text-align:center}
+.app-error .btn{margin-top:1.5rem}
+.docs-search{width:min(1180px,92%);margin:0 auto 2rem;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.65rem;align-items:center}.docs-search label{grid-column:1/-1;color:var(--muted);font-size:.82rem;font-weight:700}.docs-search input{min-width:0;padding:.85rem 1rem;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit}.docs-search span{font-size:.8rem;color:var(--muted)}.doc-code-wrap{position:relative}.doc-code-wrap .copy-button{position:absolute;top:.75rem;right:.75rem;margin:0;font-size:.7rem;z-index:1}.empty-state{padding:1rem;border:1px solid var(--line);border-radius:10px;color:var(--muted)}
+@media(max-width:600px){.docs-search{grid-template-columns:1fr}.doc-code-wrap .copy-button{position:static;margin:.75rem}.docs-search span{grid-row:3}}

@@ -28,7 +28,7 @@ function interpret(code) {
     if (/^".*"$/.test(text) || /^'.*'$/.test(text)) return text.slice(1, -1);
     if (text === "true") return true; if (text === "false") return false;
     const expression = text.replace(/\b[a-zA-Z_]\w*\b/g, key => key in values ? JSON.stringify(values[key]) : key);
-    if (/^[\d\s+\-*/%().,\[\]"']+$/.test(expression)) { try { return Function(`"use strict"; return (${expression})`)(); } catch { throw new Error(`Expressão inválida na linha ${line}`); } }
+    if (/^[\d\s+\-*/%().,[\]"']+$/.test(expression)) { try { return Function(`"use strict"; return (${expression})`)(); } catch { throw new Error(`Expressão inválida na linha ${line}`); } }
     if (text in values) return values[text];
     throw new Error(`Variável "${text}" não encontrada.`);
   };
