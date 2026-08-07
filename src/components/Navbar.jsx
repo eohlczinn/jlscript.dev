@@ -1,10 +1,12 @@
 import { useState } from "react";
+import GlobalSearch from "./GlobalSearch";
 
 const links = [["Home", "#/"], ["Sobre", "#/sobre"], ["Documentação", "#/docs"], ["Terminal", "#/terminal"], ["Download", "#/download"], ["Playground", "#/playground"], ["Biblioteca", "#/biblioteca"], ["Roadmap", "#/roadmap"], ["Atualizações", "#/atualizacoes"], ["Suporte", "#/suporte"]];
 
 export default function Navbar({ route, theme, onThemeChange }) {
   const [open, setOpen] = useState(false);
   const [supportOpen, setSupportOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   return <>
     <nav className="navbar" aria-label="Navegação principal">
@@ -17,11 +19,13 @@ export default function Navbar({ route, theme, onThemeChange }) {
         <a className="mobile-download" href="#/download" onClick={() => setOpen(false)}>Baixar JLScript ↓</a>
       </div>
       <div className="nav-actions">
+        <button className="theme-toggle" type="button" onClick={() => setSearchOpen(true)} aria-label="Pesquisar no portal">⌕</button>
         <button className="navbar-jlai" type="button" onClick={() => setSupportOpen(true)}>Suporte JLAI</button>
         <button className="theme-toggle" onClick={onThemeChange} aria-label="Alternar tema">{theme === "dark" ? "☀" : "☾"}</button>
         <a className="github-link" href="https://github.com/eohlczinn/JLScript" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </nav>
+    <GlobalSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
     {route !== "/jlai" && <div className="jlai-widget">
       {supportOpen && <section className="jlai-popover" aria-label="Chat rápido da JLAI">
         <header><img src="/jlai-support.png" alt="" /><div><b>JLAI</b><small>Especialista em JLScript</small></div><button type="button" onClick={() => setSupportOpen(false)} aria-label="Fechar suporte">×</button></header>
