@@ -1,1 +1,45 @@
-@keyframes float{50%{transform:translateY(-14px)}}@keyframes glow{50%{filter:brightness(1.25)}}@keyframes reveal{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}.reveal{animation:reveal .7s both}.float{animation:float 5s ease-in-out infinite}
+/* =========================================================
+   ANIMATIONS — JLSCRIPT
+   Entrada curta e microinterações leves.
+========================================================= */
+
+@keyframes reveal {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealLeft {
+    from { opacity: 0; transform: translateX(-16px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes revealRight {
+    from { opacity: 0; transform: translateX(16px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(.975); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.reveal { animation: reveal .5s cubic-bezier(.2,.8,.2,1) both; }
+.reveal-left { animation: revealLeft .5s cubic-bezier(.2,.8,.2,1) both; }
+.reveal-right { animation: revealRight .5s cubic-bezier(.2,.8,.2,1) both; }
+.scale-in { animation: scaleIn .45s cubic-bezier(.2,.8,.2,1) both; }
+.fade-in { animation: fadeIn .4s ease both; }
+
+.delay-1 { animation-delay: .05s; }
+.delay-2 { animation-delay: .10s; }
+.delay-3 { animation-delay: .15s; }
+.delay-4 { animation-delay: .20s; }
+
+.hover-lift { transition: transform .22s ease; }
+.hover-lift:hover { transform: translateY(-3px); }
+.hover-scale { transition: transform .22s ease; }
+.hover-scale:hover { transform: scale(1.015); }

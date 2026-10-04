@@ -1,1 +1,472 @@
-.termux-guide{width:min(1060px,92%);margin:2rem auto 4rem;padding:2.2rem;display:grid;grid-template-columns:1.25fr .75fr;gap:2rem;border:1px solid rgba(59,130,246,.4);border-radius:18px;background:radial-gradient(circle at 18% 12%,rgba(59,130,246,.23),transparent 42%),var(--surface)}.termux-guide p{margin:0;color:var(--blue);font-size:.7rem;font-weight:800;letter-spacing:.12em}.termux-guide h2{font-size:clamp(1.75rem,4vw,3rem);letter-spacing:-.065em;margin:.65rem 0}.termux-guide span{color:var(--muted);line-height:1.7}.termux-guide .doc-code{margin-bottom:0}.termux-guide aside{padding:1.3rem;border:1px solid var(--line);border-radius:13px;background:rgba(5,8,22,.55)}.termux-guide aside>b{display:block;margin-bottom:1rem;color:#bfdbfe}.termux-guide aside>code{display:block;margin:.6rem 0;color:#86efac;font-size:.78rem}.termux-guide aside>div{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1.4rem}.termux-guide button{border:0;cursor:pointer}@media(max-width:700px){.termux-guide{grid-template-columns:1fr;padding:1.45rem}.termux-guide .btn,.termux-guide .btn-outline{width:100%;justify-content:center}}
+/* =========================================================
+   TERMUX GUIDE — JLSCRIPT
+========================================================= */
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.termux-guide {
+    width: min(1060px, 92%);
+
+    margin: 2.5rem auto 4.5rem;
+
+    padding: 2.4rem;
+
+    display: grid;
+
+    grid-template-columns:
+        1.25fr .75fr;
+
+    gap: 2.2rem;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(96, 165, 250, .20);
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(circle at 18% 12%,
+            rgba(59, 130, 246, .20),
+            transparent 40%),
+
+        radial-gradient(circle at 90% 90%,
+            rgba(34, 211, 238, .06),
+            transparent 30%),
+
+        linear-gradient(145deg,
+            rgba(15, 23, 42, .92),
+            rgba(8, 15, 30, .92));
+
+    box-shadow:
+        0 30px 85px rgba(0, 0, 0, .25),
+        inset 0 1px rgba(255, 255, 255, .035);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.termux-guide::before {
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    left: -180px;
+    top: -180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(59, 130, 246, .15),
+            transparent 68%);
+
+    filter: blur(10px);
+
+    pointer-events: none;
+}
+
+.termux-guide:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(96, 165, 250, .32);
+
+    box-shadow:
+        0 38px 100px rgba(0, 0, 0, .33),
+        0 0 45px rgba(59, 130, 246, .06);
+}
+
+
+/* =========================
+   LABEL
+========================= */
+
+.termux-guide>div>p,
+.termux-guide>p {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .45rem;
+
+    margin: 0;
+
+    padding: .45rem .7rem;
+
+    border:
+        1px solid rgba(59, 130, 246, .15);
+
+    border-radius: 999px;
+
+    background:
+        rgba(59, 130, 246, .045);
+
+    color:
+        var(--blue);
+
+    font-size: .7rem;
+
+    font-weight: 800;
+
+    letter-spacing: .12em;
+}
+
+.termux-guide>div>p::before,
+.termux-guide>p::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        #4ade80;
+
+    box-shadow:
+        0 0 12px rgba(74, 222, 128, .7);
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.termux-guide h2 {
+    font-size:
+        clamp(1.75rem, 4vw, 3.1rem);
+
+    letter-spacing: -.065em;
+
+    line-height: 1;
+
+    margin: .9rem 0;
+
+    background:
+        linear-gradient(120deg,
+            #ffffff,
+            #dbeafe 58%,
+            #60a5fa);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* =========================
+   DESCRIÇÃO
+========================= */
+
+.termux-guide span {
+    display: block;
+
+    color: var(--muted);
+
+    line-height: 1.75;
+
+    max-width: 680px;
+}
+
+
+/* =========================
+   BLOCO DE CÓDIGO
+========================= */
+
+.termux-guide .doc-code {
+    margin-top: 1.3rem;
+    margin-bottom: 0;
+
+    border:
+        1px solid rgba(96, 165, 250, .14);
+
+    background:
+        linear-gradient(145deg,
+            rgba(5, 10, 22, .92),
+            rgba(10, 18, 35, .90));
+
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, .025);
+}
+
+
+/* =========================
+   ASIDE
+========================= */
+
+.termux-guide aside {
+    position: relative;
+
+    padding: 1.45rem;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(148, 163, 184, .12);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(5, 8, 22, .78),
+            rgba(10, 18, 35, .62));
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, .18);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.termux-guide aside::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -120px;
+    top: -140px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(34, 211, 238, .10),
+            transparent 68%);
+
+    pointer-events: none;
+}
+
+.termux-guide aside:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(96, 165, 250, .24);
+
+    box-shadow:
+        0 25px 65px rgba(0, 0, 0, .25);
+}
+
+
+/* =========================
+   ASIDE TITLE
+========================= */
+
+.termux-guide aside>b {
+    display: flex;
+
+    align-items: center;
+
+    gap: .45rem;
+
+    margin-bottom: 1rem;
+
+    color: #bfdbfe;
+}
+
+.termux-guide aside>b::before {
+    content: ">_";
+
+    color: #60a5fa;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: .8rem;
+}
+
+
+/* =========================
+   COMMANDS
+========================= */
+
+.termux-guide aside>code {
+    display: block;
+
+    margin: .65rem 0;
+
+    padding: .55rem .7rem;
+
+    border:
+        1px solid rgba(74, 222, 128, .10);
+
+    border-radius: 8px;
+
+    background:
+        rgba(74, 222, 128, .025);
+
+    color: #86efac;
+
+    font-size: .78rem;
+
+    font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
+
+    overflow-x: auto;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        transform .2s ease;
+}
+
+.termux-guide aside>code:hover {
+    transform: translateX(3px);
+
+    border-color:
+        rgba(74, 222, 128, .22);
+
+    background:
+        rgba(74, 222, 128, .04);
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.termux-guide aside>div {
+    display: flex;
+
+    gap: .65rem;
+
+    flex-wrap: wrap;
+
+    margin-top: 1.4rem;
+}
+
+.termux-guide button {
+    border: 0;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   ENTRADA
+========================= */
+
+.termux-guide {
+    animation:
+        termuxFadeUp .65s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes termuxFadeUp {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 850px) {
+
+    .termux-guide {
+        grid-template-columns:
+            1fr;
+
+        gap: 1.7rem;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .termux-guide {
+        grid-template-columns: 1fr;
+
+        padding: 1.5rem;
+
+        border-radius: 16px;
+    }
+
+    .termux-guide .btn,
+    .termux-guide .btn-outline {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .termux-guide aside>div {
+        flex-direction: column;
+    }
+}
+
+
+/* =========================
+   MOBILE PEQUENO
+========================= */
+
+@media (max-width: 430px) {
+
+    .termux-guide {
+        width: 94%;
+
+        padding: 1.25rem;
+
+        margin-top: 2rem;
+    }
+
+    .termux-guide h2 {
+        font-size:
+            clamp(1.9rem, 10vw, 2.7rem);
+    }
+
+    .termux-guide aside {
+        padding: 1.2rem;
+    }
+}
+
+
+/* =========================
+   ACESSIBILIDADE
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .termux-guide {
+        animation: none !important;
+    }
+
+    .termux-guide,
+    .termux-guide aside,
+    .termux-guide aside>code {
+        transition: none !important;
+    }
+}

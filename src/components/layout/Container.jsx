@@ -1,3 +1,12 @@
-export default function Container({ children, className = "" }) {
-  return <div className={`container ${className}`}>{children}</div>;
+export default function Container({
+  children,
+  className = "",
+  as: Tag = "div",
+  ...props
+}) {
+  return (
+    <Tag className={`container ${className}`.trim()} {...props}>
+      {children}
+    </Tag>
+  );
 }

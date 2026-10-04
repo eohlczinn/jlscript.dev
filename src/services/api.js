@@ -6,7 +6,12 @@ export async function apiRequest(path, options = {}) {
     ...options,
     headers: { Accept: "application/json", ...options.headers },
   });
-  const payload = response.headers.get("content-type")?.includes("application/json") ? await response.json() : null;
-  if (!response.ok) throw new Error(payload?.error || "A API oficial não está disponível.");
+  const payload = response.headers
+    .get("content-type")
+    ?.includes("application/json")
+    ? await response.json()
+    : null;
+  if (!response.ok)
+    throw new Error(payload?.error || "A API oficial não está disponível.");
   return payload;
 }

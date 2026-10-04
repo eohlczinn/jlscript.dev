@@ -1,20 +1,251 @@
 import { useState } from "react";
 
-const principles = [["◇", "Simplicidade"], ["⚡", "Performance"], ["Aa", "Legibilidade"], ["◎", "Comunidade"], ["↗", "Open Source"], ["✦", "Produtividade"], ["◌", "Segurança"], ["⌘", "Aprendizado"]];
-const uses = ["Aplicações Desktop", "Sites", "APIs", "Automação", "Jogos", "Ferramentas", "Bots", "Ensino", "Scripts"];
-const faq = [["O que é a JLScript?", "Uma linguagem de programação em português, criada para tornar o desenvolvimento mais acessível."], ["Quem pode utilizar?", "Estudantes, iniciantes e desenvolvedores que querem uma sintaxe clara e moderna."], ["É gratuita e Open Source?", "Sim. A JLScript é um projeto aberto, distribuído sob licença MIT."], ["Quais sistemas operacionais são suportados?", "O projeto possui foco inicial em Windows, com evolução para Linux e macOS."], ["Como instalar?", "Acesse a página Download e siga o comando recomendado para seu sistema."], ["Preciso saber outra linguagem antes?", "Não. A linguagem foi pensada para ser um ponto de entrada amigável na programação."], ["Qual a diferença entre JLScript e JavaScript?", "JLScript tem sintaxe e runtime próprios, com palavras em português e foco didático."], ["A JLScript possui compilador e interpretador?", "O interpretador já existe. O compilador está em desenvolvimento."], ["Existe uma IDE oficial?", "Ainda não. A extensão oficial do VS Code está disponível e uma IDE faz parte do roadmap."], ["Como criar meu primeiro projeto?", "Instale a linguagem, crie um arquivo app.jls e execute com o comando jls."], ["Como contribuir ou reportar bugs?", "Use o GitHub para abrir issues, discutir ideias e enviar melhorias."], ["Como instalar bibliotecas?", "O sistema de pacotes está em desenvolvimento; os módulos oficiais usam importações nativas."], ["O Playground executa código real?", "Ele executa um subconjunto seguro de recursos básicos diretamente no navegador."], ["Existe documentação oficial?", "Sim. A documentação fica disponível no menu do site e cresce junto com a linguagem."], ["A linguagem continuará sendo desenvolvida?", "Sim. A evolução aberta do ecossistema é um dos pilares do projeto."]];
+const DOCS_URL = "https://github.com/JLScripter/documentacao_JLScripter";
 
-function Heading({ eyebrow, title, text }) { return <header className="about-heading"><p>{eyebrow}</p><h2>{title}</h2>{text && <span>{text}</span>}</header>; }
-export default function About() { const [open, setOpen] = useState(0); return <>
-  <section className="about-hero"><div><p>ACERCA DA LINGUAGEM</p><h1>Sobre a <span>JLScript</span></h1><h2>Uma linguagem criada para simplificar o desenvolvimento e tornar a programação mais acessível para todos.</h2><a className="btn" href="#/docs">Conhecer a documentação →</a></div><div className="about-art"><i>▣</i><b>func criar(futuro) {'{'}</b><small>programação em português</small><em>{'}'}</em></div></section>
-  <section className="about-section history"><Heading eyebrow="NOSSA HISTÓRIA" title="Uma ideia nascida para diminuir barreiras." text="A JLScript surgiu da vontade de aproximar mais brasileiros da programação. Ela busca reduzir a complexidade inicial sem perder uma base técnica séria, inspirada por linguagens modernas como Python, Go, Rust e JavaScript." /><div className="timeline"><div><b>Ideia</b><span>Uma sintaxe em português para aprender com mais clareza.</span></div><div><b>Fundação</b><span>Primeiros comandos, lexer, parser e interpretador.</span></div><div><b>Ecossistema</b><span>CLI, extensão VS Code e documentação oficial.</span></div><div><b>Futuro</b><span>Compilador, packages, playground e IDE oficial.</span></div></div></section>
-  <section className="about-section mission"><Heading eyebrow="NOSSA MISSÃO" title="Tecnologia mais próxima das pessoas." /><div>{["Tornar a programação mais simples", "Facilitar o aprendizado", "Aproximar iniciantes da tecnologia", "Manter uma sintaxe limpa", "Ser Open Source", "Incentivar a comunidade brasileira"].map(item => <p key={item}>✓ {item}</p>)}</div></section>
-  <section className="about-section"><Heading eyebrow="NOSSA FILOSOFIA" title="Princípios que guiam cada decisão." /><div className="principles">{principles.map(([icon, name]) => <article key={name}><span>{icon}</span><h3>{name}</h3></article>)}</div></section>
-  <section className="about-section reasons"><Heading eyebrow="POR QUE JLSCRIPT?" title="Uma base clara para criar mais." /><div>{["Sintaxe intuitiva", "Palavras em português", "Fácil para iniciantes", "Organização de código", "Alto desempenho", "Extensível", "CLI própria", "Documentação completa", "IDE futuramente", "Playground online"].map(x => <p key={x}>✓ {x}</p>)}</div></section>
-  <section className="about-section objectives"><Heading eyebrow="OBJETIVOS" title="Construir um ecossistema que evolui." /><div>{["Linguagem moderna", "Compilador oficial", "Gerenciador de pacotes", "IDE oficial", "Múltiplas plataformas", "Comunidade ativa", "Documentação completa", "Playground online"].map((x, i) => <article key={x}><b>0{i + 1}</b><span>{x}</span></article>)}</div></section>
-  <section className="about-section"><Heading eyebrow="ROADMAP" title="A direção do projeto." /><div className="about-roadmap"><article><h3>Concluído</h3><p>✅ Interpretador</p><p>✅ CLI</p><p>✅ Extensão VS Code</p></article><article><h3>Em desenvolvimento</h3><p>🚧 Compilador</p><p>🚧 Playground</p><p>🚧 Package Manager</p><p>🚧 Biblioteca Oficial</p></article><article><h3>Planejado</h3><p>🔵 IDE Oficial</p><p>🔵 Depurador</p><p>🔵 LSP</p><p>🔵 IA integrada</p></article></div></section>
-  <section className="about-section"><Heading eyebrow="CASOS DE USO" title="Uma linguagem, muitas possibilidades." /><div className="uses">{uses.map(use => <article key={use}>◈ <span>{use}</span></article>)}</div></section>
-  <section className="about-section faq"><Heading eyebrow="PERGUNTAS FREQUENTES" title="Dúvidas comuns." />{faq.map(([question, answer], index) => <article className={open === index ? "open" : ""} key={question}><button onClick={() => setOpen(open === index ? -1 : index)}>{question}<b>{open === index ? "−" : "+"}</b></button>{open === index && <p>{answer}</p>}</article>)}</section>
-  <section className="about-section tech"><Heading eyebrow="TECNOLOGIAS" title="Feita com ferramentas abertas." /><div>{["C++", "Visual Studio Code", "GitHub", "Markdown", "JSON", "Node.js", "React"].map(tech => <span key={tech}>{tech}</span>)}</div></section>
-  <section className="about-community"><p>FAÇA PARTE DA COMUNIDADE JLSCRIPT</p><h2>Ajude a construir uma linguagem feita para a comunidade.</h2><span>Contribua com ideias, relate problemas, envie melhorias e acompanhe a evolução do projeto.</span><div><a className="btn" href="#/docs">Começar agora</a><a className="btn-outline" href="https://github.com/eohlczinn/JLScript" target="_blank" rel="noreferrer">GitHub ↗</a><a className="btn-outline" href="#/download">Download</a></div></section>
-</>; }
+const principles = [
+  ["◇", "Simplicidade"],
+  ["Aa", "Legibilidade"],
+  ["BR", "Identidade brasileira"],
+  ["↔", "Português + inglês"],
+  [">_", "Ferramentas próprias"],
+  ["▣", "Arquitetura modular"],
+  ["◌", "Segurança"],
+  ["⌘", "Aprendizado"],
+];
+
+const uses = [
+  "APIs HTTP",
+  "Automação",
+  "Scripts",
+  "Ferramentas CLI",
+  "Processamento de dados",
+  "Projetos didáticos",
+  "Serviços locais",
+  "Protótipos de interface",
+  "Integrações com dispositivos",
+];
+
+const faq = [
+  [
+    "O que é a JLScript?",
+    "JLScript é uma linguagem de programação brasileira criada em 2026, com sintaxe própria, construções em português e inglês, runtime, CLI, compilação nativa, bytecode e bibliotecas oficiais.",
+  ],
+  [
+    "Qual é a versão atual?",
+    "O portal e a documentação desta edição acompanham a JLScript 3.2.0.",
+  ],
+  [
+    "A JLScript é Open Source?",
+    "Não. O código-fonte da linguagem passou a ser fechado. A documentação pública continua disponível para ensinar a sintaxe, as bibliotecas, os comandos e o uso do ecossistema.",
+  ],
+  [
+    "A documentação continua pública?",
+    "Sim. A documentação oficial permanece pública no GitHub e pode ser usada para estudar a linguagem sem expor a implementação interna.",
+  ],
+  [
+    "A linguagem possui interpretador e compilador?",
+    "Sim. O projeto possui interpretador/runtime, geração de C++ para build nativo e compilador de bytecode no formato .jlb.",
+  ],
+  [
+    "JLScript aceita português e inglês?",
+    "Sim. Estruturas como se/senao e if/else, enquanto/while e para/for fazem parte da sintaxe. Em uma mesma estrutura, mantenha o idioma coerente.",
+  ],
+  [
+    "Como importo uma biblioteca oficial?",
+    "Use import #biblioteca. Também é possível importar várias bibliotecas juntas ou criar um alias com como.",
+  ],
+  [
+    "Existe uma IDE oficial?",
+    "O ecossistema possui integração com VS Code. IDE própria, depuração avançada e LSP mais completo continuam como áreas de evolução.",
+  ],
+  [
+    "Como reporto um problema?",
+    "Use a Central de Suporte/JLAI ou abra uma issue no repositório público da documentação. O repositório do código-fonte não é usado como canal público.",
+  ],
+  [
+    "O Playground executa toda a linguagem?",
+    "Não. O Playground do site é um sandbox demonstrativo. Para executar o runtime completo, use a CLI jls instalada no computador.",
+  ],
+];
+
+function Heading({ eyebrow, title, text }) {
+  return (
+    <header className="about-heading">
+      <p>{eyebrow}</p>
+      <h2>{title}</h2>
+      {text && <span>{text}</span>}
+    </header>
+  );
+}
+
+export default function About() {
+  const [open, setOpen] = useState(0);
+
+  return (
+    <>
+      <section className="about-hero">
+        <div>
+          <p>JLSCRIPT 3.2.0 · BRASIL</p>
+          <h1>
+            Sobre a <span>JLScript</span>
+          </h1>
+          <h2>
+            Uma linguagem criada no Brasil para experimentar uma forma mais
+            direta de programar, sem esconder os conceitos reais por trás do
+            código.
+          </h2>
+          <a className="btn" href="#/docs">Conhecer a documentação →</a>
+        </div>
+        <div className="about-art">
+          <i>▣</i>
+          <b>func criar(futuro) {"{"}</b>
+          <small>português + inglês · runtime próprio</small>
+          <em>{"}"}</em>
+        </div>
+      </section>
+
+      <section className="about-section history">
+        <Heading
+          eyebrow="HISTÓRIA"
+          title="Começou como curiosidade. Virou um ecossistema."
+          text="A JLScript começou a ser desenvolvida em julho de 2026 por Lucas Aguiel Dos Santos De Oliveira. O objetivo inicial era entender como uma linguagem funciona por dentro e testar decisões próprias de sintaxe."
+        />
+        <div className="timeline">
+          <div><b>Julho de 2026</b><span>Primeiros testes, sintaxe e execução da linguagem.</span></div>
+          <div><b>1.0.0</b><span>Condições, funções, switch, laços e um CLI inicial provaram que a ideia funcionava.</span></div>
+          <div><b>Evolução</b><span>Lexer, parser, AST, interpretador, runtime, módulos e bibliotecas ganharam responsabilidades próprias.</span></div>
+          <div><b>3.2.0</b><span>CLI ampliada, build nativo, bytecode .jlb, JLS AI e um ecossistema de bibliotecas oficiais.</span></div>
+        </div>
+      </section>
+
+      <section className="about-section mission">
+        <Heading eyebrow="PROPOSTA" title="Simples para começar. Estruturada para crescer." />
+        <div>
+          {[
+            "Reduzir ruído sintático desnecessário",
+            "Permitir construções em português e inglês",
+            "Ensinar conceitos reais de programação",
+            "Oferecer CLI e ferramentas integradas",
+            "Separar recursos em bibliotecas oficiais",
+            "Evoluir sem depender de expor o código-fonte",
+          ].map((item) => <p key={item}>✓ {item}</p>)}
+        </div>
+      </section>
+
+      <section className="about-section">
+        <Heading eyebrow="FILOSOFIA" title="Princípios que guiam o projeto." />
+        <div className="principles">
+          {principles.map(([icon, name]) => (
+            <article key={name}><span>{icon}</span><h3>{name}</h3></article>
+          ))}
+        </div>
+      </section>
+
+      <section className="about-section reasons">
+        <Heading eyebrow="POR QUE JLSCRIPT?" title="A linguagem não é só sintaxe." />
+        <div>
+          {[
+            "va, let e ins para declarações",
+            "se/senao e if/else",
+            "para/for e enquanto/while",
+            "funções normais, curtas e anônimas",
+            "try/catch/finally e tente/capture/finalmente",
+            "módulos oficiais com import #modulo",
+            "build nativo por geração de C++",
+            "bytecode próprio .jlb",
+            "CLI com testes, lint, fmt, fix e doctor",
+            "bibliotecas para API, dados, arquivos, rede e mais",
+          ].map((x) => <p key={x}>✓ {x}</p>)}
+        </div>
+      </section>
+
+      <section className="about-section objectives">
+        <Heading eyebrow="ESTADO ATUAL" title="O que existe na 3.2.0." />
+        <div>
+          {[
+            "Lexer, parser e AST",
+            "Interpretador e runtime",
+            "Compilação nativa",
+            "Bytecode .jlb",
+            "JLShell / REPL",
+            "CLI de desenvolvimento",
+            "Bibliotecas oficiais",
+            "JLS AI",
+          ].map((x, i) => (
+            <article key={x}><b>{String(i + 1).padStart(2, "0")}</b><span>{x}</span></article>
+          ))}
+        </div>
+      </section>
+
+      <section className="about-section">
+        <Heading eyebrow="ROADMAP" title="O próximo passo é maturidade, não maquiagem." />
+        <div className="about-roadmap">
+          <article>
+            <h3>Disponível</h3>
+            <p>✅ Interpretador e runtime</p>
+            <p>✅ Build nativo e bytecode</p>
+            <p>✅ CLI e REPL</p>
+            <p>✅ Bibliotecas oficiais</p>
+          </article>
+          <article>
+            <h3>Em evolução</h3>
+            <p>🚧 UI e style</p>
+            <p>🚧 Conectores e mobile</p>
+            <p>🚧 Ferramentas do #compiler</p>
+            <p>🚧 Integrações externas</p>
+          </article>
+          <article>
+            <h3>Direção</h3>
+            <p>🔵 LSP e depuração melhores</p>
+            <p>🔵 Mais targets de build</p>
+            <p>🔵 Ecossistema de pacotes</p>
+            <p>🔵 Experiência de IDE mais completa</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="about-section">
+        <Heading eyebrow="CASOS DE USO" title="Onde a linguagem já faz sentido." />
+        <div className="uses">
+          {uses.map((use) => <article key={use}>◈ <span>{use}</span></article>)}
+        </div>
+      </section>
+
+      <section className="about-section faq">
+        <Heading eyebrow="PERGUNTAS FREQUENTES" title="Dúvidas comuns." />
+        {faq.map(([question, answer], index) => (
+          <article className={open === index ? "open" : ""} key={question}>
+            <button onClick={() => setOpen(open === index ? -1 : index)}>
+              {question}<b>{open === index ? "−" : "+"}</b>
+            </button>
+            {open === index && <p>{answer}</p>}
+          </article>
+        ))}
+      </section>
+
+      <section className="about-section tech">
+        <Heading eyebrow="ARQUITETURA" title="Construída como linguagem de verdade." />
+        <div>
+          {["C++", "Lexer", "Parser", "AST", "Runtime", "Bytecode", "CLI", "HTTP", "SQLite"].map((tech) => (
+            <span key={tech}>{tech}</span>
+          ))}
+        </div>
+      </section>
+
+      <section className="about-community">
+        <p>DOCUMENTAÇÃO PÚBLICA · CÓDIGO-FONTE FECHADO</p>
+        <h2>Aprenda a linguagem sem depender da implementação interna.</h2>
+        <span>
+          A documentação oficial continua pública com história, sintaxe,
+          comandos, bibliotecas e exemplos. Sugestões e relatórios de problemas
+          continuam bem-vindos pelos canais de suporte.
+        </span>
+        <div>
+          <a className="btn" href="#/docs">Ler documentação</a>
+          <a className="btn-outline" href={DOCS_URL} target="_blank" rel="noreferrer">Documentação no GitHub ↗</a>
+          <a className="btn-outline" href="#/download">Download</a>
+        </div>
+      </section>
+    </>
+  );
+}

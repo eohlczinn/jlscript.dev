@@ -1,1 +1,668 @@
-.download-version{width:min(900px,92%);margin:4rem auto 0;padding:2.2rem 2.5rem;border:1px solid rgba(59,130,246,.35);border-radius:16px;background:linear-gradient(120deg,rgba(59,130,246,.18),var(--surface));text-align:center}.download-version>span{color:var(--blue);font-size:.7rem;font-weight:800;letter-spacing:.13em}.download-version h2{font-size:2rem;margin:.7rem 0 1.5rem}.download-version h2 b{color:var(--blue)}.download-version div{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1.2rem;color:var(--muted);font-size:.83rem}.download-details,.download-docs{width:min(900px,92%);margin:1rem auto 6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.download-details article,.download-docs article{border:1px solid var(--line);border-radius:13px;padding:1.45rem;background:var(--surface)}.download-details h2,.download-docs h2{font-size:1.25rem;margin:0 0 .7rem}.download-details h3,.download-docs h3{font-size:.85rem;margin:1.4rem 0 .3rem;color:var(--text)}.download-details p,.download-docs p{font-size:.84rem;color:var(--muted);line-height:1.65}.download-details .doc-code,.download-docs .doc-code{padding:.85rem;margin:.8rem 0;font-size:.72rem}.download-note{color:#86efac!important}.download-docs{margin-top:-5rem}.download-docs article{min-height:220px}@media(max-width:800px){.download-details,.download-docs{grid-template-columns:1fr}.download-docs{margin-top:-4rem}}
+/* =========================================================
+   DOWNLOAD PAGE — DETAILS / VERSION / DOCS
+========================================================= */
+
+
+/* =========================
+   VERSÃO ATUAL
+========================= */
+
+.download-version {
+    width: min(900px, 92%);
+
+    margin: 4rem auto 0;
+
+    padding: 2.6rem 2.8rem;
+
+    position: relative;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(96, 165, 250, .22);
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(59, 130, 246, .18),
+            transparent 45%),
+
+        linear-gradient(135deg,
+            rgba(15, 23, 42, .92),
+            rgba(8, 15, 30, .96));
+
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, .26),
+        inset 0 1px rgba(255, 255, 255, .035);
+
+    isolation: isolate;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.download-version::before {
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    top: -300px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(59, 130, 246, .28),
+            transparent 68%);
+
+    z-index: -1;
+
+    animation:
+        versionGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes versionGlow {
+    from {
+        opacity: .65;
+
+        transform:
+            translateX(-50%) scale(.94);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(-50%) scale(1.08);
+    }
+}
+
+.download-version:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(96, 165, 250, .38);
+
+    box-shadow:
+        0 36px 95px rgba(0, 0, 0, .34),
+        0 0 45px rgba(59, 130, 246, .07);
+}
+
+
+/* =========================
+   LABEL DA VERSÃO
+========================= */
+
+.download-version>span {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .45rem;
+
+    color: var(--blue);
+
+    font-size: .7rem;
+
+    font-weight: 800;
+
+    letter-spacing: .13em;
+
+    padding:
+        .45rem .7rem;
+
+    border:
+        1px solid rgba(59, 130, 246, .16);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(59, 130, 246, .05);
+}
+
+.download-version>span::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        #4ade80;
+
+    box-shadow:
+        0 0 12px rgba(74, 222, 128, .8);
+
+    animation:
+        versionStatus 1.8s ease-in-out infinite;
+}
+
+@keyframes versionStatus {
+    50% {
+        transform:
+            scale(1.35);
+
+        box-shadow:
+            0 0 18px rgba(74, 222, 128, 1);
+    }
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.download-version h2 {
+    font-size:
+        clamp(1.8rem, 4vw, 2.5rem);
+
+    margin:
+        1rem 0 1.6rem;
+
+    letter-spacing:
+        -.045em;
+
+    background:
+        linear-gradient(120deg,
+            #ffffff,
+            #dbeafe 55%,
+            #60a5fa);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+.download-version h2 b {
+    color: inherit;
+}
+
+
+/* =========================
+   META INFO
+========================= */
+
+.download-version div {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap:
+        .7rem;
+
+    color:
+        var(--muted);
+
+    font-size:
+        .83rem;
+}
+
+.download-version div span,
+.download-version div small {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .4rem;
+
+    padding:
+        .55rem .75rem;
+
+    border:
+        1px solid rgba(148, 163, 184, .09);
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(255, 255, 255, .018);
+}
+
+
+/* =========================
+   GRIDS
+========================= */
+
+.download-details,
+.download-docs {
+    width: min(900px, 92%);
+
+    margin:
+        1rem auto 6rem;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        1rem;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.download-details article,
+.download-docs article {
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(148, 163, 184, .11);
+
+    border-radius:
+        14px;
+
+    padding:
+        1.5rem;
+
+    background:
+        linear-gradient(145deg,
+            rgba(15, 23, 42, .82),
+            rgba(8, 15, 30, .72));
+
+    box-shadow:
+        0 14px 45px rgba(0, 0, 0, .14);
+
+    transition:
+        transform .3s cubic-bezier(.2, .8, .2, 1),
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.download-details article::before,
+.download-docs article::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(59, 130, 246, .14),
+            transparent 58%);
+
+    transition:
+        opacity .3s ease;
+}
+
+.download-details article:hover,
+.download-docs article:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(96, 165, 250, .34);
+
+    box-shadow:
+        0 25px 65px rgba(0, 0, 0, .28),
+        0 0 32px rgba(59, 130, 246, .06);
+}
+
+.download-details article:hover::before,
+.download-docs article:hover::before {
+    opacity: 1;
+}
+
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.download-details h2,
+.download-docs h2 {
+    position: relative;
+
+    z-index: 1;
+
+    font-size:
+        1.25rem;
+
+    letter-spacing:
+        -.025em;
+
+    margin:
+        0 0 .8rem;
+
+    color:
+        var(--text);
+}
+
+.download-details h3,
+.download-docs h3 {
+    position: relative;
+
+    z-index: 1;
+
+    font-size:
+        .85rem;
+
+    margin:
+        1.5rem 0 .35rem;
+
+    color:
+        #dbeafe;
+}
+
+
+/* =========================
+   TEXTOS
+========================= */
+
+.download-details p,
+.download-docs p {
+    position: relative;
+
+    z-index: 1;
+
+    font-size:
+        .84rem;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================
+   CÓDIGO
+========================= */
+
+.download-details .doc-code,
+.download-docs .doc-code {
+    position: relative;
+
+    z-index: 1;
+
+    padding:
+        .9rem;
+
+    margin:
+        .9rem 0;
+
+    font-size:
+        .72rem;
+
+    border:
+        1px solid rgba(96, 165, 250, .13);
+
+    background:
+        linear-gradient(145deg,
+            rgba(5, 10, 22, .9),
+            rgba(10, 18, 35, .88));
+
+    border-radius:
+        9px;
+
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, .025);
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.download-details article:hover .doc-code,
+.download-docs article:hover .doc-code {
+    border-color:
+        rgba(96, 165, 250, .24);
+
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, .03),
+        0 0 20px rgba(59, 130, 246, .04);
+}
+
+
+/* =========================
+   NOTA
+========================= */
+
+.download-note {
+    color:
+        #86efac !important;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        .4rem;
+}
+
+.download-note::before {
+    content: "✓";
+
+    width: 18px;
+    height: 18px;
+
+    display: inline-grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(74, 222, 128, .09);
+
+    border:
+        1px solid rgba(74, 222, 128, .18);
+
+    font-size:
+        .65rem;
+}
+
+
+/* =========================
+   DOCUMENTAÇÃO
+========================= */
+
+.download-docs {
+    margin-top:
+        -5rem;
+}
+
+.download-docs article {
+    min-height:
+        220px;
+}
+
+
+/* =========================
+   ENTRADA
+========================= */
+
+.download-version {
+    animation:
+        downloadVersionIn .65s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.download-details article,
+.download-docs article {
+    animation:
+        downloadCardIn .6s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.download-details article:nth-child(2),
+.download-docs article:nth-child(2) {
+    animation-delay:
+        .08s;
+}
+
+.download-details article:nth-child(3),
+.download-docs article:nth-child(3) {
+    animation-delay:
+        .16s;
+}
+
+@keyframes downloadVersionIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+}
+
+@keyframes downloadCardIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+
+    .download-details,
+    .download-docs {
+        grid-template-columns:
+            1fr;
+    }
+
+    .download-docs {
+        margin-top:
+            -4rem;
+    }
+
+    .download-version {
+        padding:
+            2.2rem 1.8rem;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 520px) {
+
+    .download-version {
+        margin-top:
+            3rem;
+
+        padding:
+            2rem 1.3rem;
+
+        border-radius:
+            15px;
+    }
+
+    .download-version h2 {
+        font-size:
+            1.7rem;
+    }
+
+    .download-version div {
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+    .download-version div span,
+    .download-version div small {
+        justify-content:
+            center;
+    }
+
+    .download-details,
+    .download-docs {
+        width:
+            92%;
+
+        gap:
+            .8rem;
+    }
+
+    .download-details article,
+    .download-docs article {
+        padding:
+            1.25rem;
+    }
+
+    .download-docs {
+        margin-top:
+            -3rem;
+    }
+}
+
+
+/* =========================
+   ACESSIBILIDADE
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .download-version,
+    .download-version::before,
+    .download-version>span::before,
+    .download-details article,
+    .download-docs article {
+        animation:
+            none !important;
+    }
+
+    .download-version,
+    .download-details article,
+    .download-docs article,
+    .download-details .doc-code,
+    .download-docs .doc-code {
+        transition:
+            none !important;
+    }
+}

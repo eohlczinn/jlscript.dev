@@ -1,20 +1,93 @@
 import { PageHeading } from "../components/Ecosystem";
 
 const roadmap = [
-  { area: "Linguagem", progress: 72, items: [["done", "Sintaxe em português", "Palavras-chave e comandos focados em legibilidade."], ["done", "Variáveis, funções e condições", "Fundamentos disponíveis no interpretador."], ["building", "Sistema de tipos", "Evolução para diagnósticos e validações mais robustas."], ["planned", "POO, interfaces e enum", "Estruturas para aplicações maiores."]] },
-  { area: "Núcleo do compilador", progress: 68, items: [["done", "Lexer e Parser", "Transformação do código fonte em uma árvore sintática."], ["done", "AST e Runtime", "Base de execução para valores, listas, funções e objetos."], ["done", "Interpretador", "Execução de programas JLScript pela CLI."], ["building", "Tratamento de erros", "Diagnósticos com contexto, sugestões e recuperação."], ["planned", "Compilação otimizada", "Geração de executáveis e melhorias de desempenho."]] },
-  { area: "CLI (JLS)", progress: 62, items: [["done", "Execução de arquivos", "Execução de arquivos .jls pelo comando jls."], ["done", "Terminal com cores", "Feedback visual para erros e resultados."], ["building", "REPL e diagnóstico", "Experiência interativa, histórico e jls doctor."], ["building", "Suporte ao Termux", "Instalação e execução de projetos JLScript no Android, com experiência próxima de Windows e Linux."], ["planned", "Linter, formatador e testes", "Ferramentas de qualidade integradas à CLI."]] },
-  { area: "Módulos e APIs", progress: 48, items: [["done", "Imports nativos", "Estrutura inicial para módulos oficiais."], ["building", "Bibliotecas e api", "Modelo de bibliotecas locais e APIs HTTP."], ["planned", "Gerenciador de pacotes", "Instalação, publicação e registro oficial."], ["planned", "JSON e HTTP nativos", "Integrações mais completas no runtime."]] },
-  { area: "Ecossistema", progress: 58, items: [["done", "VS Code Extension", "Destaque de sintaxe, snippets e execução."], ["done", "Site oficial", "Documentação, downloads e playground visual."], ["building", "Documentação avançada", "Guias, referências e exemplos de projetos."], ["planned", "LSP e Debugger", "Ferramentas avançadas para editores."], ["idea", "IA integrada", "Recursos assistidos para desenvolvimento e aprendizado."]] },
-  { area: "Performance e ferramentas", progress: 32, items: [["building", "Otimização do runtime", "Melhorias graduais de desempenho e memória."], ["planned", "Concorrência e eventos", "Base para tarefas paralelas e aplicações reativas."], ["planned", "SDKs oficiais", "Ferramentas para criar bibliotecas e APIs."], ["idea", "Threads e genéricos", "Recursos avançados após a consolidação do núcleo."]] }
+  {
+    area: "Linguagem e runtime",
+    progress: 92,
+    items: [
+      ["done", "Sintaxe bilíngue", "Português e inglês nas principais estruturas de controle."],
+      ["done", "Funções, listas e objetos", "Runtime com escopo, chamadas, coleções e valores estruturados."],
+      ["done", "Tratamento de erros", "try/catch/finally e tente/capture/finalmente fazem parte do parser atual."],
+      ["building", "Sistema de tipos", "Área que pode ganhar validações e diagnósticos mais profundos."],
+    ],
+  },
+  {
+    area: "Execução e compilação",
+    progress: 90,
+    items: [
+      ["done", "Interpretador", "Execução de arquivos .jls pelo runtime da linguagem."],
+      ["done", "Build nativo", "Fluxo de geração de C++ e compilação para executável."],
+      ["done", "Bytecode .jlb", "Compilação e verificação de bytecode pela CLI."],
+      ["planned", "Execução direta de .jlb", "O CLI atual valida bytecode, mas não anuncia execução direta do formato."],
+    ],
+  },
+  {
+    area: "CLI e ferramentas",
+    progress: 94,
+    items: [
+      ["done", "Projetos e execução", "run, new, create, init, preview e REPL."],
+      ["done", "Qualidade", "test, lint, fmt, fix e doctor."],
+      ["done", "Build e ambiente", "targets, clean, build, compile, config e update."],
+      ["building", "Developer experience", "language/linguagem, selfhost, dev e integrações continuam amadurecendo."],
+    ],
+  },
+  {
+    area: "Bibliotecas oficiais",
+    progress: 84,
+    items: [
+      ["done", "Dados e sistema", "JSON, arquivos, SQLite, CSV, XML, env, log, processos e compressão."],
+      ["done", "Rede e serviços", "API HTTP, net, threads, e-mail e watch."],
+      ["done", "Mídia e segurança", "Imagem, áudio e criptografia."],
+      ["building", "UI, dispositivos e compiler", "#ui, #style, #connector, #mobile e partes do #compiler ainda dependem de evolução e ambiente."],
+    ],
+  },
 ];
-const phases = [["Fase 1", "Fundação da linguagem", "Lexer, parser, AST, runtime, interpretador e comandos essenciais."], ["Fase 2", "Ecossistema", "CLI, módulos, bibliotecas oficiais e extensão VS Code."], ["Fase 3", "Ferramentas", "Testes, formatador, linter, debugger e documentação avançada."], ["Fase 4", "Performance", "Otimização, compilador, executáveis e múltiplas plataformas."], ["Fase 5", "Versão 1.0", "Ecossistema estável, packages, IDE e comunidade ativa."]];
-const labels = { done: ["✓", "Concluído"], building: ["◌", "Em desenvolvimento"], planned: ["○", "Planejado"], idea: ["✦", "Ideia futura"] };
 
-export default function Roadmap() { return <><PageHeading eyebrow="EVOLUÇÃO DO PROJETO" title="Roadmap" text="A JLScript está em desenvolvimento ativo. Este painel acompanha as prioridades atuais e prepara a comunidade para as próximas etapas." />
-  <main className="roadmap-page"><div className="roadmap-legend">{Object.entries(labels).map(([key, [icon, text]]) => <span className={key} key={key}>{icon} {text}</span>)}</div>
-    <section className="roadmap-categories">{roadmap.map(category => <article key={category.area}><header><div><h2>{category.area}</h2><span>Indicador de evolução estimado</span></div><b>{category.progress}%</b></header><div className="progress"><i style={{ width: `${category.progress}%` }} /></div><div className="roadmap-items">{category.items.map(([status, title, description]) => <div key={title}><span className={status}>{labels[status][0]}</span><p><b>{title}</b><small>{description}</small></p></div>)}</div></article>)}</section>
-    <section className="roadmap-timeline"><header><p>LINHA DO TEMPO</p><h2>Da fundação à versão estável.</h2></header>{phases.map(([phase, title, description]) => <article key={phase}><span>{phase}</span><div><h3>{title}</h3><p>{description}</p></div></article>)}</section>
-    <section className="roadmap-update"><h2>Um Roadmap aberto à comunidade.</h2><p>As prioridades podem evoluir com base em estabilidade, feedback e contribuições. Acompanhe o repositório oficial para discutir ideias e acompanhar o trabalho em andamento.</p><a className="btn" href="https://github.com/eohlczinn/JLScript" target="_blank" rel="noreferrer">Acompanhar no GitHub ↗</a></section>
-  </main>
-</>; }
+const timeline = [
+  ["2026", "Nascimento", "Primeiros testes da linguagem e a decisão de criar uma sintaxe própria."],
+  ["1.0.0", "Primeira versão", "Condições, funções, switch, laços e um CLI pequeno tornaram a linguagem executável."],
+  ["2.x", "Ecossistema", "Runtime, bibliotecas, build, bytecode, documentação e ferramentas cresceram rapidamente."],
+  ["3.2.0", "Maturidade técnica", "Mais comandos, módulos e infraestrutura, com o código-fonte agora fechado e documentação pública."],
+  ["Próximo", "Experiência de desenvolvimento", "Mais maturidade em LSP, depuração, packages, interfaces e multiplataforma."],
+];
+
+export default function Roadmap() {
+  return (
+    <div className="roadmap-page">
+      <PageHeading eyebrow="ROADMAP · 3.2.0" title="O que existe e o que vem depois." text="O roadmap agora parte do estado real do runtime e das ferramentas, em vez de planejar de novo coisas que já foram implementadas." />
+
+      <div className="roadmap-legend">
+        <span className="done">Concluído</span>
+        <span className="building">Em evolução</span>
+        <span className="planned">Planejado</span>
+      </div>
+
+      <section className="roadmap-categories">
+        {roadmap.map((group) => (
+          <article key={group.area}>
+            <header><div><h2>{group.area}</h2><span>Visão pública do estado atual</span></div><b>{group.progress}%</b></header>
+            <div className="progress"><i style={{ width: `${group.progress}%` }} /></div>
+            <div className="roadmap-items">
+              {group.items.map(([status, title, text]) => (
+                <div key={title}><span className={status}>●</span><p><b>{title}</b><small>{text}</small></p></div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="roadmap-timeline">
+        <header><p>LINHA DE EVOLUÇÃO</p><h2>De experimento a ecossistema.</h2></header>
+        {timeline.map(([version, title, text]) => (
+          <article key={`${version}-${title}`}><span>{version}</span><div><h3>{title}</h3><p>{text}</p></div></article>
+        ))}
+      </section>
+
+      <section className="roadmap-update">
+        <h2>O roadmap não é um contrato gravado em pedra.</h2>
+        <p>Áreas experimentais podem mudar conforme o runtime amadurece. A referência técnica continua sendo a documentação da versão instalada e os comandos expostos pela CLI.</p>
+        <div className="buttons"><a className="btn" href="#/docs">Documentação</a><a className="btn-outline" href="#/atualizacoes">Ver atualizações</a></div>
+      </section>
+    </div>
+  );
+}

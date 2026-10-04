@@ -1,1 +1,4 @@
-import Download from "../components/Download";export default function Install(){return <Download/>}
+import Download from "../components/Download";
+export default function Install() {
+  return <Download />;
+}

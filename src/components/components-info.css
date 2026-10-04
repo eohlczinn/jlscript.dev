@@ -1,0 +1,67 @@
+/* Complementos leves para os componentes informativos da JLScript. */
+.hero-facts {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: 1.35rem 0 0;
+  padding: 0;
+}
+.hero-facts li {
+  display: grid;
+  gap: .12rem;
+  min-width: 108px;
+  padding: .7rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+}
+.hero-facts strong { color: var(--text); font-size: .8rem; }
+.hero-facts span { color: var(--muted); font-size: .68rem; }
+
+.library-box-copy {
+  padding: 1.4rem;
+  max-width: 470px;
+}
+.library-box-copy h3 { margin: 0 0 .7rem; }
+.library-box-copy p { color: var(--muted); line-height: 1.65; font-size: .84rem; }
+.library-box-copy .btn-outline { margin-top: .7rem; }
+
+.section-heading__content { color: var(--muted); line-height: 1.7; }
+
+.nav-explore-menu a > span { display: grid; gap: .1rem; min-width: 0; }
+.nav-explore-menu a > span strong { font-size: .78rem; }
+.nav-explore-menu a > span small { color: var(--muted); font-size: .66rem; line-height: 1.35; }
+
+.global-search header > div { display: grid; gap: .12rem; }
+.global-search header > div b { color: var(--text); }
+.global-search header > div small { color: var(--muted); font-weight: 500; }
+
+.download-callout__badge p {
+  margin: .55rem 0 0;
+  color: var(--muted);
+  font: 700 .66rem/1.4 ui-monospace, monospace;
+}
+
+.install-card p {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.5;
+}
+.install-card a {
+  grid-column: 1 / -1;
+  color: var(--blue);
+  font-size: .75rem;
+  font-weight: 800;
+}
+
+footer section p strong { color: var(--text); }
+
+@media (max-width: 700px) {
+  .hero-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .library-box-copy { max-width: none; }
+}
+
+.code-window { margin: 0; }

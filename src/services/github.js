@@ -22,16 +22,20 @@ export function normalizeRelease(release) {
     name: release.name || release.tag_name || "JLScript",
     publishedAt: release.published_at || release.created_at || "",
     notes: release.body || "Sem notas de versão publicadas.",
-    url: release.html_url || `https://github.com/${runtimeConfig.githubRepository}/releases`,
-    assets: Array.isArray(release.assets) ? release.assets.map((asset) => ({
-      id: asset.id,
-      name: asset.name,
-      size: asset.size,
-      updatedAt: asset.updated_at,
-      downloadUrl: asset.browser_download_url,
-      platform: platformForAsset(asset.name),
-      architecture: architectureForAsset(asset.name),
-    })) : [],
+    url:
+      release.html_url ||
+      `https://github.com/${runtimeConfig.githubRepository}/releases`,
+    assets: Array.isArray(release.assets)
+      ? release.assets.map((asset) => ({
+          id: asset.id,
+          name: asset.name,
+          size: asset.size,
+          updatedAt: asset.updated_at,
+          downloadUrl: asset.browser_download_url,
+          platform: platformForAsset(asset.name),
+          architecture: architectureForAsset(asset.name),
+        }))
+      : [],
   };
 }
 
@@ -42,13 +46,20 @@ export async function getLatestRelease(signal) {
   });
 
   if (response.status === 404) return null;
-  if (!response.ok) throw new Error("Não foi possível consultar as Releases oficiais agora.");
+  if (!response.ok)
+    throw new Error("Não foi possível consultar as Releases oficiais agora.");
   return normalizeRelease(await response.json());
 }
 
 export function selectReleaseAsset(release, platform, architecture = "") {
   if (!release) return null;
-  const candidates = release.assets.filter((asset) => asset.platform === platform);
+  const candidates = release.assets.filter(
+    (asset) => asset.platform === platform,
+  );
   if (!candidates.length) return null;
-  return candidates.find((asset) => asset.architecture === architecture) || candidates.find((asset) => asset.architecture === "unknown") || candidates[0];
+  return (
+    candidates.find((asset) => asset.architecture === architecture) ||
+    candidates.find((asset) => asset.architecture === "unknown") ||
+    candidates[0]
+  );
 }

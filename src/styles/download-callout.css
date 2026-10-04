@@ -1,1 +1,667 @@
-.download-callout{width:min(1100px,92%);margin:5rem auto;padding:3.5rem 6%;display:flex;align-items:center;justify-content:space-between;gap:3rem;border:1px solid var(--line);border-radius:20px;background:radial-gradient(circle at 82% 20%,rgba(59,130,246,.3),transparent 28%),var(--surface);overflow:hidden}.download-callout__content{max-width:630px}.download-callout h2{font-size:clamp(2rem,4vw,3.6rem);letter-spacing:-.075em;line-height:1;margin:.7rem 0 1rem}.download-callout__content>p:not(.eyebrow){color:var(--muted);line-height:1.7}.download-callout ul{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;padding:0;list-style:none;color:var(--muted);font-size:.85rem}.download-callout li::first-letter{color:#86efac}.download-callout__actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.7rem}.download-callout__badge{min-width:185px;padding:1.5rem;border:1px solid rgba(147,197,253,.28);border-radius:15px;background:rgba(7,16,29,.55);text-align:center;box-shadow:0 18px 35px rgba(0,0,0,.2)}.download-callout__badge span{display:grid;place-items:center;width:54px;height:54px;margin:auto;border-radius:14px;background:var(--blue);font-size:.75rem;font-weight:900;color:#fff}.download-callout__badge b{display:block;margin:1.2rem 0 .35rem}.download-callout__badge small{color:var(--muted)}@media(max-width:650px){.download-callout{padding:3rem 7%;display:block}.download-callout__badge{margin-top:2rem}.download-callout ul{grid-template-columns:1fr}}
+/* =========================================================
+   DOWNLOAD CALLOUT — JLSCRIPT
+========================================================= */
+
+.download-callout {
+    width: min(1100px, 92%);
+
+    margin: 5rem auto;
+
+    padding: 3.8rem 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 3.5rem;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(96, 165, 250, .16);
+
+    border-radius: 22px;
+
+    background:
+        radial-gradient(circle at 85% 18%,
+            rgba(59, 130, 246, .22),
+            transparent 30%),
+
+        radial-gradient(circle at 15% 100%,
+            rgba(34, 211, 238, .06),
+            transparent 28%),
+
+        linear-gradient(145deg,
+            rgba(15, 23, 42, .92),
+            rgba(7, 13, 27, .96));
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, .28),
+        inset 0 1px rgba(255, 255, 255, .035);
+
+    isolation: isolate;
+
+    transition:
+        border-color .35s ease,
+        box-shadow .35s ease,
+        transform .35s ease;
+}
+
+
+/* =========================
+   ILUMINAÇÃO DE FUNDO
+========================= */
+
+.download-callout::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: -180px;
+    top: -210px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(59, 130, 246, .22),
+            transparent 68%);
+
+    filter: blur(8px);
+
+    z-index: -1;
+
+    animation:
+        downloadGlow 7s ease-in-out infinite alternate;
+}
+
+.download-callout::after {
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    left: -200px;
+    bottom: -230px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(34, 211, 238, .08),
+            transparent 70%);
+
+    z-index: -1;
+
+    animation:
+        downloadGlow 9s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes downloadGlow {
+    from {
+        transform:
+            translateY(-8px) scale(.96);
+
+        opacity: .7;
+    }
+
+    to {
+        transform:
+            translateY(12px) scale(1.06);
+
+        opacity: 1;
+    }
+}
+
+.download-callout:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(96, 165, 250, .28);
+
+    box-shadow:
+        0 38px 105px rgba(0, 0, 0, .36),
+        0 0 50px rgba(59, 130, 246, .06),
+        inset 0 1px rgba(255, 255, 255, .04);
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.download-callout__content {
+    max-width: 630px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   EYEBROW
+========================= */
+
+.download-callout .eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    padding:
+        .46rem .7rem;
+
+    border:
+        1px solid rgba(59, 130, 246, .16);
+
+    border-radius: 999px;
+
+    background:
+        rgba(59, 130, 246, .05);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.download-callout h2 {
+    font-size:
+        clamp(2rem, 4vw, 3.6rem);
+
+    letter-spacing:
+        -.075em;
+
+    line-height: 1;
+
+    margin:
+        .9rem 0 1rem;
+
+    max-width: 620px;
+
+    background:
+        linear-gradient(120deg,
+            #ffffff 20%,
+            #dbeafe 55%,
+            #60a5fa 100%);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+
+/* =========================
+   TEXTO
+========================= */
+
+.download-callout__content>p:not(.eyebrow) {
+    color:
+        var(--muted);
+
+    line-height:
+        1.75;
+
+    max-width:
+        600px;
+}
+
+
+/* =========================
+   LISTA
+========================= */
+
+.download-callout ul {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        .65rem;
+
+    padding: 0;
+
+    margin:
+        1.5rem 0 0;
+
+    list-style:
+        none;
+
+    color:
+        var(--muted);
+
+    font-size:
+        .85rem;
+}
+
+.download-callout li {
+    position: relative;
+
+    padding:
+        .7rem .8rem .7rem 2rem;
+
+    border:
+        1px solid rgba(148, 163, 184, .08);
+
+    border-radius:
+        9px;
+
+    background:
+        rgba(255, 255, 255, .018);
+
+    transition:
+        transform .22s ease,
+        color .22s ease,
+        border-color .22s ease,
+        background .22s ease;
+}
+
+.download-callout li::before {
+    content: "✓";
+
+    position: absolute;
+
+    left:
+        .75rem;
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    color:
+        #86efac;
+
+    font-size:
+        .78rem;
+
+    font-weight:
+        900;
+
+    text-shadow:
+        0 0 12px rgba(134, 239, 172, .2);
+}
+
+.download-callout li:hover {
+    transform:
+        translateX(3px);
+
+    color:
+        var(--text);
+
+    border-color:
+        rgba(96, 165, 250, .18);
+
+    background:
+        rgba(59, 130, 246, .04);
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+.download-callout__actions {
+    display: flex;
+
+    gap:
+        .7rem;
+
+    flex-wrap:
+        wrap;
+
+    margin-top:
+        1.8rem;
+}
+
+
+/* =========================
+   BADGE
+========================= */
+
+.download-callout__badge {
+    min-width:
+        205px;
+
+    padding:
+        1.7rem 1.5rem;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid rgba(147, 197, 253, .22);
+
+    border-radius:
+        17px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(7, 16, 29, .78),
+            rgba(15, 23, 42, .66));
+
+    text-align:
+        center;
+
+    backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, .25),
+        inset 0 1px rgba(255, 255, 255, .035);
+
+    transition:
+        transform .32s cubic-bezier(.2, .8, .2, 1),
+        border-color .32s ease,
+        box-shadow .32s ease;
+}
+
+.download-callout__badge::before {
+    content: "";
+
+    position:
+        absolute;
+
+    inset:
+        -50%;
+
+    background:
+        conic-gradient(from 0deg,
+            transparent,
+            rgba(59, 130, 246, .10),
+            transparent 25%);
+
+    animation:
+        badgeRotate 9s linear infinite;
+
+    pointer-events:
+        none;
+}
+
+@keyframes badgeRotate {
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+.download-callout__badge:hover {
+    transform:
+        translateY(-7px) scale(1.02);
+
+    border-color:
+        rgba(96, 165, 250, .4);
+
+    box-shadow:
+        0 28px 70px rgba(0, 0, 0, .35),
+        0 0 35px rgba(59, 130, 246, .1);
+}
+
+
+/* =========================
+   ÍCONE BADGE
+========================= */
+
+.download-callout__badge span {
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    width:
+        58px;
+
+    height:
+        58px;
+
+    margin:
+        auto;
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    border-radius:
+        15px;
+
+    background:
+        linear-gradient(135deg,
+            #2563eb,
+            #3b82f6,
+            #0ea5e9);
+
+    color:
+        #fff;
+
+    font-size:
+        .75rem;
+
+    font-weight:
+        900;
+
+    box-shadow:
+        0 10px 30px rgba(37, 99, 235, .28),
+        inset 0 1px rgba(255, 255, 255, .15);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.download-callout__badge:hover span {
+    transform:
+        scale(1.08) rotate(-3deg);
+
+    box-shadow:
+        0 15px 40px rgba(37, 99, 235, .38),
+        0 0 25px rgba(59, 130, 246, .16);
+}
+
+
+/* =========================
+   TEXTO BADGE
+========================= */
+
+.download-callout__badge b {
+    display:
+        block;
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    margin:
+        1.25rem 0 .4rem;
+
+    color:
+        var(--text);
+
+    font-size:
+        .95rem;
+}
+
+.download-callout__badge small {
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================
+   ANIMAÇÃO DE ENTRADA
+========================= */
+
+.download-callout__content {
+    animation:
+        downloadContentIn .7s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.download-callout__badge {
+    animation:
+        downloadBadgeIn .8s .08s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes downloadContentIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+@keyframes downloadBadgeIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(25px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0) scale(1);
+    }
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+
+    .download-callout {
+        gap:
+            2rem;
+
+        padding:
+            3.5rem 5%;
+    }
+
+    .download-callout__badge {
+        min-width:
+            180px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .download-callout {
+        display:
+            block;
+
+        padding:
+            3rem 7%;
+
+        margin:
+            3.5rem auto;
+
+        border-radius:
+            18px;
+    }
+
+    .download-callout h2 {
+        font-size:
+            clamp(2.2rem, 11vw, 3.2rem);
+    }
+
+    .download-callout ul {
+        grid-template-columns:
+            1fr;
+    }
+
+    .download-callout__badge {
+        margin-top:
+            2.3rem;
+
+        width:
+            100%;
+
+        min-width:
+            0;
+    }
+
+    .download-callout__actions {
+        align-items:
+            stretch;
+    }
+
+    .download-callout__actions .btn,
+    .download-callout__actions .btn-outline {
+        justify-content:
+            center;
+    }
+}
+
+
+/* =========================
+   ACESSIBILIDADE
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .download-callout::before,
+    .download-callout::after,
+    .download-callout__badge::before,
+    .download-callout__content,
+    .download-callout__badge {
+        animation:
+            none !important;
+    }
+
+    .download-callout,
+    .download-callout li,
+    .download-callout__badge,
+    .download-callout__badge span {
+        transition:
+            none !important;
+    }
+}

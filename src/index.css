@@ -1,51 +1,759 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
 @import "./styles/tokens.css";
 @import "./styles/animations.css";
 @import "./styles/effects.css";
 
-* {
-    box-sizing: border-box
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
+
+    background:
+        var(--bg);
 }
 
 body {
     margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: Inter, Arial, sans-serif;
-    overflow-x: hidden
+
+    min-height: 100vh;
+
+    background:
+        var(--bg);
+
+    color:
+        var(--text);
+
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+    overflow-x:
+        hidden;
+
+    -webkit-font-smoothing:
+        antialiased;
+
+    text-rendering:
+        optimizeLegibility;
 }
 
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(5,8,22,.92),rgba(5,8,22,.92)),url('/hero-jlscript.png'),radial-gradient(circle at 12% 8%,rgba(59,130,246,.15),transparent 23%),radial-gradient(circle at 85% 44%,rgba(37,99,235,.11),transparent 25%),linear-gradient(rgba(148,163,184,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.025) 1px,transparent 1px);background-position:center;background-size:cover,cover,auto,auto,44px 44px,44px 44px}
+
+/* =========================================================
+   ELEMENTOS GLOBAIS
+========================================================= */
 
 a {
-    color: inherit;
-    text-decoration: none
+    color:
+        inherit;
+
+    text-decoration:
+        none;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family:
+        inherit;
 }
 
 button {
-    font-family: inherit
+    color:
+        inherit;
 }
 
-code {
-    font-family: ui-monospace, monospace
+code,
+pre {
+    font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        SFMono-Regular,
+        Consolas,
+        monospace;
 }
 
-/* Fundo animado */
+img {
+    display:
+        block;
+}
+
+
+/* =========================================================
+   SELEÇÃO
+========================================================= */
 
 ::selection {
-    background: var(--violet);
-    color: var(--text)
+    background:
+        rgba(59, 130, 246, .65);
+
+    color:
+        #fff;
 }
 
-.release-state{color:var(--muted);margin:-1rem auto 1.5rem;width:min(1180px,92%)}
-.release-state--error{color:#fca5a5}
-.download-unavailable{display:inline-block;margin-top:1.3rem;color:var(--muted);font-size:.78rem;font-weight:700}
-.page-loading,.app-error{width:min(900px,92%);margin:7rem auto;text-align:center}
-.app-error .btn{margin-top:1.5rem}
-.global-search-backdrop{position:fixed;inset:0;z-index:200;background:rgba(2,6,23,.72);backdrop-filter:blur(5px);display:grid;place-items:start center;padding:12vh 1rem}.global-search{width:min(680px,100%);overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--bg);box-shadow:0 24px 90px rgba(0,0,0,.45)}.global-search header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.1rem .45rem;color:var(--muted);font-size:.82rem;font-weight:800}.global-search header button{border:0;background:transparent;color:var(--text);font-size:1.4rem;cursor:pointer}.global-search input{width:calc(100% - 2.2rem);margin:.4rem 1.1rem 1rem;padding:.9rem 1rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font:inherit}.global-search>div{max-height:min(54vh,490px);overflow:auto;border-top:1px solid var(--line)}.global-search>div>a{display:grid;grid-template-columns:95px 1fr;gap:.25rem .8rem;padding:.9rem 1.1rem;border-bottom:1px solid var(--line)}.global-search>div>a:hover{background:var(--surface)}.global-search>div span{grid-row:1/3;color:var(--blue);font-size:.7rem;font-weight:800}.global-search>div b{font-size:.92rem}.global-search>div small{color:var(--muted)}.global-search>div p{padding:1rem;color:var(--muted)}
-.docs-search{width:min(1180px,92%);margin:0 auto 2rem;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.65rem;align-items:center}.docs-search label{grid-column:1/-1;color:var(--muted);font-size:.82rem;font-weight:700}.docs-search input{min-width:0;padding:.85rem 1rem;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit}.docs-search span{font-size:.8rem;color:var(--muted)}.doc-code-wrap{position:relative}.doc-code-wrap .copy-button{position:absolute;top:.75rem;right:.75rem;margin:0;font-size:.7rem;z-index:1}.empty-state{padding:1rem;border:1px solid var(--line);border-radius:10px;color:var(--muted)}
-@media(max-width:600px){.docs-search{grid-template-columns:1fr}.doc-code-wrap .copy-button{position:static;margin:.75rem}.docs-search span{grid-row:3}}
+
+/* =========================================================
+   RELEASE STATE
+========================================================= */
+
+.release-state {
+    width:
+        min(1180px, 92%);
+
+    margin:
+        -1rem auto 1.5rem;
+
+    color:
+        var(--muted);
+
+    font-size:
+        .84rem;
+}
+
+.release-state--error {
+    color:
+        #fca5a5;
+}
+
+
+/* =========================================================
+   DOWNLOAD INDISPONÍVEL
+========================================================= */
+
+.download-unavailable {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        .4rem;
+
+    margin-top:
+        1.3rem;
+
+    color:
+        var(--muted);
+
+    font-size:
+        .78rem;
+
+    font-weight:
+        700;
+}
+
+.download-unavailable::before {
+    content:
+        "•";
+
+    color:
+        #fbbf24;
+}
+
+
+/* =========================================================
+   LOADING / ERROR
+========================================================= */
+
+.page-loading,
+.app-error {
+    width:
+        min(900px, 92%);
+
+    margin:
+        7rem auto;
+
+    text-align:
+        center;
+}
+
+.page-loading {
+    color:
+        var(--muted);
+}
+
+.app-error {
+    padding:
+        2rem;
+
+    border:
+        1px solid rgba(248, 113, 113, .18);
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        rgba(248, 113, 113, .025);
+}
+
+.app-error .btn {
+    margin-top:
+        1.5rem;
+}
+
+
+/* =========================================================
+   GLOBAL SEARCH BACKDROP
+========================================================= */
+
+.global-search-backdrop {
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        200;
+
+    display:
+        grid;
+
+    place-items:
+        start center;
+
+    padding:
+        12vh 1rem;
+
+    background:
+        rgba(2, 6, 23, .72);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    animation:
+        searchBackdropIn .2s ease both;
+}
+
+@keyframes searchBackdropIn {
+    from {
+        opacity:
+            0;
+    }
+
+    to {
+        opacity:
+            1;
+    }
+}
+
+
+/* =========================================================
+   GLOBAL SEARCH
+========================================================= */
+
+.global-search {
+    width:
+        min(680px, 100%);
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid rgba(96, 165, 250, .18);
+
+    border-radius:
+        18px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(8, 15, 30, .98),
+            rgba(5, 10, 22, .98));
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, .55),
+        0 0 45px rgba(59, 130, 246, .07),
+        inset 0 1px rgba(255, 255, 255, .035);
+
+    animation:
+        searchPanelIn .28s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes searchPanelIn {
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateY(-10px) scale(.98);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   SEARCH HEADER
+========================================================= */
+
+.global-search header {
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    padding:
+        1rem 1.1rem .5rem;
+
+    color:
+        var(--muted);
+
+    font-size:
+        .82rem;
+
+    font-weight:
+        800;
+}
+
+.global-search header button {
+    width:
+        34px;
+
+    height:
+        34px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid transparent;
+
+    border-radius:
+        9px;
+
+    background:
+        transparent;
+
+    color:
+        var(--text);
+
+    font-size:
+        1.25rem;
+
+    cursor:
+        pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.global-search header button:hover {
+    background:
+        rgba(255, 255, 255, .04);
+
+    border-color:
+        rgba(148, 163, 184, .1);
+
+    transform:
+        rotate(3deg);
+}
+
+
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
+
+.global-search input {
+    width:
+        calc(100% - 2.2rem);
+
+    margin:
+        .4rem 1.1rem 1rem;
+
+    padding:
+        .95rem 1rem;
+
+    border:
+        1px solid rgba(148, 163, 184, .13);
+
+    border-radius:
+        11px;
+
+    background:
+        rgba(255, 255, 255, .035);
+
+    color:
+        var(--text);
+
+    font:
+        inherit;
+
+    outline:
+        none;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+.global-search input::placeholder {
+    color:
+        rgba(148, 163, 184, .6);
+}
+
+.global-search input:focus {
+    border-color:
+        rgba(96, 165, 250, .4);
+
+    background:
+        rgba(59, 130, 246, .035);
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, .07),
+        0 0 25px rgba(59, 130, 246, .05);
+}
+
+
+/* =========================================================
+   SEARCH RESULTS
+========================================================= */
+
+.global-search > div {
+    max-height:
+        min(54vh, 490px);
+
+    overflow-y:
+        auto;
+
+    border-top:
+        1px solid rgba(148, 163, 184, .1);
+}
+
+.global-search > div > a {
+    display:
+        grid;
+
+    grid-template-columns:
+        95px minmax(0, 1fr);
+
+    gap:
+        .25rem .8rem;
+
+    padding:
+        .95rem 1.1rem;
+
+    border-bottom:
+        1px solid rgba(148, 163, 184, .08);
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.global-search > div > a:hover {
+    background:
+        rgba(59, 130, 246, .045);
+
+    transform:
+        translateX(3px);
+}
+
+.global-search > div span {
+    grid-row:
+        1 / 3;
+
+    color:
+        var(--blue);
+
+    font-size:
+        .7rem;
+
+    font-weight:
+        800;
+}
+
+.global-search > div b {
+    font-size:
+        .92rem;
+
+    color:
+        var(--text);
+}
+
+.global-search > div small {
+    color:
+        var(--muted);
+}
+
+.global-search > div p {
+    padding:
+        1rem;
+
+    margin:
+        0;
+
+    color:
+        var(--muted);
+}
+
+
+/* =========================================================
+   DOCS SEARCH
+========================================================= */
+
+.docs-search {
+    width:
+        min(1180px, 92%);
+
+    margin:
+        0 auto 2rem;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) auto;
+
+    gap:
+        .65rem;
+
+    align-items:
+        center;
+}
+
+.docs-search label {
+    grid-column:
+        1 / -1;
+
+    color:
+        var(--muted);
+
+    font-size:
+        .82rem;
+
+    font-weight:
+        700;
+}
+
+.docs-search input {
+    min-width:
+        0;
+
+    padding:
+        .85rem 1rem;
+
+    border-radius:
+        10px;
+
+    border:
+        1px solid rgba(148, 163, 184, .12);
+
+    background:
+        rgba(255, 255, 255, .025);
+
+    color:
+        var(--text);
+
+    font:
+        inherit;
+
+    outline:
+        none;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+.docs-search input:focus {
+    border-color:
+        rgba(96, 165, 250, .38);
+
+    background:
+        rgba(59, 130, 246, .035);
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, .07);
+}
+
+.docs-search span {
+    font-size:
+        .8rem;
+
+    color:
+        var(--muted);
+}
+
+
+/* =========================================================
+   CODE WRAPPER
+========================================================= */
+
+.doc-code-wrap {
+    position:
+        relative;
+}
+
+.doc-code-wrap .copy-button {
+    position:
+        absolute;
+
+    top:
+        .75rem;
+
+    right:
+        .75rem;
+
+    margin:
+        0;
+
+    z-index:
+        2;
+
+    font-size:
+        .7rem;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+    padding:
+        1.1rem;
+
+    border:
+        1px solid rgba(148, 163, 184, .11);
+
+    border-radius:
+        11px;
+
+    background:
+        rgba(255, 255, 255, .02);
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.6;
+}
+
+
+/* =========================================================
+   LIGHT THEME AJUSTES
+========================================================= */
+
+:root[data-theme="light"] .global-search-backdrop {
+    background:
+        rgba(15, 23, 42, .35);
+}
+
+:root[data-theme="light"] .global-search {
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, .98),
+            rgba(241, 245, 249, .97));
+}
+
+:root[data-theme="light"] .global-search input,
+:root[data-theme="light"] .docs-search input,
+:root[data-theme="light"] .empty-state {
+    background:
+        rgba(15, 23, 42, .025);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .global-search-backdrop {
+        padding:
+            7vh .75rem;
+    }
+
+    .global-search {
+        border-radius:
+            15px;
+    }
+
+    .global-search > div > a {
+        grid-template-columns:
+            1fr;
+    }
+
+    .global-search > div span {
+        grid-row:
+            auto;
+    }
+
+    .docs-search {
+        grid-template-columns:
+            1fr;
+    }
+
+    .docs-search span {
+        grid-row:
+            3;
+    }
+
+    .doc-code-wrap .copy-button {
+        position:
+            static;
+
+        margin:
+            .75rem;
+    }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior:
+            auto;
+    }
+
+    .global-search-backdrop,
+    .global-search {
+        animation:
+            none !important;
+    }
+
+    .global-search header button,
+    .global-search input,
+    .global-search > div > a,
+    .docs-search input {
+        transition:
+            none !important;
+    }
+}

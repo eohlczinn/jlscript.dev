@@ -1,1 +1,565 @@
-.library-page{width:min(900px,92%);margin:4rem auto 7rem}.library-intro{padding:3rem 0;border-bottom:1px solid var(--line)}.library-intro h2,.library-compare h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.07em;margin:0 0 1rem}.library-intro h3{font-size:1rem;margin-top:2rem}.library-intro p{color:var(--muted);line-height:1.75;max-width:760px}.api-intro h2{color:var(--blue)}.library-compare{padding:4.5rem 0}.compare-table{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:13px;overflow:hidden}.compare-table>div{padding:1.5rem}.compare-table>div+div{border-left:1px solid var(--line);background:var(--surface)}.compare-table b{font-size:1.1rem}.compare-table p{color:var(--muted);font-size:.85rem;line-height:1.6}.library-philosophy{padding:4rem 8%;text-align:center;border-radius:17px;border:1px solid var(--line);background:radial-gradient(circle at 50% 0,rgba(59,130,246,.2),transparent 40%),var(--surface)}.library-philosophy>p{font-size:.7rem;font-weight:800;letter-spacing:.13em;color:var(--blue)}.library-philosophy h2{font-size:clamp(2rem,4vw,3.3rem);letter-spacing:-.07em;line-height:1;margin:1rem 0}.library-philosophy span{display:block;color:var(--muted);line-height:1.7}.library-philosophy small{display:block;margin-top:2rem;color:#fbbf24;line-height:1.5}@media(max-width:600px){.compare-table{grid-template-columns:1fr}.compare-table>div+div{border-left:0;border-top:1px solid var(--line)}.library-intro{padding:2.5rem 0}.library-philosophy{padding:3rem 7%}}
+/* =========================================================
+   LIBRARY — JLSCRIPT
+========================================================= */
+
+
+/* =========================
+   PAGE
+========================= */
+
+.library-page {
+    width: min(900px, 92%);
+    margin: 4rem auto 7rem;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.library-intro {
+    position: relative;
+
+    padding: 3.4rem 0;
+
+    border-bottom:
+        1px solid rgba(148, 163, 184, .10);
+}
+
+.library-intro::before {
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    right: -180px;
+    top: -150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(59, 130, 246, .12),
+            transparent 68%);
+
+    pointer-events: none;
+
+    filter: blur(10px);
+}
+
+.library-intro h2,
+.library-compare h2 {
+    font-size:
+        clamp(2rem, 4vw, 3.2rem);
+
+    letter-spacing:
+        -.07em;
+
+    line-height:
+        1;
+
+    margin:
+        0 0 1rem;
+
+    background:
+        linear-gradient(120deg,
+            #ffffff,
+            #dbeafe 55%,
+            #60a5fa);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+.library-intro h3 {
+    font-size:
+        1rem;
+
+    margin-top:
+        2rem;
+
+    color:
+        var(--text);
+}
+
+.library-intro p {
+    color:
+        var(--muted);
+
+    line-height:
+        1.75;
+
+    max-width:
+        760px;
+}
+
+
+/* =========================
+   API INTRO
+========================= */
+
+.api-intro h2 {
+    color:
+        var(--blue);
+
+    background:
+        linear-gradient(120deg,
+            #60a5fa,
+            #22d3ee);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+
+/* =========================
+   COMPARAÇÃO
+========================= */
+
+.library-compare {
+    padding:
+        4.5rem 0;
+}
+
+.compare-table {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid rgba(148, 163, 184, .11);
+
+    border-radius:
+        16px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(15, 23, 42, .72),
+            rgba(8, 15, 30, .68));
+
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, .18),
+        inset 0 1px rgba(255, 255, 255, .03);
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+}
+
+.compare-table:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(96, 165, 250, .24);
+
+    box-shadow:
+        0 32px 85px rgba(0, 0, 0, .26),
+        0 0 35px rgba(59, 130, 246, .05);
+}
+
+.compare-table>div {
+    position:
+        relative;
+
+    padding:
+        1.8rem;
+
+    transition:
+        background .25s ease;
+}
+
+.compare-table>div:first-child {
+    background:
+        rgba(255, 255, 255, .012);
+}
+
+.compare-table>div+div {
+    border-left:
+        1px solid rgba(148, 163, 184, .10);
+
+    background:
+        linear-gradient(145deg,
+            rgba(59, 130, 246, .045),
+            rgba(15, 23, 42, .48));
+}
+
+.compare-table>div:hover {
+    background:
+        rgba(59, 130, 246, .055);
+}
+
+.compare-table b {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        .45rem;
+
+    font-size:
+        1.1rem;
+
+    color:
+        var(--text);
+}
+
+.compare-table b::before {
+    content: "";
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--blue);
+
+    box-shadow:
+        0 0 12px rgba(59, 130, 246, .45);
+}
+
+.compare-table p {
+    color:
+        var(--muted);
+
+    font-size:
+        .85rem;
+
+    line-height:
+        1.65;
+
+    margin-bottom:
+        0;
+}
+
+
+/* =========================
+   FILOSOFIA
+========================= */
+
+.library-philosophy {
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    padding:
+        4.5rem 8%;
+
+    text-align:
+        center;
+
+    border-radius:
+        20px;
+
+    border:
+        1px solid rgba(96, 165, 250, .16);
+
+    background:
+        radial-gradient(circle at 50% 0,
+            rgba(59, 130, 246, .18),
+            transparent 42%),
+
+        linear-gradient(145deg,
+            rgba(15, 23, 42, .92),
+            rgba(8, 15, 30, .88));
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, .24),
+        inset 0 1px rgba(255, 255, 255, .035);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.library-philosophy::before {
+    content: "";
+
+    position:
+        absolute;
+
+    width:
+        420px;
+
+    height:
+        220px;
+
+    left:
+        50%;
+
+    top:
+        -130px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(ellipse,
+            rgba(34, 211, 238, .11),
+            transparent 70%);
+
+    pointer-events:
+        none;
+}
+
+.library-philosophy:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(96, 165, 250, .28);
+
+    box-shadow:
+        0 38px 100px rgba(0, 0, 0, .32),
+        0 0 45px rgba(59, 130, 246, .06);
+}
+
+.library-philosophy>p {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        .45rem;
+
+    font-size:
+        .7rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .13em;
+
+    color:
+        var(--blue);
+
+    padding:
+        .45rem .7rem;
+
+    border:
+        1px solid rgba(59, 130, 246, .16);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(59, 130, 246, .045);
+}
+
+.library-philosophy>p::before {
+    content: "◆";
+
+    font-size:
+        .55rem;
+
+    color:
+        #22d3ee;
+}
+
+.library-philosophy h2 {
+    font-size:
+        clamp(2rem, 4vw, 3.4rem);
+
+    letter-spacing:
+        -.07em;
+
+    line-height:
+        1;
+
+    margin:
+        1rem 0;
+
+    background:
+        linear-gradient(120deg,
+            #ffffff,
+            #dbeafe 55%,
+            #60a5fa);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+.library-philosophy span {
+    display:
+        block;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.75;
+
+    max-width:
+        700px;
+
+    margin:
+        0 auto;
+}
+
+.library-philosophy small {
+    display:
+        inline-block;
+
+    margin-top:
+        2rem;
+
+    padding:
+        .6rem .8rem;
+
+    border:
+        1px solid rgba(251, 191, 36, .15);
+
+    border-radius:
+        9px;
+
+    background:
+        rgba(251, 191, 36, .045);
+
+    color:
+        #fbbf24;
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================
+   ENTRADA
+========================= */
+
+.library-intro,
+.library-compare,
+.library-philosophy {
+    animation:
+        libraryFadeUp .65s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.library-compare {
+    animation-delay:
+        .08s;
+}
+
+.library-philosophy {
+    animation-delay:
+        .16s;
+}
+
+@keyframes libraryFadeUp {
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .library-page {
+        margin:
+            3rem auto 5rem;
+    }
+
+    .compare-table {
+        grid-template-columns:
+            1fr;
+    }
+
+    .compare-table>div+div {
+        border-left:
+            0;
+
+        border-top:
+            1px solid rgba(148, 163, 184, .10);
+    }
+
+    .library-intro {
+        padding:
+            2.7rem 0;
+    }
+
+    .library-philosophy {
+        padding:
+            3.2rem 7%;
+    }
+
+    .library-philosophy h2 {
+        font-size:
+            clamp(2rem, 11vw, 3rem);
+    }
+}
+
+
+/* =========================
+   ACESSIBILIDADE
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .library-intro,
+    .library-compare,
+    .library-philosophy {
+        animation:
+            none !important;
+    }
+
+    .compare-table,
+    .compare-table>div,
+    .library-philosophy {
+        transition:
+            none !important;
+    }
+}
