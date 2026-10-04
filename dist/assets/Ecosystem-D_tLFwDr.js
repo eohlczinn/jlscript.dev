@@ -1,0 +1,1 @@
+import{t as e}from"./index-DWAPa3Zj.js";var t=e();function n({eyebrow:e,title:n,text:r,children:i}){return(0,t.jsxs)(`header`,{className:`page-heading`,children:[e&&(0,t.jsx)(`p`,{children:e}),(0,t.jsx)(`h1`,{children:n}),r&&(0,t.jsx)(`span`,{children:r}),i]})}export{n as t};

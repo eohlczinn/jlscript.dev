@@ -1,0 +1,2301 @@
+{
+  "meta": {
+    "name": "JLAI Support Knowledge",
+    "language": "pt-BR",
+    "jlscript_version": "3.2.0",
+    "generated_from": [
+      "site docsContent.js",
+      "documentacao_JLScripter (public docs summaries)"
+    ],
+    "note": "Nenhum código-fonte privado da linguagem está incluído nesta base."
+  },
+  "documents": [
+    {
+      "id": "saudacao",
+      "topic": "saudacao",
+      "category": "support",
+      "title": "Saudação",
+      "aliases": [
+        "oi",
+        "ola",
+        "olá",
+        "opa",
+        "eae",
+        "iae",
+        "salve",
+        "bom dia",
+        "boa tarde",
+        "boa noite",
+        "oi jlai",
+        "ola jlai"
+      ],
+      "keywords": [
+        "oi",
+        "ola",
+        "opa",
+        "eae",
+        "iae",
+        "salve"
+      ],
+      "priority": 2.0,
+      "answer": "Olá! Sou a **JLAI**, a assistente de suporte da JLScript.\n\nEu fico focada no ecossistema JLScript. Posso ajudar com:\n\n- instalação e download;\n- extensão JLScript no VS Code;\n- sintaxe e exemplos `.jls`;\n- CLI `jls`;\n- bibliotecas e `#api`;\n- erros e dúvidas de código;\n- documentação, história e funcionamento da linguagem;\n- páginas e recursos do site;\n- como entrar em contato com o suporte.\n\nPode mandar sua dúvida sobre JLScript.",
+      "suggestions": [
+        "Como instalo a JLScript?",
+        "Como crio meu primeiro .jls?",
+        "Como funciona va, let e ins?"
+      ],
+      "source": {
+        "label": "Central JLAI",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/jlai"
+      }
+    },
+    {
+      "id": "instalacao-oficial",
+      "topic": "instalacao",
+      "category": "support",
+      "title": "Instalação oficial",
+      "aliases": [
+        "como instalar jlscript",
+        "o que preciso baixar",
+        "oq preciso baixar",
+        "quero baixar jlscript",
+        "baixar a linguagem",
+        "instalar no pc",
+        "primeiros passos jlscript",
+        "como comecar"
+      ],
+      "keywords": [
+        "instalar",
+        "instalacao",
+        "baixar",
+        "download",
+        "comecar",
+        "primeiros",
+        "vscode",
+        "extensao"
+      ],
+      "priority": 2.2,
+      "answer": "## Como começar com JLScript\n\nO caminho recomendado é simples:\n\n1. **Instale a extensão `JLScript` no VS Code.**\n   Abra o VS Code, vá em **Extensions** e pesquise por `JLScript`. Ela ajuda com a experiência de edição de arquivos `.jls`.\n\n2. **Baixe a JLScript pelo site oficial.**\n   Acesse a página **Download** do portal oficial e escolha o pacote disponível para seu ambiente.\n\n3. **Confira a instalação no terminal.**\n\n```bash\njls --version\njls --help\n```\n\n4. **Crie um arquivo com extensão `.jls`.**\n\n```text\napp.jls\n```\n\n5. **Escreva seu primeiro código.**\n\n```jls\nva nome = \"JLScript\"\nmostrar(\"Olá, \" + nome + \"!\")\n```\n\n6. **Execute.**\n\n```bash\njls run app.jls\n```\n\nPronto. A partir daí é criar arquivos `.jls`, testar a linguagem e se divertir construindo.",
+      "suggestions": [
+        "Abrir a página de download",
+        "Como criar meu primeiro programa?",
+        "Como verificar a instalação?"
+      ],
+      "source": {
+        "label": "Site oficial · Download",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/download"
+      }
+    },
+    {
+      "id": "vscode-extension",
+      "topic": "vscode",
+      "category": "support",
+      "title": "Extensão JLScript no VS Code",
+      "aliases": [
+        "extensao vscode",
+        "extensão vscode",
+        "jlscript vscode",
+        "como instalar extensao",
+        "syntax highlight vscode",
+        "cores no vscode"
+      ],
+      "keywords": [
+        "vscode",
+        "extensao",
+        "extension",
+        "highlight",
+        "editor"
+      ],
+      "priority": 2.0,
+      "answer": "## Extensão JLScript no VS Code\n\nAntes de começar a programar, instale a extensão **JLScript** no Visual Studio Code.\n\n1. Abra o VS Code.\n2. Abra **Extensions** (`Ctrl + Shift + X`).\n3. Pesquise por **JLScript**.\n4. Instale a extensão oficial.\n5. Crie ou abra um arquivo terminado em `.jls`.\n\nDepois instale também a linguagem pelo site oficial para conseguir executar o arquivo no terminal com `jls run arquivo.jls`.\n\n> A extensão melhora a edição. O executável/CLI JLScript é o que executa seus programas.",
+      "suggestions": [
+        "Onde baixo a JLScript?",
+        "Como executo um .jls?"
+      ],
+      "source": {
+        "label": "Site oficial · Documentação",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "download-site",
+      "topic": "download",
+      "category": "support",
+      "title": "Download oficial",
+      "aliases": [
+        "onde baixar",
+        "onde baixo",
+        "download oficial",
+        "site oficial download",
+        "baixar no site",
+        "link download"
+      ],
+      "keywords": [
+        "download",
+        "baixar",
+        "site",
+        "oficial",
+        "windows",
+        "instalador"
+      ],
+      "priority": 2.1,
+      "answer": "## Download oficial\n\nUse a página de **Download** do site oficial da JLScript:\n\n**Portal:** `https://jlscript-oficial.lucasaguiel5.workers.dev/#/download`\n\nDepois de instalar, confirme no terminal:\n\n```bash\njls --version\njls doctor\n```\n\nSe o comando `jls` responder, crie um arquivo `.jls` e execute com:\n\n```bash\njls run app.jls\n```\n\n> Evite baixar executáveis de links aleatórios. Prefira sempre os arquivos apontados pelo portal oficial.",
+      "suggestions": [
+        "Como instalo passo a passo?",
+        "O jls não aparece no terminal",
+        "Como criar app.jls?"
+      ],
+      "source": {
+        "label": "Site oficial · Download",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/download"
+      }
+    },
+    {
+      "id": "contato",
+      "topic": "contato",
+      "category": "support",
+      "title": "Contato e suporte",
+      "aliases": [
+        "falar com criador",
+        "entrar em contato",
+        "contato",
+        "suporte humano",
+        "falar com lucas",
+        "reportar problema",
+        "reportar bug",
+        "enviar sugestao"
+      ],
+      "keywords": [
+        "contato",
+        "suporte",
+        "criador",
+        "lucas",
+        "bug",
+        "problema",
+        "sugestao",
+        "issue"
+      ],
+      "priority": 2.3,
+      "answer": "## Entrar em contato\n\nPara suporte humano, dúvidas específicas ou sugestões, use primeiro a página **Suporte** do site oficial:\n\n`https://jlscript-oficial.lucasaguiel5.workers.dev/#/suporte`\n\nPara problemas reproduzíveis na documentação, também é possível usar as **Issues** do repositório público de documentação:\n\n`https://github.com/JLScripter/documentacao_JLScripter/issues`\n\nAo relatar um problema, envie:\n\n- versão da JLScript;\n- comando executado;\n- mensagem de erro;\n- exemplo mínimo em `.jls`;\n- comportamento esperado.\n\nNão publique arquivos privados nem código-fonte interno da linguagem.",
+      "suggestions": [
+        "Como reporto um erro?",
+        "Abrir documentação oficial"
+      ],
+      "source": {
+        "label": "Site oficial · Suporte",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/suporte"
+      }
+    },
+    {
+      "id": "site-ajuda",
+      "topic": "site",
+      "category": "support",
+      "title": "Ajuda com o site",
+      "aliases": [
+        "nao entendi o site",
+        "não entendi o site",
+        "onde fica documentacao",
+        "onde fica biblioteca",
+        "onde fica terminal",
+        "onde fica playground",
+        "site jlscript",
+        "como usar o site"
+      ],
+      "keywords": [
+        "site",
+        "pagina",
+        "portal",
+        "documentacao",
+        "download",
+        "biblioteca",
+        "terminal",
+        "playground",
+        "roadmap",
+        "suporte"
+      ],
+      "priority": 1.9,
+      "answer": "## Navegando pelo site JLScript\n\nAs áreas principais são:\n\n- **Documentação**: aprender a sintaxe e os conceitos da linguagem;\n- **Download**: baixar a JLScript;\n- **Playground**: experimentar exemplos compatíveis com o ambiente do site;\n- **Biblioteca**: conhecer módulos oficiais e seus usos;\n- **Terminal**: consultar comandos da CLI `jls`;\n- **Atualizações**: acompanhar mudanças do projeto;\n- **Suporte / JLAI**: tirar dúvidas e encontrar canais de ajuda.\n\nSe você me disser qual parte da página não entendeu, eu explico o que ela faz e para onde seguir.",
+      "suggestions": [
+        "Quero aprender a sintaxe",
+        "Quero baixar a linguagem",
+        "Quero ver os comandos do terminal"
+      ],
+      "source": {
+        "label": "Portal oficial JLScript",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/"
+      }
+    },
+    {
+      "id": "historia",
+      "topic": "historia",
+      "category": "project",
+      "title": "História da JLScript",
+      "aliases": [
+        "historia jlscript",
+        "história jlscript",
+        "como surgiu jlscript",
+        "origem jlscript",
+        "quem criou jlscript",
+        "criador jlscript",
+        "significado do nome"
+      ],
+      "keywords": [
+        "historia",
+        "origem",
+        "criou",
+        "criador",
+        "lucas",
+        "joicy",
+        "nome",
+        "2026",
+        "brasil"
+      ],
+      "priority": 1.8,
+      "answer": "## História da JLScript\n\nA **JLScript (JLS)** é uma linguagem de programação brasileira criada em **2026** por **Lucas Aguiel Dos Santos De Oliveira**.\n\nO projeto começou como uma experiência para estudar como uma linguagem funciona por dentro e, ao mesmo tempo, testar uma sintaxe mais direta, com construções em português e inglês. Com o tempo, cresceu de um interpretador pequeno para um ecossistema com lexer, parser, AST, runtime, CLI, compilação, bytecode e bibliotecas.\n\nA primeira versão oficial foi a **1.0.0**.\n\n### Origem do nome\n\nSegundo a documentação pública:\n\n- **J** representa **Joicy**;\n- **L** representa **Lucas**;\n- **Script** representa programação.\n\nO projeto mantém identidade brasileira, mas também suporta construções em inglês para não limitar o uso ao português.\n\nPara a história completa, consulte a documentação pública do projeto.",
+      "suggestions": [
+        "Por que a linguagem é bilíngue?",
+        "Como a JLScript evoluiu?",
+        "O que é JLScripter?"
+      ],
+      "source": {
+        "label": "Documentação pública · História",
+        "url": "https://github.com/JLScripter/documentacao_JLScripter/tree/main/Historia"
+      }
+    },
+    {
+      "id": "versao",
+      "topic": "versao",
+      "category": "project",
+      "title": "Versão atual do portal",
+      "aliases": [
+        "qual versao",
+        "qual versão",
+        "versao atual",
+        "versão atual",
+        "jlscript 3.2.0"
+      ],
+      "keywords": [
+        "versao",
+        "version",
+        "3.2.0"
+      ],
+      "priority": 1.9,
+      "answer": "O conteúdo deste portal e desta base de suporte está organizado para a **JLScript 3.2.0**.\n\nPara conferir a versão instalada no seu computador, execute:\n\n```bash\njls --version\n```\n\nSe a versão instalada for diferente, alguns comandos ou recursos podem variar. Consulte a documentação correspondente à versão que você estiver usando.",
+      "suggestions": [
+        "Como atualizo?",
+        "Como verifico a instalação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "erro-geral",
+      "topic": "erros",
+      "category": "support",
+      "title": "Ajuda com erros",
+      "aliases": [
+        "meu codigo deu erro",
+        "deu erro",
+        "como corrigir erro",
+        "nao funciona",
+        "não funciona",
+        "erro no jlscript",
+        "jls error"
+      ],
+      "keywords": [
+        "erro",
+        "falha",
+        "bug",
+        "corrigir",
+        "linha",
+        "coluna",
+        "jl"
+      ],
+      "priority": 1.7,
+      "answer": "## Vamos localizar o erro\n\nEnvie a **mensagem completa do erro** e o **menor trecho `.jls` que reproduz o problema**.\n\nEnquanto isso, confira:\n\n```bash\njls --version\njls doctor\njls lint arquivo.jls\n```\n\nSe o problema for de sintaxe, eu posso explicar a estrutura correta e mostrar um exemplo. Se for um erro de biblioteca, informe também qual módulo você importou.\n\n> Não envie arquivos privados do código-fonte interno da JLScript. Para suporte, basta o seu programa `.jls` e a mensagem de erro.",
+      "suggestions": [
+        "Meu erro é de sintaxe",
+        "Meu erro é no #api",
+        "Como usar jls lint?"
+      ],
+      "source": {
+        "label": "Documentação · CLI e erros",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "bilingue",
+      "topic": "bilingue",
+      "category": "syntax",
+      "title": "Português e inglês",
+      "aliases": [
+        "portugues e ingles",
+        "português e inglês",
+        "sintaxe bilingue",
+        "sintaxe bilíngue",
+        "posso usar ingles",
+        "posso usar português",
+        "if e se",
+        "else e senao"
+      ],
+      "keywords": [
+        "portugues",
+        "ingles",
+        "bilingue",
+        "if",
+        "se",
+        "else",
+        "senao",
+        "while",
+        "enquanto",
+        "for",
+        "para"
+      ],
+      "priority": 1.7,
+      "answer": "## JLScript é bilíngue\n\nA linguagem aceita construções em **português** e **inglês**.\n\nPortuguês:\n\n```jls\nse (idade >= 18) {\n    mostrar(\"Maior de idade\")\n} senao {\n    mostrar(\"Menor de idade\")\n}\n```\n\nInglês:\n\n```jls\nif (idade >= 18) {\n    mostrar(\"Maior de idade\")\n} else {\n    mostrar(\"Menor de idade\")\n}\n```\n\nA ideia é facilitar o aprendizado em português sem abandonar uma escrita próxima de outras linguagens.",
+      "suggestions": [
+        "Quais palavras existem em português?",
+        "Como funciona switch?"
+      ],
+      "source": {
+        "label": "Documentação pública · Diferenciais",
+        "url": "https://github.com/JLScripter/documentacao_JLScripter/blob/main/Sobre/diferencial.md"
+      }
+    },
+    {
+      "id": "bibliotecas-catalogo",
+      "topic": "bibliotecas",
+      "category": "library",
+      "title": "Bibliotecas oficiais JLScript",
+      "summary": "Catálogo de módulos oficiais documentados no portal 3.2.0.",
+      "aliases": [
+        "quais bibliotecas existem",
+        "lista de bibliotecas",
+        "bibliotecas oficiais",
+        "modulos oficiais",
+        "módulos oficiais"
+      ],
+      "keywords": [
+        "bibliotecas",
+        "modulos",
+        "import",
+        "#api",
+        "#math",
+        "#json",
+        "#file",
+        "#database",
+        "#ui",
+        "#style",
+        "#connector",
+        "#mobile",
+        "#compiler"
+      ],
+      "priority": 1.6,
+      "answer": "## Bibliotecas oficiais\n\nNo portal 3.2.0, os módulos aparecem separados do núcleo e são importados com `#`.\n\n**Prontos no estado documentado:**\n\n- `#api`, `#math`, `#json`, `#watch`, `#file`, `#database`, `#crypto`;\n- `#process`, `#env`, `#net`, `#thread`, `#test`, `#log`;\n- `#compress`, `#csv`, `#xml`, `#cli`, `#email`, `#image`, `#audio`.\n\n**Em evolução ou dependentes do ambiente:**\n\n- `#system`, `#whatsapp`, `#connector`, `#mobile`;\n- `#style`, `#ui`, `#compiler` / `#compilador`.\n\nImportação simples:\n\n```jls\nimport #json\n```\n\nVários módulos:\n\n```jls\nimport [#api, #database, #file]\n```\n\nAlias:\n\n```jls\nimport #api como web\n```",
+      "suggestions": [
+        "Como usar #api?",
+        "Como usar #json?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-math",
+      "topic": "library:#math",
+      "category": "library",
+      "title": "Biblioteca #math",
+      "summary": "funções matemáticas e operações auxiliares",
+      "aliases": [
+        "#math",
+        "math",
+        "como usar #math",
+        "para que serve #math",
+        "import #math",
+        "biblioteca math"
+      ],
+      "keywords": [
+        "math",
+        "#math",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #math\n\nA biblioteca **#math** é usada para **funções matemáticas e operações auxiliares**.\n\nPara importar:\n\n```jls\nimport #math\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #math, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #math?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #math",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-json",
+      "topic": "library:#json",
+      "category": "library",
+      "title": "Biblioteca #json",
+      "summary": "leitura, parsing e serialização JSON",
+      "aliases": [
+        "#json",
+        "json",
+        "como usar #json",
+        "para que serve #json",
+        "import #json",
+        "biblioteca json"
+      ],
+      "keywords": [
+        "json",
+        "#json",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #json\n\nA biblioteca **#json** é usada para **leitura, parsing e serialização JSON**.\n\nPara importar:\n\n```jls\nimport #json\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #json, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #json?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #json",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-watch",
+      "topic": "library:#watch",
+      "category": "library",
+      "title": "Biblioteca #watch",
+      "summary": "monitoramento de alterações e fluxos de watch",
+      "aliases": [
+        "#watch",
+        "watch",
+        "como usar #watch",
+        "para que serve #watch",
+        "import #watch",
+        "biblioteca watch"
+      ],
+      "keywords": [
+        "watch",
+        "#watch",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #watch\n\nA biblioteca **#watch** é usada para **monitoramento de alterações e fluxos de watch**.\n\nPara importar:\n\n```jls\nimport #watch\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #watch, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #watch?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #watch",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-file",
+      "topic": "library:#file",
+      "category": "library",
+      "title": "Biblioteca #file",
+      "summary": "operações com arquivos",
+      "aliases": [
+        "#file",
+        "file",
+        "como usar #file",
+        "para que serve #file",
+        "import #file",
+        "biblioteca file"
+      ],
+      "keywords": [
+        "file",
+        "#file",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #file\n\nA biblioteca **#file** é usada para **operações com arquivos**.\n\nPara importar:\n\n```jls\nimport #file\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #file, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #file?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #file",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-database",
+      "topic": "library:#database",
+      "category": "library",
+      "title": "Biblioteca #database",
+      "summary": "recursos de banco de dados",
+      "aliases": [
+        "#database",
+        "database",
+        "como usar #database",
+        "para que serve #database",
+        "import #database",
+        "biblioteca database"
+      ],
+      "keywords": [
+        "database",
+        "#database",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #database\n\nA biblioteca **#database** é usada para **recursos de banco de dados**.\n\nPara importar:\n\n```jls\nimport #database\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #database, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #database?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #database",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-crypto",
+      "topic": "library:#crypto",
+      "category": "library",
+      "title": "Biblioteca #crypto",
+      "summary": "recursos criptográficos",
+      "aliases": [
+        "#crypto",
+        "crypto",
+        "como usar #crypto",
+        "para que serve #crypto",
+        "import #crypto",
+        "biblioteca crypto"
+      ],
+      "keywords": [
+        "crypto",
+        "#crypto",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #crypto\n\nA biblioteca **#crypto** é usada para **recursos criptográficos**.\n\nPara importar:\n\n```jls\nimport #crypto\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #crypto, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #crypto?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #crypto",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-process",
+      "topic": "library:#process",
+      "category": "library",
+      "title": "Biblioteca #process",
+      "summary": "processos externos",
+      "aliases": [
+        "#process",
+        "process",
+        "como usar #process",
+        "para que serve #process",
+        "import #process",
+        "biblioteca process"
+      ],
+      "keywords": [
+        "process",
+        "#process",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #process\n\nA biblioteca **#process** é usada para **processos externos**.\n\nPara importar:\n\n```jls\nimport #process\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #process, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #process?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #process",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-env",
+      "topic": "library:#env",
+      "category": "library",
+      "title": "Biblioteca #env",
+      "summary": "variáveis de ambiente",
+      "aliases": [
+        "#env",
+        "env",
+        "como usar #env",
+        "para que serve #env",
+        "import #env",
+        "biblioteca env"
+      ],
+      "keywords": [
+        "env",
+        "#env",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #env\n\nA biblioteca **#env** é usada para **variáveis de ambiente**.\n\nPara importar:\n\n```jls\nimport #env\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #env, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #env?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #env",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-net",
+      "topic": "library:#net",
+      "category": "library",
+      "title": "Biblioteca #net",
+      "summary": "recursos de rede",
+      "aliases": [
+        "#net",
+        "net",
+        "como usar #net",
+        "para que serve #net",
+        "import #net",
+        "biblioteca net"
+      ],
+      "keywords": [
+        "net",
+        "#net",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #net\n\nA biblioteca **#net** é usada para **recursos de rede**.\n\nPara importar:\n\n```jls\nimport #net\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #net, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #net?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #net",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-thread",
+      "topic": "library:#thread",
+      "category": "library",
+      "title": "Biblioteca #thread",
+      "summary": "execução com threads",
+      "aliases": [
+        "#thread",
+        "thread",
+        "como usar #thread",
+        "para que serve #thread",
+        "import #thread",
+        "biblioteca thread"
+      ],
+      "keywords": [
+        "thread",
+        "#thread",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #thread\n\nA biblioteca **#thread** é usada para **execução com threads**.\n\nPara importar:\n\n```jls\nimport #thread\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #thread, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #thread?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #thread",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-test",
+      "topic": "library:#test",
+      "category": "library",
+      "title": "Biblioteca #test",
+      "summary": "testes em programas JLScript",
+      "aliases": [
+        "#test",
+        "test",
+        "como usar #test",
+        "para que serve #test",
+        "import #test",
+        "biblioteca test"
+      ],
+      "keywords": [
+        "test",
+        "#test",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #test\n\nA biblioteca **#test** é usada para **testes em programas JLScript**.\n\nPara importar:\n\n```jls\nimport #test\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #test, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #test?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #test",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-log",
+      "topic": "library:#log",
+      "category": "library",
+      "title": "Biblioteca #log",
+      "summary": "registro de logs",
+      "aliases": [
+        "#log",
+        "log",
+        "como usar #log",
+        "para que serve #log",
+        "import #log",
+        "biblioteca log"
+      ],
+      "keywords": [
+        "log",
+        "#log",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #log\n\nA biblioteca **#log** é usada para **registro de logs**.\n\nPara importar:\n\n```jls\nimport #log\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #log, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #log?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #log",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-compress",
+      "topic": "library:#compress",
+      "category": "library",
+      "title": "Biblioteca #compress",
+      "summary": "compactação e descompactação",
+      "aliases": [
+        "#compress",
+        "compress",
+        "como usar #compress",
+        "para que serve #compress",
+        "import #compress",
+        "biblioteca compress"
+      ],
+      "keywords": [
+        "compress",
+        "#compress",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #compress\n\nA biblioteca **#compress** é usada para **compactação e descompactação**.\n\nPara importar:\n\n```jls\nimport #compress\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #compress, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #compress?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #compress",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-csv",
+      "topic": "library:#csv",
+      "category": "library",
+      "title": "Biblioteca #csv",
+      "summary": "leitura e escrita CSV",
+      "aliases": [
+        "#csv",
+        "csv",
+        "como usar #csv",
+        "para que serve #csv",
+        "import #csv",
+        "biblioteca csv"
+      ],
+      "keywords": [
+        "csv",
+        "#csv",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #csv\n\nA biblioteca **#csv** é usada para **leitura e escrita CSV**.\n\nPara importar:\n\n```jls\nimport #csv\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #csv, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #csv?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #csv",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-xml",
+      "topic": "library:#xml",
+      "category": "library",
+      "title": "Biblioteca #xml",
+      "summary": "trabalho com XML",
+      "aliases": [
+        "#xml",
+        "xml",
+        "como usar #xml",
+        "para que serve #xml",
+        "import #xml",
+        "biblioteca xml"
+      ],
+      "keywords": [
+        "xml",
+        "#xml",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #xml\n\nA biblioteca **#xml** é usada para **trabalho com XML**.\n\nPara importar:\n\n```jls\nimport #xml\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #xml, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #xml?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #xml",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-cli",
+      "topic": "library:#cli",
+      "category": "library",
+      "title": "Biblioteca #cli",
+      "summary": "criação de comandos e opções para programas JLScript",
+      "aliases": [
+        "#cli",
+        "cli",
+        "como usar #cli",
+        "para que serve #cli",
+        "import #cli",
+        "biblioteca cli"
+      ],
+      "keywords": [
+        "cli",
+        "#cli",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #cli\n\nA biblioteca **#cli** é usada para **criação de comandos e opções para programas JLScript**.\n\nPara importar:\n\n```jls\nimport #cli\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #cli, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #cli?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #cli",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-email",
+      "topic": "library:#email",
+      "category": "library",
+      "title": "Biblioteca #email",
+      "summary": "recursos de e-mail",
+      "aliases": [
+        "#email",
+        "email",
+        "como usar #email",
+        "para que serve #email",
+        "import #email",
+        "biblioteca email"
+      ],
+      "keywords": [
+        "email",
+        "#email",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #email\n\nA biblioteca **#email** é usada para **recursos de e-mail**.\n\nPara importar:\n\n```jls\nimport #email\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #email, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #email?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #email",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-image",
+      "topic": "library:#image",
+      "category": "library",
+      "title": "Biblioteca #image",
+      "summary": "recursos de imagem",
+      "aliases": [
+        "#image",
+        "image",
+        "como usar #image",
+        "para que serve #image",
+        "import #image",
+        "biblioteca image"
+      ],
+      "keywords": [
+        "image",
+        "#image",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #image\n\nA biblioteca **#image** é usada para **recursos de imagem**.\n\nPara importar:\n\n```jls\nimport #image\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #image, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #image?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #image",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-audio",
+      "topic": "library:#audio",
+      "category": "library",
+      "title": "Biblioteca #audio",
+      "summary": "recursos de áudio",
+      "aliases": [
+        "#audio",
+        "audio",
+        "como usar #audio",
+        "para que serve #audio",
+        "import #audio",
+        "biblioteca audio"
+      ],
+      "keywords": [
+        "audio",
+        "#audio",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #audio\n\nA biblioteca **#audio** é usada para **recursos de áudio**.\n\nPara importar:\n\n```jls\nimport #audio\n```\n\n**Estado:** estável/pronto no estado documentado.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #audio, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #audio?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #audio",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-system",
+      "topic": "library:#system",
+      "category": "library",
+      "title": "Biblioteca #system",
+      "summary": "utilidades de sistema e integrações dependentes do ambiente",
+      "aliases": [
+        "#system",
+        "system",
+        "como usar #system",
+        "para que serve #system",
+        "import #system",
+        "biblioteca system"
+      ],
+      "keywords": [
+        "system",
+        "#system",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #system\n\nA biblioteca **#system** é usada para **utilidades de sistema e integrações dependentes do ambiente**.\n\nPara importar:\n\n```jls\nimport #system\n```\n\n**Estado:** em evolução ou dependente do ambiente.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #system, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #system?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #system",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-whatsapp",
+      "topic": "library:#whatsapp",
+      "category": "library",
+      "title": "Biblioteca #whatsapp",
+      "summary": "integrações com WhatsApp que podem exigir credenciais e serviços externos",
+      "aliases": [
+        "#whatsapp",
+        "whatsapp",
+        "como usar #whatsapp",
+        "para que serve #whatsapp",
+        "import #whatsapp",
+        "biblioteca whatsapp"
+      ],
+      "keywords": [
+        "whatsapp",
+        "#whatsapp",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #whatsapp\n\nA biblioteca **#whatsapp** é usada para **integrações com WhatsApp que podem exigir credenciais e serviços externos**.\n\nPara importar:\n\n```jls\nimport #whatsapp\n```\n\n**Estado:** em evolução ou dependente do ambiente.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #whatsapp, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #whatsapp?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #whatsapp",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-connector",
+      "topic": "library:#connector",
+      "category": "library",
+      "title": "Biblioteca #connector",
+      "summary": "conexões com dispositivos e transportes como ADB/USB/rede",
+      "aliases": [
+        "#connector",
+        "connector",
+        "como usar #connector",
+        "para que serve #connector",
+        "import #connector",
+        "biblioteca connector"
+      ],
+      "keywords": [
+        "connector",
+        "#connector",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #connector\n\nA biblioteca **#connector** é usada para **conexões com dispositivos e transportes como ADB/USB/rede**.\n\nPara importar:\n\n```jls\nimport #connector\n```\n\n**Estado:** em evolução ou dependente do ambiente.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #connector, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #connector?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #connector",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-mobile",
+      "topic": "library:#mobile",
+      "category": "library",
+      "title": "Biblioteca #mobile",
+      "summary": "integrações com dispositivos móveis",
+      "aliases": [
+        "#mobile",
+        "mobile",
+        "como usar #mobile",
+        "para que serve #mobile",
+        "import #mobile",
+        "biblioteca mobile"
+      ],
+      "keywords": [
+        "mobile",
+        "#mobile",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #mobile\n\nA biblioteca **#mobile** é usada para **integrações com dispositivos móveis**.\n\nPara importar:\n\n```jls\nimport #mobile\n```\n\n**Estado:** em evolução ou dependente do ambiente.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #mobile, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #mobile?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #mobile",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-style",
+      "topic": "library:#style",
+      "category": "library",
+      "title": "Biblioteca #style",
+      "summary": "estilização de interfaces",
+      "aliases": [
+        "#style",
+        "style",
+        "como usar #style",
+        "para que serve #style",
+        "import #style",
+        "biblioteca style"
+      ],
+      "keywords": [
+        "style",
+        "#style",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #style\n\nA biblioteca **#style** é usada para **estilização de interfaces**.\n\nPara importar:\n\n```jls\nimport #style\n```\n\n**Estado:** em evolução ou dependente do ambiente.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #style, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #style?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #style",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-ui",
+      "topic": "library:#ui",
+      "category": "library",
+      "title": "Biblioteca #ui",
+      "summary": "construção de interfaces",
+      "aliases": [
+        "#ui",
+        "ui",
+        "como usar #ui",
+        "para que serve #ui",
+        "import #ui",
+        "biblioteca ui"
+      ],
+      "keywords": [
+        "ui",
+        "#ui",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #ui\n\nA biblioteca **#ui** é usada para **construção de interfaces**.\n\nPara importar:\n\n```jls\nimport #ui\n```\n\n**Estado:** em evolução ou dependente do ambiente.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #ui, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #ui?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #ui",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "lib-compiler",
+      "topic": "library:#compiler",
+      "category": "library",
+      "title": "Biblioteca #compiler",
+      "summary": "ferramentas de compilação e desenvolvimento de linguagens",
+      "aliases": [
+        "#compiler",
+        "compiler",
+        "como usar #compiler",
+        "para que serve #compiler",
+        "import #compiler",
+        "biblioteca compiler",
+        "#compilador",
+        "compilador biblioteca",
+        "compiler biblioteca"
+      ],
+      "keywords": [
+        "compiler",
+        "#compiler",
+        "biblioteca",
+        "modulo",
+        "import"
+      ],
+      "priority": 1.55,
+      "answer": "## #compiler\n\nA biblioteca **#compiler** é usada para **ferramentas de compilação e desenvolvimento de linguagens**.\n\nPara importar:\n\n```jls\nimport #compiler\n```\n\n**Estado:** em evolução ou dependente do ambiente.\n\nA disponibilidade real pode depender do sistema operacional, credenciais, drivers ou hardware quando a biblioteca conversa com recursos externos. Se você me disser o que quer fazer com #compiler, eu tento direcionar para a sintaxe/documentação correspondente.",
+      "suggestions": [
+        "Como importar #compiler?",
+        "Quais bibliotecas existem?",
+        "Como funciona import?"
+      ],
+      "source": {
+        "label": "Site oficial · Bibliotecas · #compiler",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/biblioteca"
+      }
+    },
+    {
+      "id": "visao-geral",
+      "topic": "visao-geral",
+      "category": "comecando",
+      "title": "O que é JLScript?",
+      "summary": "Entenda a proposta da linguagem, o que existe na versão 3.2.0 e como o ecossistema se organiza antes de escrever código.",
+      "aliases": [
+        "o que e jlscript",
+        "para que serve jlscript",
+        "o que e jls",
+        "jlscript",
+        "sobre a linguagem"
+      ],
+      "keywords": [
+        ".jls",
+        "3.2.0",
+        "a",
+        "antes",
+        "bytecode",
+        "coexistem",
+        "como",
+        "compilar",
+        "consultar",
+        "código.",
+        "da",
+        "de",
+        "diferença",
+        "documentação",
+        "e",
+        "ecossistema",
+        "entenda",
+        "entre",
+        "escrever",
+        "existe",
+        "extensão",
+        "gerar",
+        "inglês",
+        "interpretar",
+        "jlscript",
+        "linguagem",
+        "na",
+        "o",
+        "oficial",
+        "onde",
+        "organiza",
+        "papel",
+        "por",
+        "português",
+        "proposta",
+        "que",
+        "se",
+        "sintaxe",
+        "versão",
+        "é"
+      ],
+      "answer": "## O que é JLScript?\n\nEntenda a proposta da linguagem, o que existe na versão 3.2.0 e como o ecossistema se organiza antes de escrever código.\n\nJLScript é uma linguagem de programação brasileira criada para oferecer uma escrita direta, permitir construções em português e inglês e reunir ferramentas de desenvolvimento em um mesmo ecossistema.\nNa versão 3.2.0, o fluxo da linguagem não se resume a executar um arquivo. O projeto possui lexer, parser, AST, interpretador, runtime, CLI própria, build nativo, bytecode .jlb, bibliotecas oficiais e ferramentas de desenvolvimento.\nO código-fonte da linguagem é fechado na direção atual do projeto. A documentação, exemplos de uso e referência pública continuam sendo o caminho oficial para aprender a sintaxe e os recursos disponíveis.\n\n**Você vai aprender:**\n- O papel da extensão .jls\n- Diferença entre interpretar, compilar e gerar bytecode\n- Por que português e inglês coexistem na sintaxe\n- Onde consultar a documentação oficial\n\n**Como estudar esta documentação:** Leia em ordem na primeira vez. Depois use a busca e a barra lateral como referência rápida. Os exemplos foram organizados para ensinar o conceito antes de mostrar uma versão maior do código.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · O que é JLScript?",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "instalacao-cli",
+      "topic": "instalacao-cli",
+      "category": "comecando",
+      "title": "Instalação e primeiros comandos",
+      "summary": "Valide a instalação e conheça os comandos mínimos que você vai usar enquanto aprende.",
+      "aliases": [
+        "instalar jlscript",
+        "como instalar",
+        "baixar jlscript",
+        "primeiros passos",
+        "jls --version",
+        "jls --help",
+        "instalacao"
+      ],
+      "keywords": [
+        ".jls",
+        "a",
+        "abrir",
+        "ajuda",
+        "aprende.",
+        "arquivo",
+        "cli",
+        "comando",
+        "comandos",
+        "como",
+        "conheça",
+        "da",
+        "disponível",
+        "e",
+        "enquanto",
+        "está",
+        "executar",
+        "instalação",
+        "jls",
+        "jlshell",
+        "mínimos",
+        "o",
+        "os",
+        "primeiros",
+        "que",
+        "repl",
+        "se",
+        "um",
+        "usar",
+        "vai",
+        "valide",
+        "verificar",
+        "você"
+      ],
+      "answer": "## Instalação e primeiros comandos\n\nValide a instalação e conheça os comandos mínimos que você vai usar enquanto aprende.\n\nDepois de instalar o JLScript, o primeiro teste deve ser feito pelo terminal. Isso confirma que o executável está acessível e evita perder tempo tentando depurar um programa quando o problema está na instalação.\nO comando jls funciona como a porta de entrada do ecossistema. Ele executa arquivos, abre o REPL e também oferece build, bytecode, testes, formatação, diagnóstico e outras ferramentas.\n\n**Você vai aprender:**\n- Como verificar se o comando jls está disponível\n- Como abrir a ajuda da CLI\n- Como executar um arquivo .jls\n- Como abrir o REPL/JLShell\n\n**Verificando a instalação**\n```bash\njls --version\njls --help\n```\n\n**Executando um arquivo**\n```bash\njls run app.jls\n```\n\n**Fluxo de estudo recomendado:** Durante o aprendizado, use jls run arquivo.jls. Quando quiser testar uma expressão rapidamente, use o REPL. Deixe build e bytecode para depois que os fundamentos estiverem claros.\n\n**Teste rápido:** Abra o terminal, execute jls --version e jls --help. Depois crie uma pasta para seus exemplos de estudo.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Instalação e primeiros comandos",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "primeiro-programa",
+      "topic": "primeiro-programa",
+      "category": "comecando",
+      "title": "Seu primeiro programa",
+      "summary": "Crie um arquivo, declare um valor e mostre uma mensagem no terminal.",
+      "aliases": [
+        "primeiro programa",
+        "hello world",
+        "ola mundo",
+        "criar arquivo jls",
+        ".jls",
+        "mostrar"
+      ],
+      "keywords": [
+        ".jls",
+        "arquivo",
+        "com",
+        "como",
+        "criar",
+        "crie",
+        "declarar",
+        "declare",
+        "e",
+        "executar",
+        "mensagem",
+        "mostrar",
+        "mostre",
+        "no",
+        "o",
+        "primeiro",
+        "programa",
+        "seu",
+        "terminal.",
+        "um",
+        "uma",
+        "usar",
+        "va",
+        "valor",
+        "variável"
+      ],
+      "answer": "## Seu primeiro programa\n\nCrie um arquivo, declare um valor e mostre uma mensagem no terminal.\n\nCrie um arquivo chamado app.jls. O objetivo do primeiro programa não é impressionar ninguém, uma tragédia recorrente em tutoriais de programação. É confirmar o ciclo completo: escrever, salvar, executar e observar a saída.\nA palavra va introduz uma variável no escopo atual. A função mostrar() envia um valor para o console. A concatenação com + permite juntar texto e valores em uma única mensagem.\n\n**Você vai aprender:**\n- Como criar um arquivo .jls\n- Como declarar uma variável com va\n- Como usar mostrar()\n- Como executar o programa\n\n**Olá, JLScript**\n```jls\nva nome = \"JLScript\"\nmostrar(\"Olá, \" + nome + \"!\")\n```\n\n**Saída:**\n```text\nOlá, JLScript!\n```\n\n**Executando**\n```bash\njls run app.jls\n```\n\n**O que aconteceu?:** O código foi lido, transformado em tokens, organizado pelo parser e executado pelo runtime. Você não precisa dominar essas etapas agora; basta saber que mostrar() recebe o valor final da expressão e o envia ao console.\n\n**Agora faça sem copiar:** Crie duas variáveis, nome e cidade. Mostre uma frase usando as duas. Depois troque os valores e execute novamente.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Seu primeiro programa",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "variaveis-tipos",
+      "topic": "variaveis-tipos",
+      "category": "fundamentos",
+      "title": "Variáveis, valores e tipos",
+      "summary": "Aprenda va, let e ins e veja como números, strings, booleanos, listas, objetos e null aparecem no runtime.",
+      "aliases": [
+        "variavel",
+        "variaveis",
+        "va",
+        "let",
+        "ins",
+        "tipos",
+        "int",
+        "float",
+        "str",
+        "bool",
+        "null"
+      ],
+      "keywords": [
+        "aparecem",
+        "aprenda",
+        "as",
+        "bool",
+        "booleanos",
+        "com",
+        "como",
+        "conversões",
+        "de",
+        "decimais",
+        "declaração",
+        "e",
+        "float",
+        "formas",
+        "ins",
+        "int",
+        "inteiros",
+        "let",
+        "linguagem",
+        "listas",
+        "no",
+        "null",
+        "números",
+        "objetos",
+        "pela",
+        "reconhecidas",
+        "runtime.",
+        "str",
+        "strings",
+        "tipos",
+        "três",
+        "va",
+        "valores",
+        "variáveis",
+        "veja"
+      ],
+      "answer": "## Variáveis, valores e tipos\n\nAprenda va, let e ins e veja como números, strings, booleanos, listas, objetos e null aparecem no runtime.\n\nO lexer reconhece va, let e ins como formas de declaração. Na prática, as três introduzem um nome no escopo atual e associam esse nome ao resultado de uma expressão.\nO runtime trabalha com diferentes categorias de valor, entre elas números, strings, booleanos, listas, objetos e null. Existem também valores internos usados por módulos e recursos específicos da linguagem.\nDados externos podem chegar como texto. Quando você pretende fazer cálculo ou comparação numérica, converta o valor antes de usar.\n\n**Você vai aprender:**\n- As três formas de declaração reconhecidas pela linguagem\n- Números inteiros e decimais\n- Strings, booleanos e null\n- Conversões com int(), float(), str() e bool()\n\n**Declarações básicas**\n```jls\nva nome = \"Lucas\"\nlet idade = 19\nins ativo = true\nva preco = 29.90\nva vazio = null\n\nmostrar(nome)\nmostrar(idade)\nmostrar(ativo)\n```\n\n**Conversões**\n```jls\nva textoIdade = \"19\"\nva idade = int(textoIdade)\nva preco = float(\"29.90\")\nva numeroTexto = str(120)\nva ligado = bool(true)\n\nmostrar(idade)\nmostrar(preco)\nmostrar(numeroTexto)\nmostrar(ligado)\n```\n\n**Pense em referência, não em caixa mágica:** Quando você escreve va nome = \"Lucas\", o nome passa a referenciar aquele valor no escopo atual. As próximas expressões podem usar nome sem repetir o texto original.\n\n**Exercício:** Crie nome, idade e nota. Converta idade e nota a partir de strings e mostre um pequeno resumo no console.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Variáveis, valores e tipos",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "entrada-comentarios",
+      "topic": "entrada-comentarios",
+      "category": "fundamentos",
+      "title": "Entrada, saída e comentários",
+      "summary": "Use o terminal para receber dados e documente o código sem transformar cada linha em um romance.",
+      "aliases": [
+        "ler",
+        "entrada",
+        "input",
+        "comentario",
+        "comentarios",
+        "mostrar"
+      ],
+      "keywords": [
+        "bloco",
+        "cada",
+        "com",
+        "comentários",
+        "como",
+        "converter",
+        "código",
+        "dados",
+        "de",
+        "documente",
+        "e",
+        "em",
+        "entrada",
+        "entradas",
+        "ler",
+        "linha",
+        "o",
+        "para",
+        "quando",
+        "receber",
+        "romance.",
+        "saída",
+        "sem",
+        "terminal",
+        "transformar",
+        "um",
+        "usar",
+        "use"
+      ],
+      "answer": "## Entrada, saída e comentários\n\nUse o terminal para receber dados e documente o código sem transformar cada linha em um romance.\n\nA função ler() recebe entrada do usuário pelo terminal. Como dados digitados normalmente chegam como texto, é comum combinar ler() com conversões.\nComentários são ignorados pelo lexer. Use-os para explicar decisões importantes, não para narrar linha por linha aquilo que o próprio código já deixa evidente.\n\n**Você vai aprender:**\n- Como usar ler()\n- Quando converter entradas\n- Comentários de linha com //\n- Comentários de bloco com /* */\n\n**Lendo dados**\n```jls\nva nome = ler(\"Nome: \")\nva idade = int(ler(\"Idade: \"))\n\nmostrar(\"Olá, \" + nome)\nmostrar(\"Idade: \" + idade)\n```\n\n**Comentários**\n```jls\n// Comentário de uma linha\nva ativo = true\n\n/*\n   Comentário de bloco.\n   Pode ocupar várias linhas.\n*/\nmostrar(ativo)\n```\n\n**Exercício:** Peça nome e idade. Mostre uma mensagem diferente depois de converter a idade para número.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Entrada, saída e comentários",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "operadores",
+      "topic": "operadores",
+      "category": "fundamentos",
+      "title": "Operadores e expressões",
+      "summary": "Faça cálculos, compare valores e combine condições com operadores aritméticos, relacionais e lógicos.",
+      "aliases": [
+        "operadores",
+        "soma",
+        "subtracao",
+        "comparacao",
+        "logica",
+        "&&",
+        "||",
+        "**",
+        "bitwise"
+      ],
+      "keywords": [
+        "-",
+        "a",
+        "aritmética",
+        "aritméticos",
+        "bit",
+        "booleana",
+        "com",
+        "combine",
+        "comparações",
+        "compare",
+        "condições",
+        "cálculos",
+        "deles",
+        "e",
+        "expressões",
+        "faça",
+        "lógica",
+        "lógicos.",
+        "operadores",
+        "precisar",
+        "quando",
+        "realmente",
+        "relacionais",
+        "valores",
+        "você"
+      ],
+      "answer": "## Operadores e expressões\n\nFaça cálculos, compare valores e combine condições com operadores aritméticos, relacionais e lógicos.\n\nExpressões são combinações de valores, variáveis, chamadas e operadores que produzem um resultado. Você usa expressões em cálculos, condições, argumentos de função e atribuições.\nO operador + também pode participar da concatenação quando uma string está envolvida. Para cálculos, mantenha os operandos numéricos sempre que possível.\n\n**Você vai aprender:**\n- Aritmética com +, -, *, /, % e **\n- Comparações com ==, !=, <, <=, > e >=\n- Lógica booleana com &&, || e !\n- Operadores bit a bit quando você realmente precisar deles\n\n**Aritmética**\n```jls\nva a = 10\nva b = 3\n\nmostrar(a + b)\nmostrar(a - b)\nmostrar(a * b)\nmostrar(a / b)\nmostrar(a % b)\nmostrar(a ** 2)\n```\n\n**Comparação e lógica**\n```jls\nva idade = 19\nva documento = true\n\nva maior = idade >= 18\nva podeEntrar = maior && documento\n\nmostrar(maior)\nmostrar(podeEntrar)\nmostrar(idade != 20)\n```\n\n**Bitwise existe, mas não precisa aparecer no seu primeiro dia:** A linguagem reconhece &, |, ^, << e >>. Eles são úteis em máscaras, flags e tarefas de baixo nível. Aprenda o restante primeiro e volte quando houver um problema real que peça esse recurso.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Operadores e expressões",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "condicoes",
+      "topic": "condicoes",
+      "category": "logica",
+      "title": "Condições: se/senao e if/else",
+      "summary": "Tome decisões no programa usando a forma em português ou a forma em inglês.",
+      "aliases": [
+        "if",
+        "else",
+        "se",
+        "senao",
+        "condicao",
+        "condicional"
+      ],
+      "keywords": [
+        "a",
+        "bloco",
+        "combinar",
+        "como",
+        "comparações",
+        "condição",
+        "condições",
+        "decisões",
+        "e",
+        "else",
+        "em",
+        "escolhe",
+        "forma",
+        "if",
+        "inglês",
+        "inglês.",
+        "lógicos",
+        "no",
+        "operadores",
+        "ou",
+        "português",
+        "programa",
+        "se",
+        "senao",
+        "tome",
+        "um",
+        "uma",
+        "usando"
+      ],
+      "answer": "## Condições: se/senao e if/else\n\nTome decisões no programa usando a forma em português ou a forma em inglês.\n\nUma condição avalia uma expressão booleana. Quando o resultado é verdadeiro, o primeiro bloco é executado. Caso contrário, o bloco alternativo pode ser usado.\nJLScript reconhece construções em português e inglês. Mantenha a mesma família dentro da estrutura: se combina com senao; if combina com else.\n\n**Você vai aprender:**\n- Como uma condição escolhe um bloco\n- Forma em português\n- Forma em inglês\n- Como combinar comparações e operadores lógicos\n\n**Português**\n```jls\nva idade = 19\n\nse (idade >= 18) {\n    mostrar(\"Maior de idade\")\n} senao {\n    mostrar(\"Menor de idade\")\n}\n```\n\n**Saída:**\n```text\nMaior de idade\n```\n\n**English**\n```jls\nva active = true\n\nif (active) {\n    mostrar(\"Active\")\n} else {\n    mostrar(\"Inactive\")\n}\n```\n\n**Saída:**\n```text\nActive\n```\n\n**Exercício:** Crie uma variável nota. Se a nota for maior ou igual a 7, mostre Aprovado. Caso contrário, mostre Reprovado.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Condições: se/senao e if/else",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "lacos",
+      "topic": "lacos",
+      "category": "logica",
+      "title": "Laços: para/for e enquanto/while",
+      "summary": "Repita tarefas sem copiar a mesma linha vinte vezes como um ritual de sofrimento administrativo.",
+      "aliases": [
+        "for",
+        "para",
+        "while",
+        "enquanto",
+        "loop",
+        "laco",
+        "pare",
+        "continuar",
+        "break",
+        "continue"
+      ],
+      "keywords": [
+        "a",
+        "administrativo.",
+        "break",
+        "com",
+        "como",
+        "condicionado",
+        "contado",
+        "continuar",
+        "continuação",
+        "continue",
+        "copiar",
+        "de",
+        "e",
+        "enquanto",
+        "for",
+        "interrupção",
+        "laço",
+        "laços",
+        "linha",
+        "mesma",
+        "para",
+        "pare",
+        "repita",
+        "ritual",
+        "sem",
+        "sofrimento",
+        "tarefas",
+        "um",
+        "vezes",
+        "vinte",
+        "while"
+      ],
+      "answer": "## Laços: para/for e enquanto/while\n\nRepita tarefas sem copiar a mesma linha vinte vezes como um ritual de sofrimento administrativo.\n\nUse para quando você já conhece a estrutura de inicialização, condição e atualização. Use enquanto quando a repetição depende principalmente de uma condição que pode mudar ao longo da execução.\npare/break encerra o laço atual. continuar/continue pula o restante da iteração atual e segue para a próxima.\n\n**Você vai aprender:**\n- Laço contado com para/for\n- Laço condicionado com enquanto/while\n- Interrupção com pare/break\n- Continuação com continuar/continue\n\n**Contagem com para**\n```jls\npara (va i = 1; i <= 5; i = i + 1) {\n    mostrar(i)\n}\n```\n\n**Saída:**\n```text\n1\n2\n3\n4\n5\n```\n\n**Enquanto**\n```jls\nva contador = 0\n\nenquanto (contador < 3) {\n    contador = contador + 1\n    mostrar(contador)\n}\n```\n\n**Saída:**\n```text\n1\n2\n3\n```\n\n**Evite laços infinitos:** No enquanto, alguma parte do bloco precisa aproximar a condição do fim. Se contador nunca mudar, contador < 3 continuará verdadeiro para sempre.\n\n**Exercício:** Mostre os números de 1 a 20, ignore o número 5 com continuar e encerre quando chegar a 12 usando pare.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Laços: para/for e enquanto/while",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "switch",
+      "topic": "switch",
+      "category": "logica",
+      "title": "Escolha/switch sem break obrigatório",
+      "summary": "Organize múltiplos caminhos quando uma expressão pode assumir opções conhecidas.",
+      "aliases": [
+        "switch",
+        "escolha",
+        "case",
+        "caso",
+        "default",
+        "padrao",
+        "break"
+      ],
+      "keywords": [
+        "assumir",
+        "bloco",
+        "break",
+        "cada",
+        "caminhos",
+        "case",
+        "caso",
+        "conhecidas.",
+        "default",
+        "encerra",
+        "escolha",
+        "expressão",
+        "já",
+        "múltiplos",
+        "o",
+        "obrigatório",
+        "opções",
+        "organize",
+        "padrao",
+        "pode",
+        "por",
+        "quando",
+        "que",
+        "sem",
+        "switch",
+        "uma"
+      ],
+      "answer": "## Escolha/switch sem break obrigatório\n\nOrganize múltiplos caminhos quando uma expressão pode assumir opções conhecidas.\n\nNo JLScript, cada caso possui seu próprio bloco. Por isso, você não precisa adicionar um break apenas para marcar o fim do caso.\nA versão em português usa escolha, caso e padrao. A versão em inglês usa switch, case e default.\n\n**Você vai aprender:**\n- escolha/caso/padrao\n- switch/case/default\n- Por que o bloco já encerra cada caso\n\n**Forma em português**\n```jls\nva opcao = 2\n\nescolha (opcao) {\n    caso 1 {\n        mostrar(\"Iniciar\")\n    }\n\n    caso 2 {\n        mostrar(\"Configurações\")\n    }\n\n    padrao {\n        mostrar(\"Sair\")\n    }\n}\n```\n\n**Saída:**\n```text\nConfigurações\n```\n\n**Menos ruído de sintaxe:** O fechamento } já delimita o caso. A ideia é não exigir outra instrução apenas para repetir uma informação que a estrutura do bloco já expressa.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Escolha/switch sem break obrigatório",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "funcoes",
+      "topic": "funcoes",
+      "category": "estruturas",
+      "title": "Funções",
+      "summary": "Separe responsabilidades, receba parâmetros, retorne valores e use funções como valores quando necessário.",
+      "aliases": [
+        "funcao",
+        "funcoes",
+        "func",
+        "retorne",
+        "return",
+        "parametro",
+        "callback",
+        "forma curta"
+      ],
+      "keywords": [
+        "anônimas",
+        "com",
+        "como",
+        "curta",
+        "de",
+        "declaração",
+        "devolver",
+        "e",
+        "forma",
+        "func",
+        "função",
+        "funções",
+        "necessário.",
+        "padrão",
+        "para",
+        "parâmetros",
+        "quando",
+        "receba",
+        "responsabilidades",
+        "retorne",
+        "separe",
+        "um",
+        "use",
+        "valor",
+        "valores"
+      ],
+      "answer": "## Funções\n\nSepare responsabilidades, receba parâmetros, retorne valores e use funções como valores quando necessário.\n\nFunções agrupam uma responsabilidade em um nome reutilizável. Isso reduz repetição e ajuda a transformar um programa grande em partes menores.\nO parser também reconhece uma forma curta quando a estrutura nome(parametros) { ... } deixa claro que o bloco é uma função.\nFunções anônimas podem ser armazenadas em variáveis ou passadas como callbacks. Parâmetros também podem possuir valores padrão, desde que parâmetros obrigatórios não apareçam depois deles.\n\n**Você vai aprender:**\n- Declaração com func\n- Forma curta de função\n- retorne para devolver um valor\n- Funções anônimas e parâmetros padrão\n\n**Declaração tradicional**\n```jls\nfunc soma(a, b) {\n    retorne a + b\n}\n\nmostrar(soma(5, 7))\n```\n\n**Saída:**\n```text\n12\n```\n\n**Forma curta**\n```jls\nmultiplicar(a, b) {\n    retorne a * b\n}\n\nmostrar(multiplicar(4, 3))\n```\n\n**Saída:**\n```text\n12\n```\n\n**Exercício:** Crie uma função calcularMedia(a, b, c) que retorne a média dos três números. Mostre o resultado usando mostrar().\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Funções",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "listas-objetos",
+      "topic": "listas-objetos",
+      "category": "estruturas",
+      "title": "Listas e objetos",
+      "summary": "Agrupe coleções de valores e organize dados com propriedades nomeadas.",
+      "aliases": [
+        "lista",
+        "listas",
+        "array",
+        "arrays",
+        "objeto",
+        "objetos",
+        "indice",
+        "tamanho"
+      ],
+      "keywords": [
+        "1",
+        "acesso",
+        "adicionar",
+        "agrupe",
+        "baseada",
+        "coleções",
+        "com",
+        "criação",
+        "dados",
+        "de",
+        "e",
+        "em",
+        "indexação",
+        "inserir",
+        "limpar",
+        "listas",
+        "nomeadas.",
+        "objetos",
+        "organize",
+        "por",
+        "propriedade",
+        "propriedades",
+        "removerem",
+        "tamanho",
+        "valores"
+      ],
+      "answer": "## Listas e objetos\n\nAgrupe coleções de valores e organize dados com propriedades nomeadas.\n\nListas representam uma sequência de valores. No runtime atual do JLScript, a indexação de listas é baseada em 1. Isso significa que o primeiro elemento é acessado com lista[1].\nO runtime fornece operações para consultar o tamanho e modificar a coleção. Objetos, por outro lado, armazenam pares de propriedade e valor e são acessados por membros.\n\n**Você vai aprender:**\n- Criação de listas\n- Indexação baseada em 1\n- tamanho(), adicionar(), inserir(), removerEm() e limpar()\n- Objetos e acesso por propriedade\n\n**Lista**\n```jls\nva nomes = [\"Ana\", \"Bia\"]\n\nnomes.adicionar(\"Carlos\")\nmostrar(nomes.tamanho())\nmostrar(nomes[1])\n\nnomes.inserir(2, \"Davi\")\nnomes.removerEm(1)\nmostrar(nomes.tamanho())\n```\n\n**Objeto**\n```jls\nva usuario = {\n    nome: \"Lucas\",\n    linguagem: \"JLScript\",\n    ativo: true\n}\n\nmostrar(usuario.nome)\nmostrar(usuario.linguagem)\n```\n\n**Atenção à indexação:** Se você veio de JavaScript, Python ou C++, o primeiro índice provavelmente é 0. No runtime atual do JLScript, listas começam em 1.\n\n**Exercício:** Crie uma lista com três tarefas, adicione uma quarta, mostre o primeiro item e depois mostre o tamanho da lista.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Listas e objetos",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "tratamento-erros",
+      "topic": "tratamento-erros",
+      "category": "estruturas",
+      "title": "Tratamento de erros",
+      "summary": "Proteja operações que podem falhar e trate o problema sem derrubar todo o fluxo do programa.",
+      "aliases": [
+        "erro",
+        "erros",
+        "try",
+        "catch",
+        "finally",
+        "tente",
+        "capture",
+        "finalmente",
+        "excecao"
+      ],
+      "keywords": [
+        "capture",
+        "catch",
+        "de",
+        "derrubar",
+        "do",
+        "e",
+        "erro",
+        "erros",
+        "falhar",
+        "finally",
+        "finalmente",
+        "fluxo",
+        "o",
+        "operações",
+        "podem",
+        "problema",
+        "programa.",
+        "proteja",
+        "quando",
+        "que",
+        "sem",
+        "tente",
+        "todo",
+        "tratamento",
+        "trate",
+        "try",
+        "usar"
+      ],
+      "answer": "## Tratamento de erros\n\nProteja operações que podem falhar e trate o problema sem derrubar todo o fluxo do programa.\n\nOperações de arquivo, rede, conversão e integração externa podem falhar. O tratamento de erros permite capturar o problema e decidir como o programa deve reagir.\nUma estrutura precisa possuir capture/catch, finalmente/finally ou ambos. O bloco final é útil para tarefas de encerramento que precisam acontecer mesmo quando existe erro.\n\n**Você vai aprender:**\n- tente/capture/finalmente\n- try/catch/finally\n- Quando usar tratamento de erro\n\n**Forma em português**\n```jls\ntente {\n    mostrar(\"Executando\")\n} capture (erro) {\n    mostrar(\"Falhou: \" + erro)\n} finalmente {\n    mostrar(\"Fim\")\n}\n```\n\n**English**\n```jls\ntry {\n    mostrar(\"Running\")\n} catch (error) {\n    mostrar(error)\n} finally {\n    mostrar(\"Done\")\n}\n```\n\n**Não esconda o erro:** Capturar tudo e continuar como se nada tivesse acontecido costuma criar bugs mais difíceis. Trate aquilo que você consegue resolver ou explique claramente o que falhou.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Tratamento de erros",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "imports-modulos",
+      "topic": "imports-modulos",
+      "category": "ecossistema",
+      "title": "Imports, módulos e aliases",
+      "summary": "Use recursos oficiais sem jogar toda a complexidade para dentro do núcleo da linguagem.",
+      "aliases": [
+        "import",
+        "imports",
+        "modulo",
+        "modulos",
+        "biblioteca",
+        "bibliotecas",
+        "#api",
+        "#json",
+        "como",
+        "alias"
+      ],
+      "keywords": [
+        "#",
+        "a",
+        "alias",
+        "aliases",
+        "antigas",
+        "com",
+        "como",
+        "complexidade",
+        "da",
+        "de",
+        "dentro",
+        "devem",
+        "do",
+        "e",
+        "import",
+        "imports",
+        "jogar",
+        "linguagem.",
+        "módulo",
+        "módulos",
+        "não",
+        "núcleo",
+        "oficiais",
+        "oficial",
+        "para",
+        "que",
+        "recursos",
+        "sem",
+        "ser",
+        "sintaxes",
+        "toda",
+        "usadas",
+        "use",
+        "vários"
+      ],
+      "answer": "## Imports, módulos e aliases\n\nUse recursos oficiais sem jogar toda a complexidade para dentro do núcleo da linguagem.\n\nBibliotecas oficiais usam o prefixo #. O import deixa explícito quais recursos especializados o programa utiliza e mantém o núcleo da linguagem separado de funcionalidades como HTTP, arquivos, JSON, banco de dados e outras integrações.\nA sintaxe atual utiliza import e pode aplicar um alias com como. Formas antigas como importa, importe, usar e apelido foram removidas da sintaxe atual.\n\n**Você vai aprender:**\n- Import de módulo oficial com #\n- Import de vários módulos\n- Alias com como\n- Sintaxes antigas que não devem ser usadas\n\n**Um módulo**\n```jls\nimport #json\n```\n\n**Vários módulos**\n```jls\nimport [#api, #json, #file]\n```\n\n**Sintaxe atual:** Não use importa, importe, usar ou apelido em código novo. A forma suportada é import #modulo e import #modulo como alias.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Imports, módulos e aliases",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "api-http",
+      "topic": "api-http",
+      "category": "ecossistema",
+      "title": "Criando uma API HTTP",
+      "summary": "Transforme um programa JLScript em um servidor HTTP com rotas e respostas JSON.",
+      "aliases": [
+        "api",
+        "http",
+        "servidor",
+        "rota",
+        "get",
+        "post",
+        "put",
+        "patch",
+        "delete",
+        "criarapi"
+      ],
+      "keywords": [
+        "#api",
+        "api",
+        "com",
+        "como",
+        "criando",
+        "criar",
+        "e",
+        "em",
+        "get",
+        "http",
+        "importar",
+        "iniciar",
+        "jlscript",
+        "json",
+        "json.",
+        "o",
+        "programa",
+        "registrar",
+        "responder",
+        "respostas",
+        "rota",
+        "rotas",
+        "servidor",
+        "transforme",
+        "um",
+        "uma"
+      ],
+      "answer": "## Criando uma API HTTP\n\nTransforme um programa JLScript em um servidor HTTP com rotas e respostas JSON.\n\nO módulo #api oferece um servidor HTTP embutido. O servidor pode ser criado com uma porta e recebe rotas que associam um caminho a uma função.\nCallbacks de rota recebem request e response. A resposta pode enviar texto ou JSON, dependendo do que a rota precisa devolver.\nO servidor também possui operações para outros métodos HTTP e aliases em português, além de recursos de cliente HTTP no próprio módulo.\n\n**Você vai aprender:**\n- Como importar #api\n- Como criar um servidor\n- Como registrar uma rota GET\n- Como responder JSON e iniciar o servidor\n\n**API local mínima**\n```jls\nimport #api\n\nva app = criarApi(3000)\n\napp.get(\"/\", func(req, res) {\n    res.json({\n        linguagem: \"JLScript\",\n        status: \"online\"\n    })\n})\n\napp.iniciar()\n```\n\n**Executando**\n```bash\njls run api.jls\n```\n\n**O que existe por trás:** O servidor registra rotas, abre a porta configurada e aceita conexões em sua própria infraestrutura. Para aprender HTTP, comece com GET e JSON antes de partir para middleware, CORS e múltiplos métodos.\n\n**Projeto rápido:** Crie /status retornando nome, versão e status. Depois adicione uma segunda rota /sobre com uma mensagem diferente.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Criando uma API HTTP",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "cli-build-bytecode",
+      "topic": "cli-build-bytecode",
+      "category": "ecossistema",
+      "title": "CLI, build e bytecode",
+      "summary": "Conheça as ferramentas que levam o mesmo código do desenvolvimento até build nativo e representação .jlb.",
+      "aliases": [
+        "cli",
+        "terminal",
+        "jls run",
+        "jls build",
+        "jls compile",
+        "bytecode",
+        ".jlb",
+        "verify-bytecode",
+        "jls doctor",
+        "jls lint",
+        "jls fmt",
+        "jls fix"
+      ],
+      "keywords": [
+        ".jlb",
+        ".jlb.",
+        "as",
+        "até",
+        "build",
+        "bytecode",
+        "cli",
+        "compilação",
+        "conheça",
+        "código",
+        "desenvolvimento",
+        "diagnóstico",
+        "do",
+        "e",
+        "execução",
+        "ferramentas",
+        "formatação",
+        "levam",
+        "lint",
+        "mesmo",
+        "nativo",
+        "o",
+        "para",
+        "que",
+        "repl",
+        "representação",
+        "testes"
+      ],
+      "answer": "## CLI, build e bytecode\n\nConheça as ferramentas que levam o mesmo código do desenvolvimento até build nativo e representação .jlb.\n\nA CLI do JLScript foi criada para concentrar tarefas comuns. Você não precisa decorar todos os comandos no primeiro dia; use os grupos conforme o projeto crescer.\nO fluxo build trabalha com a infraestrutura da linguagem e geração de C++ antes da compilação nativa. O comando compile produz a representação de bytecode .jlb implementada pelo projeto.\n\n**Você vai aprender:**\n- Execução e REPL\n- Build nativo\n- Compilação para .jlb\n- Testes, lint, formatação e diagnóstico\n\n**Execução**\n```bash\njls run app.jls\njls repl\n```\n\n**Build e bytecode**\n```bash\njls build app.jls\njls compile app.jls\njls verify-bytecode build/app.jlb\n```\n\n**Não confunda build, compile e execução:** build está ligado ao fluxo de geração/compilação nativa. compile gera o bytecode .jlb em build/ por padrão. O runtime atual executa .jls; arquivos .jlb podem ser validados com verify-bytecode, mas não são executados por jls run.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · CLI, build e bytecode",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "arquitetura-execucao",
+      "topic": "arquitetura-execucao",
+      "category": "ecossistema",
+      "title": "Como o código passa pela linguagem",
+      "summary": "Tenha uma visão mental do caminho entre arquivo .jls e execução sem precisar estudar o código-fonte interno.",
+      "aliases": [
+        "lexer",
+        "parser",
+        "ast",
+        "runtime",
+        "interpretador",
+        "arquitetura",
+        "compilador"
+      ],
+      "keywords": [
+        ".jls",
+        "arquivo",
+        "ast",
+        "build",
+        "bytecode",
+        "caminho",
+        "como",
+        "código",
+        "código-fonte",
+        "da",
+        "do",
+        "e",
+        "entram",
+        "entre",
+        "estudar",
+        "execução",
+        "interno.",
+        "interpretador",
+        "lexer",
+        "linguagem",
+        "mental",
+        "o",
+        "onde",
+        "papel",
+        "parser",
+        "passa",
+        "pela",
+        "precisar",
+        "runtime",
+        "sem",
+        "tenha",
+        "uma",
+        "visão"
+      ],
+      "answer": "## Como o código passa pela linguagem\n\nTenha uma visão mental do caminho entre arquivo .jls e execução sem precisar estudar o código-fonte interno.\n\nQuando você executa um arquivo, a linguagem precisa primeiro entender o texto. O lexer separa o código em tokens; o parser usa esses tokens para reconhecer estruturas; a AST representa o programa; o interpretador e o runtime executam o comportamento correspondente.\nOs caminhos de build e bytecode reutilizam partes dessa infraestrutura, mas produzem saídas diferentes. Essa separação permite que a linguagem cresça sem colocar todas as responsabilidades em um único componente.\n\n**Você vai aprender:**\n- O papel do lexer\n- O papel do parser e da AST\n- O papel do interpretador e runtime\n- Onde build e bytecode entram\n\n**Você não precisa saber isso para começar:** Essa visão é útil para entender mensagens de erro e evolução da linguagem. Para programar, a prioridade continua sendo dominar sintaxe, lógica, funções e dados.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Como o código passa pela linguagem",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "projeto-tarefas",
+      "topic": "projeto-tarefas",
+      "category": "projetos",
+      "title": "Projeto: lista de tarefas",
+      "summary": "Junte listas, funções e repetição em um programa pequeno, mas organizado.",
+      "aliases": [
+        "projeto lista de tarefas",
+        "todo",
+        "tarefas",
+        "projeto pratico"
+      ],
+      "keywords": [
+        "1-based",
+        "adicionar",
+        "comportamento",
+        "criar",
+        "de",
+        "e",
+        "em",
+        "estado",
+        "funções",
+        "junte",
+        "lista",
+        "listar",
+        "listas",
+        "mas",
+        "organizado.",
+        "para",
+        "pequeno",
+        "percorrer",
+        "programa",
+        "projeto",
+        "repetição",
+        "separar",
+        "tarefas",
+        "um",
+        "uma"
+      ],
+      "answer": "## Projeto: lista de tarefas\n\nJunte listas, funções e repetição em um programa pequeno, mas organizado.\n\nEste projeto usa uma lista como estado do programa e funções para esconder os detalhes de manipulação. É pequeno o suficiente para entender inteiro e grande o suficiente para mostrar por que funções ajudam.\n\n**Você vai aprender:**\n- Separar estado e comportamento\n- Criar funções para adicionar e listar\n- Percorrer uma lista 1-based\n\n**Lista de tarefas**\n```jls\nva tarefas = []\n\nfunc adicionar(tarefa) {\n    tarefas.adicionar(tarefa)\n}\n\nfunc listar() {\n    para (va i = 1; i <= tarefas.tamanho(); i = i + 1) {\n        mostrar(i + \" - \" + tarefas[i])\n    }\n}\n\nadicionar(\"Estudar JLScript\")\nadicionar(\"Criar um projeto\")\nadicionar(\"Testar o programa\")\n\nlistar()\n```\n\n**Próximo passo:** Adicione uma função remover(indice). Depois tente salvar as tarefas em arquivo usando uma biblioteca apropriada do ecossistema.\n\n**Desafio:** Implemente remover(indice), uma função quantidade() e uma mensagem quando a lista estiver vazia.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Projeto: lista de tarefas",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    },
+    {
+      "id": "projeto-api",
+      "topic": "projeto-api",
+      "category": "projetos",
+      "title": "Projeto: API local",
+      "summary": "Crie um pequeno serviço HTTP com duas rotas e respostas estruturadas.",
+      "aliases": [
+        "projeto api",
+        "api local",
+        "servidor local",
+        "projeto servidor"
+      ],
+      "keywords": [
+        "api",
+        "com",
+        "criar",
+        "crie",
+        "duas",
+        "e",
+        "estruturadas.",
+        "executar",
+        "http",
+        "json",
+        "local",
+        "localmente",
+        "pequeno",
+        "projeto",
+        "registrar",
+        "responder",
+        "respostas",
+        "rotas",
+        "servidor",
+        "serviço",
+        "testar",
+        "um"
+      ],
+      "answer": "## Projeto: API local\n\nCrie um pequeno serviço HTTP com duas rotas e respostas estruturadas.\n\nAgora o objetivo é juntar módulo, função callback, objeto e execução contínua em um único exemplo. O servidor abaixo expõe uma rota de status e uma rota sobre a linguagem.\n\n**Você vai aprender:**\n- Criar servidor HTTP\n- Registrar rotas\n- Responder JSON\n- Executar e testar localmente\n\n**Servidor completo**\n```jls\nimport #api\n\nva app = criarApi(3000)\n\napp.get(\"/status\", func(req, res) {\n    res.json({\n        status: \"online\",\n        porta: 3000\n    })\n})\n\napp.get(\"/sobre\", func(req, res) {\n    res.json({\n        nome: \"JLScript\",\n        versao: \"3.2.0\",\n        origem: \"Brasil\"\n    })\n})\n\napp.iniciar()\n```\n\n**Iniciando**\n```bash\njls run servidor.jls\n```\n\n**Porta ocupada:** Se a porta 3000 já estiver em uso, escolha outra porta, por exemplo criarApi(3001).\n\n**Desafio:** Crie uma terceira rota /saudacao que devolva um objeto JSON com uma mensagem e o horário ou outra informação disponível no seu programa.\n\n> Se quiser, descreva o que você está tentando fazer em JLScript e eu relaciono a dúvida com esta parte da documentação.",
+      "suggestions": [
+        "Mostre um exemplo simples",
+        "Como executo isso?",
+        "Onde isso aparece na documentação?"
+      ],
+      "source": {
+        "label": "Documentação JLScript 3.2.0 · Projeto: API local",
+        "url": "https://jlscript-oficial.lucasaguiel5.workers.dev/#/docs"
+      }
+    }
+  ]
+}

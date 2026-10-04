@@ -1,161 +1,297 @@
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
+
 import { PageHeading } from "../components/Ecosystem";
 
-const endpoint =
-  import.meta.env.VITE_JLAI_API_URL ||
-  (location.hostname === "localhost" || location.hostname === "127.0.0.1"
-    ? "http://127.0.0.1:8765/api/chat"
-    : null);
-const greeting =
-  "Olá! Sou a JLAI, a central de suporte da JLScript. Posso explicar como a linguagem funciona, para que serve, onde usar, como instalar e como resolver dúvidas de código.";
+import MarkdownMessage from "../components/MarkdownMessage";
 
-function responderNoSite(question) {
-  const texto = question.toLowerCase();
-  if (/^(oi|olá|ola|bom dia|boa tarde|boa noite)/.test(texto))
-    return "Olá! Tudo bem? Sou a JLAI, o suporte oficial da JLScript. Posso explicar a linguagem, ajudar com código, APIs, bibliotecas, instalação e erros.";
-  if (/(api|servidor|rota)/.test(texto))
-    return "A JLScript permite criar APIs com o módulo #api. Importe com import #api, crie um servidor com api.server(...) e registre rotas como app.get(). Consulte a seção Biblioteca para ver um exemplo atual.";
-  if (/(instal|download|windows|linux|termux|mac)/.test(texto))
-    return "A página Download deste portal inclui os binários Windows fornecidos. Depois de instalar, confirme com jls --version e jls doctor. Para outras plataformas, consulte a documentação oficial.";
-  if (/(variável|variavel|va |constante|ins )/.test(texto))
-    return 'Use va para uma variável, por exemplo: va nome = "Lucas". Para um valor constante, use ins: ins PI = 3.1415.';
-  if (/(função|funcao|func )/.test(texto))
-    return 'Funções na JLScript usam func: func saudacao(nome){ mostrar("Olá " + nome) }. Depois, chame saudacao("Lucas").';
-  if (/(erro|erro de|corrigir)/.test(texto))
-    return "Para entender erros, leia a mensagem com arquivo, linha e coluna. A CLI também possui análise e correções com jls lint app.jls e jls fix app.jls.";
-  return "Posso ajudar você com a JLScript. Pergunte, por exemplo: “Como criar uma função?”, “Como instalar no Termux?” ou “Como criar uma API?”";
-}
+import { useJlaiStream } from "../hooks/useJlaiStream";
+
+const greeting = `Olá! Sou a **JLAI**, a assistente oficial de suporte da JLScript.
+
+Posso ajudar com:
+
+- instalação da JLScript;
+- extensão no VS Code;
+- sintaxe;
+- arquivos \`.jls\`;
+- CLI;
+- bibliotecas;
+- erros;
+- história;
+- documentação;
+- downloads;
+- uso do site oficial.
+
+Minha base é focada exclusivamente no ecossistema JLScript.`;
 
 export default function Jlai() {
   const [messages, setMessages] = useState([
-    { role: "assistant", content: greeting },
+    {
+      id: 1,
+      role: "assistant",
+      content: greeting,
+      done: true,
+
+      suggestions: [
+        "Como instalar a JLScript?",
+        "Como criar meu primeiro arquivo .jls?",
+        "Como funciona a sintaxe?",
+      ],
+    },
   ]);
+
   const [question, setQuestion] = useState("");
-  const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState("");
 
-  const send = async (event) => {
-    event.preventDefault();
-    const text = question.trim();
-    if (!text || loading) return;
+  const nextId = useRef(2);
 
-    const history = messages.map(({ role, content }) => ({ role, content }));
-    setMessages((current) => [...current, { role: "user", content: text }]);
-    setQuestion("");
-    setLoading(true);
-    setError("");
+  const { ask, stop, loading, status } = useJlaiStream();
 
-    try {
-      if (!endpoint) throw new Error("Suporte online");
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: text, history }),
-      });
-      const data = await response.json();
-      if (!response.ok)
-        throw new Error(data.error || "Não foi possível consultar a JLAI.");
-      setMessages((current) => [
-        ...current,
-        { role: "assistant", content: data.text, sources: data.sources },
-      ]);
-    } catch {
-      setMessages((current) => [
-        ...current,
-        { role: "assistant", content: responderNoSite(text) },
-      ]);
-    } finally {
-      setLoading(false);
+  const history = useMemo(
+    () =>
+      messages
+        .filter((message) => message.done)
+        .slice(-10)
+        .map(({ role, content }) => ({
+          role,
+          content,
+        })),
+    [messages],
+  );
+
+  function sendText(text) {
+    const clean = text.trim();
+
+    if (!clean || loading) {
+      return;
     }
-  };
+
+    setError("");
+    setQuestion("");
+
+    const userId = nextId.current++;
+
+    const assistantId = nextId.current++;
+
+    setMessages((current) => [
+      ...current,
+
+      {
+        id: userId,
+        role: "user",
+        content: clean,
+        done: true,
+      },
+
+      {
+        id: assistantId,
+        role: "assistant",
+        content: "",
+        done: false,
+        streaming: true,
+      },
+    ]);
+
+    ask({
+      question: clean,
+      history,
+
+      onDelta(delta) {
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === assistantId
+              ? {
+                  ...message,
+                  content: message.content + delta,
+                }
+              : message,
+          ),
+        );
+      },
+
+      onDone(meta) {
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === assistantId
+              ? {
+                  ...message,
+                  done: true,
+                  streaming: false,
+
+                  sources: meta.sources || [],
+
+                  suggestions: meta.suggestions || [],
+                }
+              : message,
+          ),
+        );
+      },
+
+      onError(err) {
+        setError(err.message || "Não foi possível conectar à JLAI.");
+
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === assistantId
+              ? {
+                  ...message,
+
+                  done: true,
+
+                  streaming: false,
+
+                  content:
+                    "Não consegui conectar ao backend da JLAI agora.\n\nVerifique se o servidor Python está rodando em `127.0.0.1:8765`.",
+                }
+              : message,
+          ),
+        );
+      },
+    });
+  }
+
+  function submit(event) {
+    event.preventDefault();
+
+    sendText(question);
+  }
 
   return (
-    <div className="jlai-page">
+    <div className="jlai-page jlai-v2">
       <PageHeading
-        eyebrow="CENTRAL DE SUPORTE OFICIAL"
-        title="Tire dúvidas com a JLAI."
-        text="Uma assistente focada exclusivamente em ensinar, explicar e orientar você no ecossistema da JLScript."
+        eyebrow="SUPORTE OFICIAL JLSCRIPT"
+        title="Converse com a JLAI."
+        text="Assistente focada exclusivamente na JLScript, sua documentação, sintaxe, ferramentas e suporte do portal."
       />
 
-      <section className="jlai-intro" aria-label="Sobre a JLAI">
-        <div>
-          <span className="jlai-badge">● suporte JLScript</span>
-          <h2>Aprenda a linguagem com conversa natural.</h2>
-          <p>
-            Pergunte o que é a JLScript, onde ela pode ser usada, como criar
-            projetos, APIs, bibliotecas e como corrigir erros. A JLAI responde
-            usando a documentação oficial.
-          </p>
-        </div>
-        <a
-          className="btn btn-outline"
-          href="mailto:lucasaguiel5@gmail.com?subject=Suporte%20JLScript"
-        >
-          Falar com o criador ↗
-        </a>
-      </section>
-
-      <section className="jlai-shell">
-        <header>
+      <section className="jlai-shell jlai-chatgpt" aria-label="Chat da JLAI">
+        <header className="jlai-chat-header">
           <div>
-            <i>●</i> JLAI — suporte local
+            <i>●</i>
+
+            <span>
+              <b>JLAI</b>
+
+              <small>backend local · JLScript 3.2.0</small>
+            </span>
           </div>
-          <code>jls ai serve</code>
+
+          <a href="#/docs">Documentação ↗</a>
         </header>
+
         <main aria-live="polite">
-          {messages.map((message, index) => (
-            <article className={message.role} key={`${message.role}-${index}`}>
-              <b>{message.role === "user" ? "Você" : "JLAI"}</b>
-              <p>{message.content}</p>
-              {message.sources?.length ? (
-                <small>Fontes: {message.sources.join(", ")}</small>
-              ) : null}
+          {messages.map((message) => (
+            <article
+              className={`jlai-message ${message.role}`}
+              key={message.id}
+            >
+              <div className="jlai-avatar">
+                {message.role === "user" ? "V" : "JL"}
+              </div>
+
+              <div className="jlai-message-body">
+                <b>{message.role === "user" ? "Você" : "JLAI"}</b>
+
+                {message.role === "assistant" ? (
+                  <MarkdownMessage text={message.content} />
+                ) : (
+                  <p className="jlai-user-text">{message.content}</p>
+                )}
+
+                {message.streaming && (
+                  <span className="jlai-caret" aria-label="JLAI digitando" />
+                )}
+
+                {message.sources?.length ? (
+                  <div className="jlai-sources">
+                    {message.sources.map((source, index) => {
+                      if (typeof source === "string") {
+                        return <span key={index}>{source}</span>;
+                      }
+
+                      return (
+                        <a
+                          key={index}
+                          href={source.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {source.label || "Fonte"} ↗
+                        </a>
+                      );
+                    })}
+                  </div>
+                ) : null}
+
+                {message.done && message.suggestions?.length ? (
+                  <div className="jlai-suggestions">
+                    {message.suggestions.map((suggestion) => (
+                      <button
+                        key={suggestion}
+                        type="button"
+                        onClick={() => sendText(suggestion)}
+                        disabled={loading}
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             </article>
           ))}
-          {loading && (
-            <article className="assistant loading">
-              <b>JLAI</b>
-              <p>Pesquisando a documentação oficial…</p>
-            </article>
-          )}
+
+          {loading && status ? (
+            <div className="jlai-thinking">
+              <span />
+              <span />
+              <span />
+
+              {status}
+            </div>
+          ) : null}
         </main>
-        <form onSubmit={send}>
-          <label htmlFor="jlai-question">
-            Qual é sua dúvida sobre a JLScript?
+
+        <form onSubmit={submit} className="jlai-composer">
+          <label htmlFor="jlai-question" className="sr-only">
+            Pergunte sobre JLScript
           </label>
+
           <textarea
             id="jlai-question"
             value={question}
             onChange={(event) => setQuestion(event.target.value)}
-            placeholder="Ex.: Para que serve a JLScript?"
-            rows="3"
-          />
-          <div>
-            <span>{error}</span>
-            <button className="btn" type="submit" disabled={loading}>
-              Perguntar à JLAI →
-            </button>
-          </div>
-        </form>
-      </section>
+            onKeyDown={(event) => {
+              if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
 
-      <section className="jlai-how">
-        <h2>Precisa de ajuda direta?</h2>
-        <p>
-          A JLAI ensina a linguagem pelo chat. Para falar diretamente com o
-          criador, abrir uma dúvida mais específica ou enviar uma sugestão, use
-          o botão abaixo.
-        </p>
-        <a
-          className="text-link"
-          href="mailto:lucasaguiel5@gmail.com?subject=Suporte%20JLScript"
-        >
-          lucasaguiel5@gmail.com
-        </a>
-        <p className="jlai-note">
-          O botão abre o seu aplicativo de e-mail; nenhuma mensagem é enviada
-          automaticamente.
-        </p>
+                submit(event);
+              }
+            }}
+            placeholder="Pergunte algo sobre JLScript…"
+            rows="3"
+            maxLength="5000"
+          />
+
+          <div>
+            <span className="jlai-error">{error}</span>
+
+            {loading ? (
+              <button type="button" className="btn-outline" onClick={stop}>
+                Parar
+              </button>
+            ) : (
+              <button className="btn" type="submit" disabled={!question.trim()}>
+                Enviar ↑
+              </button>
+            )}
+          </div>
+
+          <small>
+            A JLAI responde somente sobre JLScript e suporte do site.
+          </small>
+        </form>
       </section>
     </div>
   );

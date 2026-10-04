@@ -1,13 +1,15 @@
 {
   "name": "jlscript-oficial",
   "private": true,
-  "version": "2.3.0",
+  "version": "3.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "backend": "backend/.venv/Scripts/python.exe -m uvicorn app:app --app-dir backend --host 127.0.0.1 --port 8765 --reload",
+    "dev:all": "start \"JLAI Backend\" cmd /k \"backend/.venv/Scripts/python.exe -m uvicorn app:app --app-dir backend --host 127.0.0.1 --port 8765 --reload\" && vite",
     "build": "vite build",
-    "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "preview": "vite preview",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "react": "^19.2.7",

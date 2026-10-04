@@ -1,0 +1,18 @@
+[
+  "tests/test_api.py::test_chat",
+  "tests/test_api.py::test_health",
+  "tests/test_api.py::test_stream",
+  "tests/test_engine.py::test_api_help",
+  "tests/test_engine.py::test_capabilities",
+  "tests/test_engine.py::test_contact",
+  "tests/test_engine.py::test_context_followup",
+  "tests/test_engine.py::test_context_followup_example",
+  "tests/test_engine.py::test_context_followup_language",
+  "tests/test_engine.py::test_context_followup_simplify",
+  "tests/test_engine.py::test_function_help",
+  "tests/test_engine.py::test_greeting",
+  "tests/test_engine.py::test_greeting_is_short_and_conversational",
+  "tests/test_engine.py::test_installation",
+  "tests/test_engine.py::test_off_topic",
+  "tests/test_engine.py::test_small_talk_stays_inside_scope"
+]
