@@ -1,824 +1,147 @@
 /* =========================================================
-   RESPONSIVE FIXES — JLSCRIPT
-   Ajustes de layout + widget flutuante JLAI
+   RESPONSIVE FIXES — JLSCRIPT V5
+   Apenas correções de overflow/layout. Sem brigar com o tema.
 ========================================================= */
 
-
-/* =========================
-   DOWNLOAD FIXES
-========================= */
-
 .download-details article,
-.download-docs article {
+.download-docs article,
+.hero-copy,
+.hero-terminal,
+.code-window,
+.docs-content,
+.editor-pane,
+.console-pane,
+.library-box,
+.support-actions article,
+.roadmap-categories > article {
     min-width: 0;
 }
 
 .download-details .doc-code,
-.download-docs .doc-code {
+.download-docs .doc-code,
+.docs-content pre,
+.hero-terminal pre,
+.code-window pre {
     max-width: 100%;
-
     overflow-x: auto;
-    overflow-y: hidden;
-
-    scrollbar-width: thin;
 }
 
-
-/* =========================
-   NAVBAR BRAND FIX
-========================= */
-
 .navbar .brand {
-    width: auto;
-    height: auto;
-
-    min-width: 0;
-
-    display: flex;
-    align-items: center;
-
     flex: 0 0 auto;
-
-    overflow: visible;
+    min-width: 0;
 }
 
 .navbar .brand img {
     display: block;
-
-    width: 132px !important;
-    height: auto !important;
-
-    max-width: 132px !important;
-
-    object-fit: contain !important;
-
-    border-radius: 0 !important;
-
-    box-shadow: none !important;
+    width: 35px !important;
+    height: 35px !important;
+    max-width: 35px !important;
+    object-fit: cover !important;
 }
-
-
-/* =========================================================
-   JLAI FLOATING WIDGET
-========================================================= */
 
 .jlai-widget {
     position: fixed;
-
-    right: 1.4rem;
-    bottom: 1.4rem;
-
+    right: 1.25rem;
+    bottom: 1.25rem;
     z-index: 120;
-
-    isolation: isolate;
 }
-
-
-/* =========================
-   FLOATING BUTTON
-========================= */
 
 .jlai-widget .jlai-fab {
     position: static;
-
-    right: auto;
-    bottom: auto;
-
     display: grid;
-
-    grid-template-columns:
-        36px auto;
-
-    grid-template-rows:
-        auto auto;
-
-    column-gap: .65rem;
-
+    grid-template-columns: 36px auto;
+    grid-template-rows: auto auto;
+    column-gap: .62rem;
     align-items: center;
-
-    min-width: 190px;
-
-    padding:
-        .75rem .9rem;
-
-    position: relative;
-
-    overflow: hidden;
-
-    border:
-        1px solid rgba(34, 211, 238, .42);
-
-    border-radius: 16px;
-
-    background:
-        radial-gradient(circle at 0% 0%,
-            rgba(34, 211, 238, .14),
-            transparent 45%),
-
-        linear-gradient(135deg,
-            rgba(8, 47, 73, .96),
-            rgba(30, 27, 75, .96));
-
-    color:
-        var(--text);
-
-    font:
-        inherit;
-
-    text-align:
-        left;
-
-    cursor:
-        pointer;
-
-    backdrop-filter:
-        blur(16px) saturate(140%);
-
-    -webkit-backdrop-filter:
-        blur(16px) saturate(140%);
-
-    box-shadow:
-        0 18px 48px rgba(0, 0, 0, .42),
-        0 0 30px rgba(34, 211, 238, .12),
-        inset 0 1px rgba(255, 255, 255, .05);
-
-    transition:
-        transform .25s cubic-bezier(.2, .8, .2, 1),
-        border-color .25s ease,
-        box-shadow .25s ease;
+    padding: .7rem .85rem;
+    color: var(--text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
 }
-
-
-/* luz interna */
-
-.jlai-widget .jlai-fab::before {
-    content: "";
-
-    position: absolute;
-
-    width: 120px;
-    height: 120px;
-
-    right: -55px;
-    top: -65px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(circle,
-            rgba(96, 165, 250, .18),
-            transparent 70%);
-
-    pointer-events: none;
-}
-
-
-/* brilho passando */
-
-.jlai-widget .jlai-fab::after {
-    content: "";
-
-    position: absolute;
-
-    top: -40%;
-    left: -120%;
-
-    width: 60%;
-    height: 180%;
-
-    background:
-        linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, .08),
-            transparent);
-
-    transform:
-        skewX(-18deg);
-
-    pointer-events: none;
-
-    transition:
-        left .65s ease;
-}
-
-.jlai-widget .jlai-fab:hover::after {
-    left: 150%;
-}
-
-.jlai-widget .jlai-fab:hover {
-    transform:
-        translateY(-5px) scale(1.02);
-
-    border-color:
-        rgba(103, 232, 249, .65);
-
-    box-shadow:
-        0 24px 60px rgba(0, 0, 0, .48),
-        0 0 40px rgba(34, 211, 238, .22);
-}
-
-.jlai-widget .jlai-fab:active {
-    transform:
-        translateY(-1px) scale(.97);
-}
-
-
-/* =========================
-   FAB IMAGE
-========================= */
 
 .jlai-fab img {
-    grid-row:
-        span 2;
-
-    width:
-        36px;
-
-    height:
-        36px;
-
-    object-fit:
-        cover;
-
-    border-radius:
-        11px;
-
-    border:
-        1px solid rgba(255, 255, 255, .12);
-
-    box-shadow:
-        0 0 18px rgba(34, 211, 238, .18);
-
-    position:
-        relative;
-
-    z-index:
-        1;
+    grid-row: span 2;
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-.jlai-fab b {
-    position:
-        relative;
-
-    z-index:
-        1;
-
-    font-size:
-        .84rem;
-
-    line-height:
-        1.1;
-}
-
-.jlai-fab small {
-    position:
-        relative;
-
-    z-index:
-        1;
-
-    font-size:
-        .65rem;
-
-    color:
-        #bae6fd;
-
-    margin-top:
-        .15rem;
-}
-
-
-/* =========================
-   POPOVER
-========================= */
+.jlai-fab b { font-size: .82rem; }
+.jlai-fab small { color: var(--muted); font-size: .64rem; }
 
 .jlai-popover {
-    position:
-        absolute;
-
-    right:
-        0;
-
-    bottom:
-        calc(100% + 1rem);
-
-    width:
-        min(380px, calc(100vw - 2rem));
-
-    overflow:
-        hidden;
-
-    border:
-        1px solid rgba(96, 165, 250, .24);
-
-    border-radius:
-        20px;
-
-    background:
-        radial-gradient(circle at 100% 0%,
-            rgba(59, 130, 246, .13),
-            transparent 34%),
-
-        linear-gradient(145deg,
-            rgba(18, 28, 46, .98),
-            rgba(7, 13, 27, .99));
-
-    backdrop-filter:
-        blur(20px) saturate(135%);
-
-    -webkit-backdrop-filter:
-        blur(20px) saturate(135%);
-
-    box-shadow:
-        0 32px 90px rgba(0, 0, 0, .58),
-        0 0 45px rgba(59, 130, 246, .08),
-        inset 0 1px rgba(255, 255, 255, .04);
-
-    transform-origin:
-        bottom right;
-
-    animation:
-        jlaiEnter .28s cubic-bezier(.2, .8, .2, 1) both;
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + .8rem);
+    width: min(370px, calc(100vw - 2rem));
+    overflow: hidden;
+    border-radius: 17px;
 }
-
-
-/* =========================
-   POPOVER HEADER
-========================= */
 
 .jlai-popover header {
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        .75rem;
-
-    padding:
-        1rem;
-
-    border-bottom:
-        1px solid rgba(255, 255, 255, .09);
-
-    background:
-        linear-gradient(110deg,
-            rgba(59, 130, 246, .09),
-            rgba(255, 255, 255, .015));
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .9rem 1rem;
+    border-bottom: 1px solid var(--line);
 }
 
-.jlai-popover header img {
-    width:
-        42px;
-
-    height:
-        42px;
-
-    object-fit:
-        cover;
-
-    border-radius:
-        12px;
-
-    border:
-        1px solid rgba(96, 165, 250, .18);
-
-    box-shadow:
-        0 0 18px rgba(59, 130, 246, .12);
-}
-
-.jlai-popover header div {
-    display:
-        grid;
-
-    gap:
-        .15rem;
-
-    min-width:
-        0;
-}
-
-.jlai-popover header b {
-    font-size:
-        .95rem;
-
-    color:
-        #fff;
-}
-
-.jlai-popover header small {
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    gap:
-        .35rem;
-
-    font-size:
-        .7rem;
-
-    color:
-        #cbd5e1;
-}
-
-.jlai-popover header small::before {
-    content: "";
-
-    width:
-        6px;
-
-    height:
-        6px;
-
-    border-radius:
-        50%;
-
-    background:
-        #4ade80;
-
-    box-shadow:
-        0 0 9px rgba(74, 222, 128, .7);
-}
-
-
-/* =========================
-   CLOSE BUTTON
-========================= */
+.jlai-popover header img { width: 38px; height: 38px; border-radius: 10px; }
+.jlai-popover header div { display: grid; gap: .12rem; min-width: 0; }
+.jlai-popover header b { font-size: .92rem; }
+.jlai-popover header small { color: var(--muted); font-size: .68rem; }
 
 .jlai-popover header button {
-    margin-left:
-        auto;
-
-    width:
-        34px;
-
-    height:
-        34px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    flex:
-        0 0 auto;
-
-    border:
-        1px solid transparent;
-
-    border-radius:
-        9px;
-
-    background:
-        transparent;
-
-    color:
-        #94a3b8;
-
-    font-size:
-        1.25rem;
-
-    cursor:
-        pointer;
-
-    transition:
-        color .2s ease,
-        background .2s ease,
-        border-color .2s ease,
-        transform .2s ease;
+    margin-left: auto;
+    width: 34px;
+    height: 34px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1.2rem;
+    cursor: pointer;
 }
+.jlai-popover header button:hover { background: var(--surface); color: var(--text); }
 
-.jlai-popover header button:hover {
-    color:
-        #fff;
-
-    background:
-        rgba(255, 255, 255, .05);
-
-    border-color:
-        rgba(255, 255, 255, .07);
-
-    transform:
-        rotate(3deg);
-}
-
-
-/* =========================
-   BODY
-========================= */
-
-.jlai-popover-body {
-    padding:
-        1.2rem 1.25rem;
-
-    min-height:
-        220px;
-
-    color:
-        #f8fafc;
-
-    background:
-        radial-gradient(circle at 50% 0%,
-            rgba(59, 130, 246, .025),
-            transparent 60%);
-}
-
-.jlai-popover-body p {
-    margin:
-        .1rem 0 .7rem;
-
-    line-height:
-        1.6;
-
-    font-size:
-        .86rem;
-}
-
-.jlai-popover-body ul {
-    margin:
-        .4rem 0 1rem;
-
-    padding-left:
-        1.2rem;
-
-    color:
-        #cbd5e1;
-
-    font-size:
-        .82rem;
-
-    line-height:
-        1.65;
-}
-
-.jlai-popover-body li::marker {
-    color:
-        #60a5fa;
-}
-
-
-/* =========================
-   INPUT FAKE
-========================= */
+.jlai-popover-body { padding: 1rem 1.1rem; color: var(--text-soft); }
+.jlai-popover-body p { margin: .1rem 0 .65rem; line-height: 1.55; font-size: .82rem; }
+.jlai-popover-body ul { margin: .35rem 0 .8rem; padding-left: 1.15rem; color: var(--muted); font-size: .78rem; line-height: 1.55; }
 
 .jlai-popover-input {
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    gap:
-        .7rem;
-
-    margin:
-        0 .9rem .9rem;
-
-    padding:
-        .85rem .9rem;
-
-    border:
-        1px solid rgba(34, 211, 238, .38);
-
-    border-radius:
-        11px;
-
-    background:
-        rgba(255, 255, 255, .035);
-
-    color:
-        #cbd5e1;
-
-    font-size:
-        .82rem;
-
-    cursor:
-        pointer;
-
-    transition:
-        border-color .2s ease,
-        background .2s ease,
-        box-shadow .2s ease,
-        transform .2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+    margin: 0 .8rem .8rem;
+    padding: .75rem .82rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text-soft);
+    font-size: .78rem;
 }
-
-.jlai-popover-input:hover {
-    transform:
-        translateY(-2px);
-
-    border-color:
-        rgba(103, 232, 249, .65);
-
-    background:
-        rgba(59, 130, 246, .06);
-
-    box-shadow:
-        0 10px 28px rgba(0, 0, 0, .18),
-        0 0 20px rgba(34, 211, 238, .06);
-}
-
-.jlai-popover-input span {
-    color:
-        #67e8f9;
-
-    font-size:
-        1rem;
-
-    transition:
-        transform .2s ease;
-}
-
-.jlai-popover-input:hover span {
-    transform:
-        translateX(3px);
-}
-
-
-/* =========================
-   POPOVER ANIMATION
-========================= */
-
-@keyframes jlaiEnter {
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(12px) scale(.965);
-
-        filter:
-            blur(3px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0) scale(1);
-
-        filter:
-            blur(0);
-    }
-}
-
-
-/* =========================
-   TABLET
-========================= */
+.jlai-popover-input:hover { border-color: var(--line-strong); background: var(--surface-hover); }
+.jlai-popover-input span { color: var(--blue-light); }
 
 @media (max-width: 700px) {
-
-    .jlai-widget {
-        right:
-            1rem;
-
-        bottom:
-            1rem;
-    }
-
-    .jlai-fab {
-        min-width:
-            0;
-
-        padding:
-            .7rem;
-    }
-
-    .jlai-fab small {
-        display:
-            none;
-    }
-
-    .jlai-popover {
-        width:
-            min(360px, calc(100vw - 2rem));
-    }
+    .jlai-widget { right: .8rem; bottom: .8rem; }
+    .jlai-fab small { display: none; }
 }
-
-
-/* =========================
-   MOBILE PEQUENO
-========================= */
 
 @media (max-width: 480px) {
-
-    /* Mantém a marca proporcional no celular. Como este arquivo é carregado
-       por último, a regra precisa existir aqui para não sobrescrever o ajuste
-       mobile definido em responsive.css. */
-    .navbar .brand img {
-        width: 116px !important;
-        max-width: 116px !important;
-        height: auto !important;
-    }
-
-    .download-docs {
-        grid-template-columns:
-            minmax(0, 1fr) !important;
-    }
-
-    .download-docs article {
-        width:
-            100%;
-
-        min-width:
-            0;
-    }
-
-    .jlai-widget {
-        right:
-            .75rem;
-
-        bottom:
-            .75rem;
-    }
-
-    .jlai-fab {
-        grid-template-columns:
-            34px auto;
-
-        border-radius:
-            14px;
-    }
-
-    .jlai-fab img {
-        width:
-            34px;
-
-        height:
-            34px;
-    }
+    .download-docs { grid-template-columns: minmax(0, 1fr) !important; }
+    .download-docs article { width: 100%; }
 
     .jlai-popover {
-        position:
-            fixed;
-
-        left:
-            50%;
-
-        right:
-            auto;
-
-        bottom:
-            5.5rem;
-
-        width:
-            calc(100vw - 1.5rem);
-
-        max-height:
-            calc(100vh - 7rem);
-
-        transform-origin:
-            bottom center;
-
-        border-radius:
-            17px;
-    }
-
-    @keyframes jlaiEnter {
-        from {
-            opacity: 0;
-
-            transform:
-                translateX(-50%) translateY(14px) scale(.97);
-        }
-
-        to {
-            opacity: 1;
-
-            transform:
-                translateX(-50%) translateY(0) scale(1);
-        }
-    }
-}
-
-
-/* =========================
-   ACESSIBILIDADE
-========================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .jlai-popover {
-        animation:
-            none !important;
-    }
-
-    .jlai-fab,
-    .jlai-popover header button,
-    .jlai-popover-input,
-    .jlai-popover-input span {
-        transition:
-            none !important;
-    }
-
-    .jlai-fab::after {
-        display:
-            none;
+        position: fixed;
+        left: .75rem;
+        right: .75rem;
+        bottom: 5.3rem;
+        width: auto;
+        max-height: calc(100vh - 7rem);
+        overflow-y: auto;
     }
 }

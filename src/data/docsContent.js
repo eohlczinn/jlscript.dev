@@ -1,0 +1,788 @@
+export const docsMeta = {
+  version: "3.2.0",
+  extension: ".jls",
+  bytecode: ".jlb",
+  docsUrl: "https://github.com/JLScripter/documentacao_JLScripter",
+};
+
+export const docsCategories = [
+  { id: "comecando", label: "Começando" },
+  { id: "fundamentos", label: "Fundamentos" },
+  { id: "logica", label: "Lógica" },
+  { id: "estruturas", label: "Estruturas" },
+  { id: "ecossistema", label: "Ecossistema" },
+  { id: "projetos", label: "Projetos guiados" },
+];
+
+export const docsLessons = [
+  {
+    id: "visao-geral",
+    category: "comecando",
+    order: 1,
+    title: "O que é JLScript?",
+    summary:
+      "Entenda a proposta da linguagem, o que existe na versão 3.2.0 e como o ecossistema se organiza antes de escrever código.",
+    level: "Iniciante",
+    duration: "5 min",
+    learn: [
+      "O papel da extensão .jls",
+      "Diferença entre interpretar, compilar e gerar bytecode",
+      "Por que português e inglês coexistem na sintaxe",
+      "Onde consultar a documentação oficial",
+    ],
+    paragraphs: [
+      "JLScript é uma linguagem de programação brasileira criada para oferecer uma escrita direta, permitir construções em português e inglês e reunir ferramentas de desenvolvimento em um mesmo ecossistema.",
+      "Na versão 3.2.0, o fluxo da linguagem não se resume a executar um arquivo. O projeto possui lexer, parser, AST, interpretador, runtime, CLI própria, build nativo, bytecode .jlb, bibliotecas oficiais e ferramentas de desenvolvimento.",
+      "O código-fonte da linguagem é fechado na direção atual do projeto. A documentação, exemplos de uso e referência pública continuam sendo o caminho oficial para aprender a sintaxe e os recursos disponíveis.",
+    ],
+    facts: [
+      ["Arquivo", ".jls"],
+      ["CLI", "jls"],
+      ["Bytecode", ".jlb"],
+      ["Versão do portal", "3.2.0"],
+      ["Idiomas", "Português + Inglês"],
+      ["Código-fonte", "Fechado"],
+    ],
+    callout: {
+      type: "info",
+      title: "Como estudar esta documentação",
+      text: "Leia em ordem na primeira vez. Depois use a busca e a barra lateral como referência rápida. Os exemplos foram organizados para ensinar o conceito antes de mostrar uma versão maior do código.",
+    },
+  },
+  {
+    id: "instalacao-cli",
+    category: "comecando",
+    order: 2,
+    title: "Instalação e primeiros comandos",
+    summary:
+      "Valide a instalação e conheça os comandos mínimos que você vai usar enquanto aprende.",
+    level: "Iniciante",
+    duration: "7 min",
+    learn: [
+      "Como verificar se o comando jls está disponível",
+      "Como abrir a ajuda da CLI",
+      "Como executar um arquivo .jls",
+      "Como abrir o REPL/JLShell",
+    ],
+    paragraphs: [
+      "Depois de instalar o JLScript, o primeiro teste deve ser feito pelo terminal. Isso confirma que o executável está acessível e evita perder tempo tentando depurar um programa quando o problema está na instalação.",
+      "O comando jls funciona como a porta de entrada do ecossistema. Ele executa arquivos, abre o REPL e também oferece build, bytecode, testes, formatação, diagnóstico e outras ferramentas.",
+    ],
+    examples: [
+      {
+        title: "Verificando a instalação",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls --version\njls --help`,
+      },
+      {
+        title: "Executando um arquivo",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls run app.jls`,
+      },
+      {
+        title: "Abrindo o REPL",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls repl`,
+      },
+    ],
+    callout: {
+      type: "tip",
+      title: "Fluxo de estudo recomendado",
+      text: "Durante o aprendizado, use jls run arquivo.jls. Quando quiser testar uma expressão rapidamente, use o REPL. Deixe build e bytecode para depois que os fundamentos estiverem claros.",
+    },
+    exercise: {
+      title: "Teste rápido",
+      text: "Abra o terminal, execute jls --version e jls --help. Depois crie uma pasta para seus exemplos de estudo.",
+    },
+  },
+  {
+    id: "primeiro-programa",
+    category: "comecando",
+    order: 3,
+    title: "Seu primeiro programa",
+    summary:
+      "Crie um arquivo, declare um valor e mostre uma mensagem no terminal.",
+    level: "Iniciante",
+    duration: "8 min",
+    learn: [
+      "Como criar um arquivo .jls",
+      "Como declarar uma variável com va",
+      "Como usar mostrar()",
+      "Como executar o programa",
+    ],
+    paragraphs: [
+      "Crie um arquivo chamado app.jls. O objetivo do primeiro programa não é impressionar ninguém, uma tragédia recorrente em tutoriais de programação. É confirmar o ciclo completo: escrever, salvar, executar e observar a saída.",
+      "A palavra va introduz uma variável no escopo atual. A função mostrar() envia um valor para o console. A concatenação com + permite juntar texto e valores em uma única mensagem.",
+    ],
+    examples: [
+      {
+        title: "Olá, JLScript",
+        language: "jls",
+        filename: "app.jls",
+        code: `va nome = "JLScript"\nmostrar("Olá, " + nome + "!")`,
+        output: "Olá, JLScript!",
+      },
+      {
+        title: "Executando",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls run app.jls`,
+      },
+    ],
+    callout: {
+      type: "info",
+      title: "O que aconteceu?",
+      text: "O código foi lido, transformado em tokens, organizado pelo parser e executado pelo runtime. Você não precisa dominar essas etapas agora; basta saber que mostrar() recebe o valor final da expressão e o envia ao console.",
+    },
+    exercise: {
+      title: "Agora faça sem copiar",
+      text: "Crie duas variáveis, nome e cidade. Mostre uma frase usando as duas. Depois troque os valores e execute novamente.",
+    },
+  },
+  {
+    id: "variaveis-tipos",
+    category: "fundamentos",
+    order: 4,
+    title: "Variáveis, valores e tipos",
+    summary:
+      "Aprenda va, let e ins e veja como números, strings, booleanos, listas, objetos e null aparecem no runtime.",
+    level: "Fundamentos",
+    duration: "12 min",
+    learn: [
+      "As três formas de declaração reconhecidas pela linguagem",
+      "Números inteiros e decimais",
+      "Strings, booleanos e null",
+      "Conversões com int(), float(), str() e bool()",
+    ],
+    paragraphs: [
+      "O lexer reconhece va, let e ins como formas de declaração. Na prática, as três introduzem um nome no escopo atual e associam esse nome ao resultado de uma expressão.",
+      "O runtime trabalha com diferentes categorias de valor, entre elas números, strings, booleanos, listas, objetos e null. Existem também valores internos usados por módulos e recursos específicos da linguagem.",
+      "Dados externos podem chegar como texto. Quando você pretende fazer cálculo ou comparação numérica, converta o valor antes de usar.",
+    ],
+    examples: [
+      {
+        title: "Declarações básicas",
+        language: "jls",
+        filename: "valores.jls",
+        code: `va nome = "Lucas"\nlet idade = 19\nins ativo = true\nva preco = 29.90\nva vazio = null\n\nmostrar(nome)\nmostrar(idade)\nmostrar(ativo)`,
+      },
+      {
+        title: "Conversões",
+        language: "jls",
+        filename: "conversoes.jls",
+        code: `va textoIdade = "19"\nva idade = int(textoIdade)\nva preco = float("29.90")\nva numeroTexto = str(120)\nva ligado = bool(true)\n\nmostrar(idade)\nmostrar(preco)\nmostrar(numeroTexto)\nmostrar(ligado)`,
+      },
+    ],
+    callout: {
+      type: "tip",
+      title: "Pense em referência, não em caixa mágica",
+      text: "Quando você escreve va nome = \"Lucas\", o nome passa a referenciar aquele valor no escopo atual. As próximas expressões podem usar nome sem repetir o texto original.",
+    },
+    exercise: {
+      title: "Exercício",
+      text: "Crie nome, idade e nota. Converta idade e nota a partir de strings e mostre um pequeno resumo no console.",
+    },
+  },
+  {
+    id: "entrada-comentarios",
+    category: "fundamentos",
+    order: 5,
+    title: "Entrada, saída e comentários",
+    summary:
+      "Use o terminal para receber dados e documente o código sem transformar cada linha em um romance.",
+    level: "Fundamentos",
+    duration: "9 min",
+    learn: [
+      "Como usar ler()",
+      "Quando converter entradas",
+      "Comentários de linha com //",
+      "Comentários de bloco com /* */",
+    ],
+    paragraphs: [
+      "A função ler() recebe entrada do usuário pelo terminal. Como dados digitados normalmente chegam como texto, é comum combinar ler() com conversões.",
+      "Comentários são ignorados pelo lexer. Use-os para explicar decisões importantes, não para narrar linha por linha aquilo que o próprio código já deixa evidente.",
+    ],
+    examples: [
+      {
+        title: "Lendo dados",
+        language: "jls",
+        filename: "entrada.jls",
+        code: `va nome = ler("Nome: ")\nva idade = int(ler("Idade: "))\n\nmostrar("Olá, " + nome)\nmostrar("Idade: " + idade)`,
+      },
+      {
+        title: "Comentários",
+        language: "jls",
+        filename: "comentarios.jls",
+        code: `// Comentário de uma linha\nva ativo = true\n\n/*\n   Comentário de bloco.\n   Pode ocupar várias linhas.\n*/\nmostrar(ativo)`,
+      },
+    ],
+    exercise: {
+      title: "Exercício",
+      text: "Peça nome e idade. Mostre uma mensagem diferente depois de converter a idade para número.",
+    },
+  },
+  {
+    id: "operadores",
+    category: "fundamentos",
+    order: 6,
+    title: "Operadores e expressões",
+    summary:
+      "Faça cálculos, compare valores e combine condições com operadores aritméticos, relacionais e lógicos.",
+    level: "Fundamentos",
+    duration: "12 min",
+    learn: [
+      "Aritmética com +, -, *, /, % e **",
+      "Comparações com ==, !=, <, <=, > e >=",
+      "Lógica booleana com &&, || e !",
+      "Operadores bit a bit quando você realmente precisar deles",
+    ],
+    paragraphs: [
+      "Expressões são combinações de valores, variáveis, chamadas e operadores que produzem um resultado. Você usa expressões em cálculos, condições, argumentos de função e atribuições.",
+      "O operador + também pode participar da concatenação quando uma string está envolvida. Para cálculos, mantenha os operandos numéricos sempre que possível.",
+    ],
+    examples: [
+      {
+        title: "Aritmética",
+        language: "jls",
+        filename: "operadores.jls",
+        code: `va a = 10\nva b = 3\n\nmostrar(a + b)\nmostrar(a - b)\nmostrar(a * b)\nmostrar(a / b)\nmostrar(a % b)\nmostrar(a ** 2)`,
+      },
+      {
+        title: "Comparação e lógica",
+        language: "jls",
+        filename: "logica.jls",
+        code: `va idade = 19\nva documento = true\n\nva maior = idade >= 18\nva podeEntrar = maior && documento\n\nmostrar(maior)\nmostrar(podeEntrar)\nmostrar(idade != 20)`,
+      },
+    ],
+    callout: {
+      type: "warning",
+      title: "Bitwise existe, mas não precisa aparecer no seu primeiro dia",
+      text: "A linguagem reconhece &, |, ^, << e >>. Eles são úteis em máscaras, flags e tarefas de baixo nível. Aprenda o restante primeiro e volte quando houver um problema real que peça esse recurso.",
+    },
+  },
+  {
+    id: "condicoes",
+    category: "logica",
+    order: 7,
+    title: "Condições: se/senao e if/else",
+    summary:
+      "Tome decisões no programa usando a forma em português ou a forma em inglês.",
+    level: "Lógica",
+    duration: "10 min",
+    learn: [
+      "Como uma condição escolhe um bloco",
+      "Forma em português",
+      "Forma em inglês",
+      "Como combinar comparações e operadores lógicos",
+    ],
+    paragraphs: [
+      "Uma condição avalia uma expressão booleana. Quando o resultado é verdadeiro, o primeiro bloco é executado. Caso contrário, o bloco alternativo pode ser usado.",
+      "JLScript reconhece construções em português e inglês. Mantenha a mesma família dentro da estrutura: se combina com senao; if combina com else.",
+    ],
+    examples: [
+      {
+        title: "Português",
+        language: "jls",
+        filename: "condicao.jls",
+        code: `va idade = 19\n\nse (idade >= 18) {\n    mostrar("Maior de idade")\n} senao {\n    mostrar("Menor de idade")\n}`,
+        output: "Maior de idade",
+      },
+      {
+        title: "English",
+        language: "jls",
+        filename: "condition.jls",
+        code: `va active = true\n\nif (active) {\n    mostrar("Active")\n} else {\n    mostrar("Inactive")\n}`,
+        output: "Active",
+      },
+    ],
+    exercise: {
+      title: "Exercício",
+      text: "Crie uma variável nota. Se a nota for maior ou igual a 7, mostre Aprovado. Caso contrário, mostre Reprovado.",
+    },
+  },
+  {
+    id: "lacos",
+    category: "logica",
+    order: 8,
+    title: "Laços: para/for e enquanto/while",
+    summary:
+      "Repita tarefas sem copiar a mesma linha vinte vezes como um ritual de sofrimento administrativo.",
+    level: "Lógica",
+    duration: "14 min",
+    learn: [
+      "Laço contado com para/for",
+      "Laço condicionado com enquanto/while",
+      "Interrupção com pare/break",
+      "Continuação com continuar/continue",
+    ],
+    paragraphs: [
+      "Use para quando você já conhece a estrutura de inicialização, condição e atualização. Use enquanto quando a repetição depende principalmente de uma condição que pode mudar ao longo da execução.",
+      "pare/break encerra o laço atual. continuar/continue pula o restante da iteração atual e segue para a próxima.",
+    ],
+    examples: [
+      {
+        title: "Contagem com para",
+        language: "jls",
+        filename: "para.jls",
+        code: `para (va i = 1; i <= 5; i = i + 1) {\n    mostrar(i)\n}`,
+        output: "1\n2\n3\n4\n5",
+      },
+      {
+        title: "Enquanto",
+        language: "jls",
+        filename: "enquanto.jls",
+        code: `va contador = 0\n\nenquanto (contador < 3) {\n    contador = contador + 1\n    mostrar(contador)\n}`,
+        output: "1\n2\n3",
+      },
+      {
+        title: "Controle do laço",
+        language: "jls",
+        filename: "controle.jls",
+        code: `para (va i = 1; i <= 10; i = i + 1) {\n    se (i == 3) {\n        continuar\n    }\n\n    se (i == 7) {\n        pare\n    }\n\n    mostrar(i)\n}`,
+      },
+    ],
+    callout: {
+      type: "tip",
+      title: "Evite laços infinitos",
+      text: "No enquanto, alguma parte do bloco precisa aproximar a condição do fim. Se contador nunca mudar, contador < 3 continuará verdadeiro para sempre.",
+    },
+    exercise: {
+      title: "Exercício",
+      text: "Mostre os números de 1 a 20, ignore o número 5 com continuar e encerre quando chegar a 12 usando pare.",
+    },
+  },
+  {
+    id: "switch",
+    category: "logica",
+    order: 9,
+    title: "Escolha/switch sem break obrigatório",
+    summary:
+      "Organize múltiplos caminhos quando uma expressão pode assumir opções conhecidas.",
+    level: "Lógica",
+    duration: "9 min",
+    learn: [
+      "escolha/caso/padrao",
+      "switch/case/default",
+      "Por que o bloco já encerra cada caso",
+    ],
+    paragraphs: [
+      "No JLScript, cada caso possui seu próprio bloco. Por isso, você não precisa adicionar um break apenas para marcar o fim do caso.",
+      "A versão em português usa escolha, caso e padrao. A versão em inglês usa switch, case e default.",
+    ],
+    examples: [
+      {
+        title: "Forma em português",
+        language: "jls",
+        filename: "menu.jls",
+        code: `va opcao = 2\n\nescolha (opcao) {\n    caso 1 {\n        mostrar("Iniciar")\n    }\n\n    caso 2 {\n        mostrar("Configurações")\n    }\n\n    padrao {\n        mostrar("Sair")\n    }\n}`,
+        output: "Configurações",
+      },
+    ],
+    callout: {
+      type: "info",
+      title: "Menos ruído de sintaxe",
+      text: "O fechamento } já delimita o caso. A ideia é não exigir outra instrução apenas para repetir uma informação que a estrutura do bloco já expressa.",
+    },
+  },
+  {
+    id: "funcoes",
+    category: "estruturas",
+    order: 10,
+    title: "Funções",
+    summary:
+      "Separe responsabilidades, receba parâmetros, retorne valores e use funções como valores quando necessário.",
+    level: "Estruturas",
+    duration: "15 min",
+    learn: [
+      "Declaração com func",
+      "Forma curta de função",
+      "retorne para devolver um valor",
+      "Funções anônimas e parâmetros padrão",
+    ],
+    paragraphs: [
+      "Funções agrupam uma responsabilidade em um nome reutilizável. Isso reduz repetição e ajuda a transformar um programa grande em partes menores.",
+      "O parser também reconhece uma forma curta quando a estrutura nome(parametros) { ... } deixa claro que o bloco é uma função.",
+      "Funções anônimas podem ser armazenadas em variáveis ou passadas como callbacks. Parâmetros também podem possuir valores padrão, desde que parâmetros obrigatórios não apareçam depois deles.",
+    ],
+    examples: [
+      {
+        title: "Declaração tradicional",
+        language: "jls",
+        filename: "funcoes.jls",
+        code: `func soma(a, b) {\n    retorne a + b\n}\n\nmostrar(soma(5, 7))`,
+        output: "12",
+      },
+      {
+        title: "Forma curta",
+        language: "jls",
+        filename: "curta.jls",
+        code: `multiplicar(a, b) {\n    retorne a * b\n}\n\nmostrar(multiplicar(4, 3))`,
+        output: "12",
+      },
+      {
+        title: "Função anônima",
+        language: "jls",
+        filename: "callback.jls",
+        code: `va dobro = func(n) {\n    retorne n * 2\n}\n\nmostrar(dobro(6))`,
+        output: "12",
+      },
+      {
+        title: "Parâmetro padrão",
+        language: "jls",
+        filename: "padrao.jls",
+        code: `func saudacao(nome, prefixo = "Olá") {\n    mostrar(prefixo + ", " + nome)\n}\n\nsaudacao("Lucas")`,
+        output: "Olá, Lucas",
+      },
+    ],
+    exercise: {
+      title: "Exercício",
+      text: "Crie uma função calcularMedia(a, b, c) que retorne a média dos três números. Mostre o resultado usando mostrar().",
+    },
+  },
+  {
+    id: "listas-objetos",
+    category: "estruturas",
+    order: 11,
+    title: "Listas e objetos",
+    summary:
+      "Agrupe coleções de valores e organize dados com propriedades nomeadas.",
+    level: "Estruturas",
+    duration: "16 min",
+    learn: [
+      "Criação de listas",
+      "Indexação baseada em 1",
+      "tamanho(), adicionar(), inserir(), removerEm() e limpar()",
+      "Objetos e acesso por propriedade",
+    ],
+    paragraphs: [
+      "Listas representam uma sequência de valores. No runtime atual do JLScript, a indexação de listas é baseada em 1. Isso significa que o primeiro elemento é acessado com lista[1].",
+      "O runtime fornece operações para consultar o tamanho e modificar a coleção. Objetos, por outro lado, armazenam pares de propriedade e valor e são acessados por membros.",
+    ],
+    examples: [
+      {
+        title: "Lista",
+        language: "jls",
+        filename: "listas.jls",
+        code: `va nomes = ["Ana", "Bia"]\n\nnomes.adicionar("Carlos")\nmostrar(nomes.tamanho())\nmostrar(nomes[1])\n\nnomes.inserir(2, "Davi")\nnomes.removerEm(1)\nmostrar(nomes.tamanho())`,
+      },
+      {
+        title: "Objeto",
+        language: "jls",
+        filename: "objetos.jls",
+        code: `va usuario = {\n    nome: "Lucas",\n    linguagem: "JLScript",\n    ativo: true\n}\n\nmostrar(usuario.nome)\nmostrar(usuario.linguagem)`,
+      },
+      {
+        title: "Objeto nomeado",
+        language: "jls",
+        filename: "config.jls",
+        code: `configuracao {\n    porta: 3000,\n    modo: "dev"\n}`,
+      },
+    ],
+    callout: {
+      type: "warning",
+      title: "Atenção à indexação",
+      text: "Se você veio de JavaScript, Python ou C++, o primeiro índice provavelmente é 0. No runtime atual do JLScript, listas começam em 1.",
+    },
+    exercise: {
+      title: "Exercício",
+      text: "Crie uma lista com três tarefas, adicione uma quarta, mostre o primeiro item e depois mostre o tamanho da lista.",
+    },
+  },
+  {
+    id: "tratamento-erros",
+    category: "estruturas",
+    order: 12,
+    title: "Tratamento de erros",
+    summary:
+      "Proteja operações que podem falhar e trate o problema sem derrubar todo o fluxo do programa.",
+    level: "Estruturas",
+    duration: "10 min",
+    learn: [
+      "tente/capture/finalmente",
+      "try/catch/finally",
+      "Quando usar tratamento de erro",
+    ],
+    paragraphs: [
+      "Operações de arquivo, rede, conversão e integração externa podem falhar. O tratamento de erros permite capturar o problema e decidir como o programa deve reagir.",
+      "Uma estrutura precisa possuir capture/catch, finalmente/finally ou ambos. O bloco final é útil para tarefas de encerramento que precisam acontecer mesmo quando existe erro.",
+    ],
+    examples: [
+      {
+        title: "Forma em português",
+        language: "jls",
+        filename: "erros.jls",
+        code: `tente {\n    mostrar("Executando")\n} capture (erro) {\n    mostrar("Falhou: " + erro)\n} finalmente {\n    mostrar("Fim")\n}`,
+      },
+      {
+        title: "English",
+        language: "jls",
+        filename: "errors.jls",
+        code: `try {\n    mostrar("Running")\n} catch (error) {\n    mostrar(error)\n} finally {\n    mostrar("Done")\n}`,
+      },
+    ],
+    callout: {
+      type: "tip",
+      title: "Não esconda o erro",
+      text: "Capturar tudo e continuar como se nada tivesse acontecido costuma criar bugs mais difíceis. Trate aquilo que você consegue resolver ou explique claramente o que falhou.",
+    },
+  },
+  {
+    id: "imports-modulos",
+    category: "ecossistema",
+    order: 13,
+    title: "Imports, módulos e aliases",
+    summary:
+      "Use recursos oficiais sem jogar toda a complexidade para dentro do núcleo da linguagem.",
+    level: "Ecossistema",
+    duration: "12 min",
+    learn: [
+      "Import de módulo oficial com #",
+      "Import de vários módulos",
+      "Alias com como",
+      "Sintaxes antigas que não devem ser usadas",
+    ],
+    paragraphs: [
+      "Bibliotecas oficiais usam o prefixo #. O import deixa explícito quais recursos especializados o programa utiliza e mantém o núcleo da linguagem separado de funcionalidades como HTTP, arquivos, JSON, banco de dados e outras integrações.",
+      "A sintaxe atual utiliza import e pode aplicar um alias com como. Formas antigas como importa, importe, usar e apelido foram removidas da sintaxe atual.",
+    ],
+    examples: [
+      {
+        title: "Um módulo",
+        language: "jls",
+        filename: "modulos.jls",
+        code: `import #json`,
+      },
+      {
+        title: "Vários módulos",
+        language: "jls",
+        filename: "modulos.jls",
+        code: `import [#api, #json, #file]`,
+      },
+      {
+        title: "Alias",
+        language: "jls",
+        filename: "alias.jls",
+        code: `import #api como web`,
+      },
+    ],
+    callout: {
+      type: "warning",
+      title: "Sintaxe atual",
+      text: "Não use importa, importe, usar ou apelido em código novo. A forma suportada é import #modulo e import #modulo como alias.",
+    },
+  },
+  {
+    id: "api-http",
+    category: "ecossistema",
+    order: 14,
+    title: "Criando uma API HTTP",
+    summary:
+      "Transforme um programa JLScript em um servidor HTTP com rotas e respostas JSON.",
+    level: "Ecossistema",
+    duration: "18 min",
+    learn: [
+      "Como importar #api",
+      "Como criar um servidor",
+      "Como registrar uma rota GET",
+      "Como responder JSON e iniciar o servidor",
+    ],
+    paragraphs: [
+      "O módulo #api oferece um servidor HTTP embutido. O servidor pode ser criado com uma porta e recebe rotas que associam um caminho a uma função.",
+      "Callbacks de rota recebem request e response. A resposta pode enviar texto ou JSON, dependendo do que a rota precisa devolver.",
+      "O servidor também possui operações para outros métodos HTTP e aliases em português, além de recursos de cliente HTTP no próprio módulo.",
+    ],
+    examples: [
+      {
+        title: "API local mínima",
+        language: "jls",
+        filename: "api.jls",
+        code: `import #api\n\nva app = criarApi(3000)\n\napp.get("/", func(req, res) {\n    res.json({\n        linguagem: "JLScript",\n        status: "online"\n    })\n})\n\napp.iniciar()`,
+      },
+      {
+        title: "Executando",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls run api.jls`,
+      },
+      {
+        title: "Servidor com host e porta pelo módulo",
+        language: "jls",
+        filename: "api-config.jls",
+        code: `import #api\n\nva app = api.servidor({\n    host: "127.0.0.1",\n    porta: 3000\n})\n\napp.get("/status", func(req, res) {\n    res.json({ status: "online" })\n})\n\napp.iniciar()`,
+      },
+    ],
+    callout: {
+      type: "info",
+      title: "O que existe por trás",
+      text: "O servidor registra rotas, abre a porta configurada e aceita conexões em sua própria infraestrutura. Para aprender HTTP, comece com GET e JSON antes de partir para middleware, CORS e múltiplos métodos.",
+    },
+    exercise: {
+      title: "Projeto rápido",
+      text: "Crie /status retornando nome, versão e status. Depois adicione uma segunda rota /sobre com uma mensagem diferente.",
+    },
+  },
+  {
+    id: "cli-build-bytecode",
+    category: "ecossistema",
+    order: 15,
+    title: "CLI, build e bytecode",
+    summary:
+      "Conheça as ferramentas que levam o mesmo código do desenvolvimento até build nativo e representação .jlb.",
+    level: "Ecossistema",
+    duration: "16 min",
+    learn: [
+      "Execução e REPL",
+      "Build nativo",
+      "Compilação para .jlb",
+      "Testes, lint, formatação e diagnóstico",
+    ],
+    paragraphs: [
+      "A CLI do JLScript foi criada para concentrar tarefas comuns. Você não precisa decorar todos os comandos no primeiro dia; use os grupos conforme o projeto crescer.",
+      "O fluxo build trabalha com a infraestrutura da linguagem e geração de C++ antes da compilação nativa. O comando compile produz a representação de bytecode .jlb implementada pelo projeto.",
+    ],
+    examples: [
+      {
+        title: "Execução",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls run app.jls\njls repl`,
+      },
+      {
+        title: "Build e bytecode",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls build app.jls\njls compile app.jls\njls verify-bytecode build/app.jlb`,
+      },
+      {
+        title: "Qualidade e diagnóstico",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls test\njls lint\njls fmt\njls fix\njls doctor`,
+      },
+      {
+        title: "Atualização e desenvolvimento",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls update check\njls update\njls dev\njls dev status`,
+      },
+    ],
+    callout: {
+      type: "tip",
+      title: "Não confunda build, compile e execução",
+      text: "build está ligado ao fluxo de geração/compilação nativa. compile gera o bytecode .jlb em build/ por padrão. O runtime atual executa .jls; arquivos .jlb podem ser validados com verify-bytecode, mas não são executados por jls run.",
+    },
+  },
+  {
+    id: "arquitetura-execucao",
+    category: "ecossistema",
+    order: 16,
+    title: "Como o código passa pela linguagem",
+    summary:
+      "Tenha uma visão mental do caminho entre arquivo .jls e execução sem precisar estudar o código-fonte interno.",
+    level: "Conceito",
+    duration: "8 min",
+    learn: [
+      "O papel do lexer",
+      "O papel do parser e da AST",
+      "O papel do interpretador e runtime",
+      "Onde build e bytecode entram",
+    ],
+    paragraphs: [
+      "Quando você executa um arquivo, a linguagem precisa primeiro entender o texto. O lexer separa o código em tokens; o parser usa esses tokens para reconhecer estruturas; a AST representa o programa; o interpretador e o runtime executam o comportamento correspondente.",
+      "Os caminhos de build e bytecode reutilizam partes dessa infraestrutura, mas produzem saídas diferentes. Essa separação permite que a linguagem cresça sem colocar todas as responsabilidades em um único componente.",
+    ],
+    pipeline: [
+      "Código .jls",
+      "Lexer",
+      "Parser",
+      "AST",
+      "Interpretador / Runtime",
+      "Saída",
+    ],
+    callout: {
+      type: "info",
+      title: "Você não precisa saber isso para começar",
+      text: "Essa visão é útil para entender mensagens de erro e evolução da linguagem. Para programar, a prioridade continua sendo dominar sintaxe, lógica, funções e dados.",
+    },
+  },
+  {
+    id: "projeto-tarefas",
+    category: "projetos",
+    order: 17,
+    title: "Projeto: lista de tarefas",
+    summary:
+      "Junte listas, funções e repetição em um programa pequeno, mas organizado.",
+    level: "Projeto",
+    duration: "20 min",
+    learn: [
+      "Separar estado e comportamento",
+      "Criar funções para adicionar e listar",
+      "Percorrer uma lista 1-based",
+    ],
+    paragraphs: [
+      "Este projeto usa uma lista como estado do programa e funções para esconder os detalhes de manipulação. É pequeno o suficiente para entender inteiro e grande o suficiente para mostrar por que funções ajudam.",
+    ],
+    examples: [
+      {
+        title: "Lista de tarefas",
+        language: "jls",
+        filename: "tarefas.jls",
+        code: `va tarefas = []\n\nfunc adicionar(tarefa) {\n    tarefas.adicionar(tarefa)\n}\n\nfunc listar() {\n    para (va i = 1; i <= tarefas.tamanho(); i = i + 1) {\n        mostrar(i + " - " + tarefas[i])\n    }\n}\n\nadicionar("Estudar JLScript")\nadicionar("Criar um projeto")\nadicionar("Testar o programa")\n\nlistar()`,
+      },
+    ],
+    callout: {
+      type: "tip",
+      title: "Próximo passo",
+      text: "Adicione uma função remover(indice). Depois tente salvar as tarefas em arquivo usando uma biblioteca apropriada do ecossistema.",
+    },
+    exercise: {
+      title: "Desafio",
+      text: "Implemente remover(indice), uma função quantidade() e uma mensagem quando a lista estiver vazia.",
+    },
+  },
+  {
+    id: "projeto-api",
+    category: "projetos",
+    order: 18,
+    title: "Projeto: API local",
+    summary:
+      "Crie um pequeno serviço HTTP com duas rotas e respostas estruturadas.",
+    level: "Projeto",
+    duration: "25 min",
+    learn: [
+      "Criar servidor HTTP",
+      "Registrar rotas",
+      "Responder JSON",
+      "Executar e testar localmente",
+    ],
+    paragraphs: [
+      "Agora o objetivo é juntar módulo, função callback, objeto e execução contínua em um único exemplo. O servidor abaixo expõe uma rota de status e uma rota sobre a linguagem.",
+    ],
+    examples: [
+      {
+        title: "Servidor completo",
+        language: "jls",
+        filename: "servidor.jls",
+        code: `import #api\n\nva app = criarApi(3000)\n\napp.get("/status", func(req, res) {\n    res.json({\n        status: "online",\n        porta: 3000\n    })\n})\n\napp.get("/sobre", func(req, res) {\n    res.json({\n        nome: "JLScript",\n        versao: "3.2.0",\n        origem: "Brasil"\n    })\n})\n\napp.iniciar()`,
+      },
+      {
+        title: "Iniciando",
+        language: "bash",
+        filename: "Terminal",
+        code: `jls run servidor.jls`,
+      },
+    ],
+    callout: {
+      type: "warning",
+      title: "Porta ocupada",
+      text: "Se a porta 3000 já estiver em uso, escolha outra porta, por exemplo criarApi(3001).",
+    },
+    exercise: {
+      title: "Desafio",
+      text: "Crie uma terceira rota /saudacao que devolva um objeto JSON com uma mensagem e o horário ou outra informação disponível no seu programa.",
+    },
+  },
+];

@@ -1,6 +1,6 @@
 /* =========================================================
-   EFFECTS — JLSCRIPT
-   Efeitos leves. Nada de carnaval radioativo.
+   EFFECTS — JLSCRIPT V5
+   Efeitos semânticos e baratos para GPU/CPU.
 ========================================================= */
 
 body::before {
@@ -10,91 +10,156 @@ body::before {
     z-index: -2;
     pointer-events: none;
     background:
-        radial-gradient(circle at 12% 10%, rgba(91,140,255,.08), transparent 28%),
-        radial-gradient(circle at 86% 14%, rgba(155,123,255,.06), transparent 26%),
-        radial-gradient(circle at 62% 90%, rgba(255,93,115,.035), transparent 26%);
+        radial-gradient(circle at 9% 8%, rgba(91, 140, 255, .075), transparent 25%),
+        radial-gradient(circle at 89% 10%, rgba(156, 124, 255, .055), transparent 23%),
+        radial-gradient(circle at 75% 88%, rgba(255, 95, 120, .028), transparent 24%);
 }
 
-.btn,
-.btn-outline,
-.downloadBtn,
-.copy-button {
-    transition:
-        transform var(--transition-normal),
-        border-color var(--transition-normal),
-        background var(--transition-normal),
-        box-shadow var(--transition-normal);
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .32;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, .018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, .018) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, #000, transparent 76%);
 }
 
-.btn:hover,
-.downloadBtn:hover {
-    transform: translateY(-2px);
-}
-
-.btn-outline:hover,
-.copy-button:hover {
-    transform: translateY(-1px);
-}
-
-.btn:active,
-.btn-outline:active,
-.downloadBtn:active,
-.copy-button:active {
-    transform: translateY(0) scale(.985);
-}
-
+/* Microinterações universais */
+a,
+button,
+input,
+textarea,
+select,
+summary,
 .card,
 .feature-card,
 .download-card,
 .blog-card,
-.install-card {
+.install-card,
+.support-shortcuts article,
+.support-actions article,
+.roadmap-categories > article,
+.download-details article,
+.download-docs article,
+.project-status p,
+.playground-examples article {
     transition:
         transform var(--transition-smooth),
         border-color var(--transition-normal),
+        background-color var(--transition-normal),
         box-shadow var(--transition-normal),
-        background var(--transition-normal);
+        color var(--transition-normal),
+        opacity var(--transition-normal);
+}
+
+button:active,
+.btn:active,
+.btn-outline:active,
+.copy-button:active,
+.nav-icon-btn:active,
+.nav-explore-trigger:active {
+    transform: scale(.975);
 }
 
 .card:hover,
 .feature-card:hover,
 .download-card:hover,
 .blog-card:hover,
-.install-card:hover {
-    transform: translateY(-3px);
+.install-card:hover,
+.support-shortcuts article:hover,
+.support-actions article:hover,
+.roadmap-categories > article:hover,
+.download-details article:hover,
+.download-docs article:hover,
+.playground-examples article:hover {
+    transform: translate3d(0, -3px, 0);
 }
 
 .glass {
     background: var(--glass);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+}
+
+@supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+    .glass,
+    .navbar,
+    .global-search {
+        backdrop-filter: blur(10px) saturate(115%);
+        -webkit-backdrop-filter: blur(10px) saturate(115%);
+    }
 }
 
 .gradient-text {
-    background: linear-gradient(110deg, #fff, var(--blue-light) 58%, var(--purple));
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.effect-lift:hover { transform: translateY(-3px); }
-.effect-scale:hover { transform: scale(1.015); }
+/* Estados semânticos */
+.status-success,
+.success,
+.done,
+.feito { --semantic: var(--success); }
+
+.status-warning,
+.warning,
+.building,
+.agora { --semantic: var(--warning); }
+
+.status-danger,
+.error { --semantic: var(--danger); }
+
+.status-info,
+.info,
+.planned { --semantic: var(--info); }
+
+.status-success,
+.status-warning,
+.status-danger,
+.status-info {
+    color: var(--semantic);
+    border-color: color-mix(in srgb, var(--semantic) 28%, transparent);
+    background: color-mix(in srgb, var(--semantic) 8%, transparent);
+}
 
 ::selection {
-    background: rgba(91,140,255,.40);
+    background: rgba(91, 140, 255, .42);
     color: #fff;
 }
 
 :focus-visible {
-    outline: 2px solid rgba(122,162,255,.9);
+    outline: 2px solid var(--blue-light);
     outline-offset: 3px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
+/* Chrome/Edge/Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(91, 140, 255, .32) transparent;
+}
+
+*::-webkit-scrollbar { width: 9px; height: 9px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+    background: rgba(91, 140, 255, .26);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover { background-color: rgba(156, 124, 255, .40); }
+
+@media (update: slow) {
+    body::after { display: none; }
+    .glass,
+    .navbar,
+    .global-search {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
 }

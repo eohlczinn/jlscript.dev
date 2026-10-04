@@ -1,45 +1,81 @@
 /* =========================================================
-   ANIMATIONS — JLSCRIPT
-   Entrada curta e microinterações leves.
+   ANIMATIONS — JLSCRIPT V5
+   Só transform/opacity: leve até em hardware mais antigo.
 ========================================================= */
 
-@keyframes reveal {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes jlsFadeUp {
+    from { opacity: 0; transform: translate3d(0, 14px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
-@keyframes revealLeft {
-    from { opacity: 0; transform: translateX(-16px); }
-    to { opacity: 1; transform: translateX(0); }
+@keyframes jlsFadeLeft {
+    from { opacity: 0; transform: translate3d(-14px, 0, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
-@keyframes revealRight {
-    from { opacity: 0; transform: translateX(16px); }
-    to { opacity: 1; transform: translateX(0); }
+@keyframes jlsFadeRight {
+    from { opacity: 0; transform: translate3d(14px, 0, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
-@keyframes scaleIn {
-    from { opacity: 0; transform: scale(.975); }
+@keyframes jlsScaleIn {
+    from { opacity: 0; transform: scale(.985); }
     to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+@keyframes jlsPop {
+    0% { transform: scale(.96); }
+    70% { transform: scale(1.025); }
+    100% { transform: scale(1); }
 }
 
-.reveal { animation: reveal .5s cubic-bezier(.2,.8,.2,1) both; }
-.reveal-left { animation: revealLeft .5s cubic-bezier(.2,.8,.2,1) both; }
-.reveal-right { animation: revealRight .5s cubic-bezier(.2,.8,.2,1) both; }
-.scale-in { animation: scaleIn .45s cubic-bezier(.2,.8,.2,1) both; }
-.fade-in { animation: fadeIn .4s ease both; }
+@keyframes jlsSoftPulse {
+    0%, 100% { opacity: .72; }
+    50% { opacity: 1; }
+}
 
-.delay-1 { animation-delay: .05s; }
-.delay-2 { animation-delay: .10s; }
-.delay-3 { animation-delay: .15s; }
-.delay-4 { animation-delay: .20s; }
+.reveal,
+.reveal-up { animation: jlsFadeUp .48s var(--ease-out) both; }
+.reveal-left { animation: jlsFadeLeft .48s var(--ease-out) both; }
+.reveal-right { animation: jlsFadeRight .48s var(--ease-out) both; }
+.scale-in { animation: jlsScaleIn .42s var(--ease-out) both; }
 
-.hover-lift { transition: transform .22s ease; }
-.hover-lift:hover { transform: translateY(-3px); }
-.hover-scale { transition: transform .22s ease; }
-.hover-scale:hover { transform: scale(1.015); }
+.delay-1 { animation-delay: .04s; }
+.delay-2 { animation-delay: .08s; }
+.delay-3 { animation-delay: .12s; }
+.delay-4 { animation-delay: .16s; }
+.delay-5 { animation-delay: .20s; }
+.delay-6 { animation-delay: .24s; }
+
+.hover-lift,
+.effect-lift { transition: transform var(--transition-smooth); }
+.hover-lift:hover,
+.effect-lift:hover { transform: translate3d(0, -3px, 0); }
+
+.hover-scale,
+.effect-scale { transition: transform var(--transition-smooth); }
+.hover-scale:hover,
+.effect-scale:hover { transform: scale(1.012); }
+
+/* Em telas com atualização lenta, reduz tudo automaticamente. */
+@media (update: slow) {
+    .reveal,
+    .reveal-up,
+    .reveal-left,
+    .reveal-right,
+    .scale-in { animation: none !important; }
+
+    .hover-lift:hover,
+    .effect-lift:hover,
+    .hover-scale:hover,
+    .effect-scale:hover { transform: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}

@@ -1,62 +1,90 @@
 /* =========================================================
-   DESIGN TOKENS — JLSCRIPT
+   DESIGN TOKENS — JLSCRIPT 3.2.0
+   Azul + roxo + vermelho, com estados semânticos.
 ========================================================= */
 
 :root {
-    --bg: #070914;
-    --bg-soft: #0b0e1b;
-    --surface: rgba(255,255,255,.035);
-    --surface-strong: rgba(255,255,255,.06);
-    --surface-hover: rgba(91,140,255,.07);
+    --bg: #060812;
+    --bg-soft: #0a0d18;
+    --bg-elevated: #0e1322;
 
-    --text: #f8fafc;
-    --text-soft: #e7eaf2;
+    --surface: rgba(255, 255, 255, .035);
+    --surface-strong: rgba(255, 255, 255, .062);
+    --surface-hover: rgba(96, 135, 255, .075);
+
+    --text: #f7f8fc;
+    --text-soft: #dfe4ef;
     --muted: #98a2b3;
-    --muted-strong: #6f7b8f;
+    --muted-strong: #707c91;
 
     --blue: #5b8cff;
-    --blue-light: #7aa2ff;
-    --blue-dark: #3766d9;
-    --purple: #9b7bff;
-    --red: #ff5d73;
-    --green: #50fa7b;
-    --yellow: #f1fa8c;
-    --cyan: #8be9fd;
+    --blue-light: #80a2ff;
+    --blue-dark: #3865d7;
+    --purple: #9c7cff;
+    --purple-dark: #7356d8;
+    --red: #ff5f78;
+    --red-dark: #d9445f;
+    --cyan: #5fd9ff;
 
-    --line: rgba(148,163,184,.13);
-    --line-soft: rgba(148,163,184,.075);
-    --line-strong: rgba(91,140,255,.26);
+    --success: #50e58a;
+    --warning: #f7c95c;
+    --danger: #ff667d;
+    --info: #6aa3ff;
 
-    --panel: #0d1120;
-    --panel-soft: #0a0e1a;
+    --line: rgba(148, 163, 184, .13);
+    --line-soft: rgba(148, 163, 184, .075);
+    --line-strong: rgba(91, 140, 255, .27);
 
-    --gradient-primary: linear-gradient(135deg, #5b8cff 0%, #8b6ff4 100%);
-    --gradient-accent: linear-gradient(135deg, #5b8cff 0%, #9b7bff 58%, #ff5d73 100%);
+    --panel: linear-gradient(145deg, rgba(14, 19, 34, .96), rgba(8, 12, 23, .94));
+    --panel-soft: linear-gradient(145deg, rgba(13, 18, 32, .82), rgba(8, 12, 23, .76));
+    --panel-blue: linear-gradient(145deg, rgba(16, 25, 50, .92), rgba(10, 14, 28, .94));
 
-    --shadow-sm: 0 8px 24px rgba(0,0,0,.18);
-    --shadow-md: 0 18px 48px rgba(0,0,0,.24);
-    --shadow-lg: 0 28px 70px rgba(0,0,0,.30);
+    --gradient-primary: linear-gradient(135deg, #4f7dff 0%, #8068ee 54%, #e64f71 100%);
+    --gradient-primary-soft: linear-gradient(135deg, rgba(79, 125, 255, .18), rgba(128, 104, 238, .11), rgba(230, 79, 113, .07));
+    --gradient-text: linear-gradient(110deg, #ffffff 5%, #a9bcff 45%, #ba92ff 72%, #ff8396 100%);
+
+    --shadow-xs: 0 5px 18px rgba(0, 0, 0, .14);
+    --shadow-sm: 0 10px 28px rgba(0, 0, 0, .20);
+    --shadow-md: 0 18px 50px rgba(0, 0, 0, .25);
+    --shadow-lg: 0 30px 80px rgba(0, 0, 0, .30);
+    --shadow-blue: 0 0 28px rgba(91, 140, 255, .11);
+    --shadow-purple: 0 0 28px rgba(156, 124, 255, .09);
+    --shadow-red: 0 0 24px rgba(255, 95, 120, .08);
 
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 20px;
-    --radius-2xl: 24px;
+    --radius-2xl: 26px;
     --radius-pill: 999px;
 
-    --transition-fast: .16s ease;
-    --transition-normal: .22s ease;
-    --transition-smooth: .28s cubic-bezier(.2,.8,.2,1);
+    --space-1: .35rem;
+    --space-2: .6rem;
+    --space-3: .9rem;
+    --space-4: 1.25rem;
+    --space-5: 1.75rem;
+    --space-6: 2.5rem;
+    --space-7: 4rem;
+
+    --motion-fast: 140ms;
+    --motion-normal: 220ms;
+    --motion-slow: 360ms;
+    --ease-out: cubic-bezier(.2, .8, .2, 1);
+    --ease-spring: cubic-bezier(.22, 1, .36, 1);
+
+    --transition-fast: var(--motion-fast) ease;
+    --transition-normal: var(--motion-normal) ease;
+    --transition-smooth: var(--motion-normal) var(--ease-out);
 
     --container: 1180px;
     --container-wide: 1280px;
     --tap-size: 44px;
 
-    --glass: rgba(9,12,24,.82);
-    --glass-strong: rgba(7,9,20,.94);
-    --glass-border: rgba(148,163,184,.12);
+    --glass: rgba(9, 12, 24, .84);
+    --glass-strong: rgba(7, 9, 20, .94);
+    --glass-border: rgba(148, 163, 184, .12);
 
-    /* Dracula */
+    /* Dracula para snippets */
     --dracula-bg: #282a36;
     --dracula-current: #44475a;
     --dracula-fg: #f8f8f2;
@@ -73,37 +101,51 @@
 }
 
 :root[data-theme="light"] {
-    --bg: #f7f8fc;
-    --bg-soft: #eef1f8;
-    --surface: rgba(15,23,42,.035);
-    --surface-strong: rgba(15,23,42,.06);
-    --surface-hover: rgba(55,102,217,.06);
+    --bg: #f6f8fd;
+    --bg-soft: #eef2f9;
+    --bg-elevated: #ffffff;
+
+    --surface: rgba(15, 23, 42, .036);
+    --surface-strong: rgba(15, 23, 42, .065);
+    --surface-hover: rgba(55, 102, 217, .065);
 
     --text: #111827;
-    --text-soft: #1f2937;
-    --muted: #5f6b7d;
+    --text-soft: #243047;
+    --muted: #58657a;
     --muted-strong: #7b8798;
 
-    --blue: #3766d9;
-    --blue-light: #5b8cff;
-    --blue-dark: #244cb0;
-    --purple: #7357d8;
-    --red: #d94d62;
+    --blue: #3767dc;
+    --blue-light: #527ff0;
+    --blue-dark: #244aa9;
+    --purple: #7257d6;
+    --purple-dark: #5840b0;
+    --red: #d94d67;
+    --red-dark: #bb3852;
+    --cyan: #0e91bd;
 
-    --line: rgba(15,23,42,.12);
-    --line-soft: rgba(15,23,42,.07);
-    --line-strong: rgba(55,102,217,.22);
+    --success: #188754;
+    --warning: #a76a08;
+    --danger: #c83e56;
+    --info: #2d64d5;
 
-    --panel: #ffffff;
-    --panel-soft: #f8fafc;
+    --line: rgba(15, 23, 42, .12);
+    --line-soft: rgba(15, 23, 42, .07);
+    --line-strong: rgba(55, 102, 217, .22);
+
+    --panel: linear-gradient(145deg, rgba(255,255,255,.97), rgba(246,248,253,.96));
+    --panel-soft: linear-gradient(145deg, rgba(255,255,255,.82), rgba(246,248,253,.78));
+    --panel-blue: linear-gradient(145deg, rgba(255,255,255,.98), rgba(234,240,255,.88));
+
+    --gradient-text: linear-gradient(110deg, #111827 8%, #3767dc 45%, #7257d6 70%, #d94d67 100%);
+
+    --shadow-xs: 0 5px 18px rgba(15, 23, 42, .05);
+    --shadow-sm: 0 10px 28px rgba(15, 23, 42, .08);
+    --shadow-md: 0 18px 50px rgba(15, 23, 42, .11);
+    --shadow-lg: 0 30px 80px rgba(15, 23, 42, .14);
 
     --glass: rgba(255,255,255,.86);
-    --glass-strong: rgba(255,255,255,.95);
+    --glass-strong: rgba(255,255,255,.96);
     --glass-border: rgba(15,23,42,.10);
-
-    --shadow-sm: 0 8px 24px rgba(15,23,42,.07);
-    --shadow-md: 0 18px 48px rgba(15,23,42,.10);
-    --shadow-lg: 0 28px 70px rgba(15,23,42,.14);
 
     color-scheme: light;
 }

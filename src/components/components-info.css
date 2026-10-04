@@ -1,46 +1,91 @@
-/* Complementos leves para os componentes informativos da JLScript. */
+/* Complementos semânticos dos componentes JLScript 3.2.0 */
 .hero-facts {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: .55rem;
   margin: 1.35rem 0 0;
   padding: 0;
 }
+
 .hero-facts li {
   display: grid;
   gap: .12rem;
-  min-width: 108px;
-  padding: .7rem .8rem;
-  border: 1px solid var(--line);
+  min-width: 0;
+  padding: .72rem .8rem;
+  border: 1px solid var(--line-soft);
   border-radius: 12px;
-  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  background: rgba(255, 255, 255, .018);
 }
-.hero-facts strong { color: var(--text); font-size: .8rem; }
-.hero-facts span { color: var(--muted); font-size: .68rem; }
+
+.hero-facts strong {
+  color: var(--text);
+  font-size: .79rem;
+}
+
+.hero-facts span {
+  color: var(--muted);
+  font-size: .65rem;
+}
 
 .library-box-copy {
   padding: 1.4rem;
-  max-width: 470px;
+  max-width: 500px;
 }
-.library-box-copy h3 { margin: 0 0 .7rem; }
-.library-box-copy p { color: var(--muted); line-height: 1.65; font-size: .84rem; }
-.library-box-copy .btn-outline { margin-top: .7rem; }
 
-.section-heading__content { color: var(--muted); line-height: 1.7; }
+.library-box-copy h3 {
+  margin: 0 0 .65rem;
+}
 
-.nav-explore-menu a > span { display: grid; gap: .1rem; min-width: 0; }
-.nav-explore-menu a > span strong { font-size: .78rem; }
-.nav-explore-menu a > span small { color: var(--muted); font-size: .66rem; line-height: 1.35; }
+.library-box-copy p {
+  color: var(--muted);
+  line-height: 1.68;
+  font-size: .84rem;
+}
 
-.global-search header > div { display: grid; gap: .12rem; }
-.global-search header > div b { color: var(--text); }
-.global-search header > div small { color: var(--muted); font-weight: 500; }
+.library-box-copy .btn-outline {
+  margin-top: .7rem;
+}
+
+.section-heading__content {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.nav-explore-menu a>span {
+  display: grid;
+  gap: .08rem;
+  min-width: 0;
+}
+
+.nav-explore-menu a>span strong {
+  font-size: .78rem;
+}
+
+.nav-explore-menu a>span small {
+  color: var(--muted);
+  font-size: .66rem;
+  line-height: 1.35;
+}
+
+.global-search header>div {
+  display: grid;
+  gap: .12rem;
+}
+
+.global-search header>div b {
+  color: var(--text);
+}
+
+.global-search header>div small {
+  color: var(--muted);
+  font-weight: 500;
+}
 
 .download-callout__badge p {
   margin: .55rem 0 0;
   color: var(--muted);
-  font: 700 .66rem/1.4 ui-monospace, monospace;
+  font: 700 .66rem/1.45 ui-monospace, monospace;
 }
 
 .install-card p {
@@ -50,18 +95,29 @@
   font-size: .78rem;
   line-height: 1.5;
 }
+
 .install-card a {
   grid-column: 1 / -1;
-  color: var(--blue);
+  color: var(--blue-light);
   font-size: .75rem;
-  font-weight: 800;
+  font-weight: 850;
 }
 
-footer section p strong { color: var(--text); }
+footer section p strong {
+  color: var(--text);
+}
+
+.code-window {
+  margin: 0;
+}
 
 @media (max-width: 700px) {
-  .hero-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
-  .library-box-copy { max-width: none; }
-}
+  .hero-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
 
-.code-window { margin: 0; }
+  .library-box-copy {
+    max-width: none;
+  }
+}
