@@ -1,95 +1,112 @@
-# JLScript · JLAI Support Backend
+# JLScript
 
-> Backend local de suporte para o ecossistema **JLScript**, com respostas baseadas em documentação pública e conhecimento estruturado da linguagem.
+**JLScript** é uma linguagem de programação brasileira criada por **Lucas Aguiel**, com foco em sintaxe simples, legível e acessível, utilizando construções em português e inglês.
 
-## Sobre o JLScript
+O projeto possui um ecossistema próprio com portal oficial, documentação, sintaxe, notícias, artigos, bibliotecas, projetos e ferramentas para desenvolvimento.
 
-**JLScript** é uma linguagem de programação brasileira criada por **Lucas Aguiel**, com foco em legibilidade, aprendizado e sintaxe em português e inglês.
+> **JLScript: código que fala a sua língua.**
 
-A linguagem utiliza arquivos `.jls` e possui recursos como:
+---
+
+# 🌐 Ecossistema oficial
+
+O JLScript possui diferentes sites, cada um com uma função específica dentro do projeto.
+
+## 🏠 Portal Oficial
+
+### https://jlscript-oficial.lucasaguiel5.workers.dev/
+
+Este é o **portal principal do JLScript**.
+
+É o ponto central para conhecer todo o projeto e navegar pelo ecossistema.
+
+No portal oficial você encontra informações sobre:
+
+- JLScript;
+- documentação;
+- história da linguagem;
+- projetos;
+- bibliotecas;
+- ferramentas;
+- ecossistema;
+- recursos;
+- notícias;
+- desenvolvimento da linguagem;
+- links oficiais.
+
+Se você está conhecendo o JLScript pela primeira vez, este é o melhor lugar para começar.
+
+---
+
+# 📰 Blog JLScript
+
+### https://blog-jlscript.netlify.app/
+
+O **Blog JLScript** é dedicado às novidades e conteúdos da linguagem.
+
+Ele reúne:
+
+- notícias;
+- atualizações;
+- artigos;
+- novidades do desenvolvimento;
+- conteúdos educacionais;
+- projetos;
+- novos recursos;
+- mudanças no ecossistema;
+- materiais para aprender JLScript.
+
+O blog também possui uma área de aprendizado:
+
+### 📚 Aprender JLScript
+
+https://blog-jlscript.netlify.app/aprender
+
+A trilha apresenta conteúdos desde os primeiros comandos até projetos utilizando bibliotecas e recursos da linguagem.
+
+---
+
+# 📖 Sintaxe e documentação
+
+### https://jlscripter.netlify.app/
+
+Este site é dedicado principalmente à **sintaxe do JLScript**.
+
+Nele é possível aprender como a linguagem funciona e consultar exemplos.
+
+Entre os conteúdos estão:
 
 - variáveis;
-- funções;
+- tipos;
+- operadores;
 - condições;
+- funções;
 - loops;
-- listas e objetos;
+- listas;
+- objetos;
 - tratamento de erros;
-- módulos e bibliotecas;
+- módulos;
+- imports;
+- bibliotecas;
 - APIs;
 - CLI;
-- integração com VS Code;
-- ferramentas do ecossistema JLScript.
+- recursos avançados.
 
-Exemplo:
+É uma referência para quem está escrevendo arquivos `.jls`.
+
+---
+
+# 💻 Exemplo de JLScript
+
+Um programa simples pode ser escrito assim:
 
 ```jls
 va nome = "Lucas"
 
-func saudacao(nome) {
-    mostrar("Olá, " + nome + "!")
-}
-
-saudacao(nome)
+mostrar("Olá, " + nome)
 ```
 
-Também é possível utilizar construções em inglês:
-
-```jls
-let nome = "Lucas"
-
-if (nome == "Lucas") {
-    mostrar("Hello, Lucas!")
-}
-```
-
----
-
-## 🌐 Portal oficial
-
-Acesse o portal do JLScript:
-
-**https://blog-jlscript.netlify.app/**
-
-No portal você encontra:
-
-- documentação;
-- história do projeto;
-- sintaxe;
-- bibliotecas;
-- exemplos;
-- projetos;
-- CLI;
-- ecossistema;
-- recursos de aprendizado.
-
----
-
-## 📚 Aprenda JLScript
-
-Existe uma trilha dedicada para aprender a linguagem do básico até projetos reais:
-
-**https://blog-jlscript.netlify.app/aprender**
-
-A trilha aborda:
-
-1. Primeiro contato
-2. Variáveis e valores
-3. Lógica
-4. Funções
-5. Estruturas
-6. Módulos
-7. Bibliotecas
-8. Projetos reais
-
----
-
-## 💻 Sintaxe
-
-Referência de sintaxe:
-
-**https://blog-jlscript.netlify.app/sintaxe**
-
-Exemplo:
+Condições:
 
 ```jls
 va idade = 19
@@ -101,6 +118,18 @@ se (idade >= 18) {
 }
 ```
 
+Funções:
+
+```jls
+func somar(a, b) {
+    retorne a + b
+}
+
+va resultado = somar(10, 20)
+
+mostrar(resultado)
+```
+
 Loops:
 
 ```jls
@@ -109,333 +138,236 @@ para (va i = 0; i < 5; i++) {
 }
 ```
 
-Funções:
+A linguagem também possui construções equivalentes em inglês:
 
 ```jls
-func somar(a, b) {
-    retorne a + b
-}
+let nome = "JLScript"
 
-mostrar(somar(10, 20))
+if (nome == "JLScript") {
+    mostrar("Hello!")
+}
 ```
 
-Módulos:
+---
+
+# 📦 Módulos
+
+JLScript possui um sistema de módulos e bibliotecas.
+
+Exemplos:
+
+```jls
+import #math
+import #json
+import #file
+import #api
+```
+
+Também é possível importar vários módulos:
 
 ```jls
 import [
     #math,
     #json,
-    #api
+    #api,
+    #file
 ]
 ```
 
+Algumas áreas do ecossistema incluem:
+
+```text
+#api
+#math
+#json
+#file
+#system
+#database
+#crypto
+#process
+#net
+#test
+#cli
+#image
+#audio
+#ui
+#style
+```
+
 ---
 
-## 📦 Bibliotecas
+# ⚙️ CLI
 
-O ecossistema JLScript inclui módulos para diferentes áreas.
+JLScript possui ferramentas de linha de comando para desenvolvimento.
 
 Exemplos:
 
-```jls
-import #api
-import #math
-import #json
-import #file
-import #system
-import #database
-import #crypto
-import #process
-import #net
-import #test
-import #cli
-import #image
-import #audio
-import #ui
-import #style
+```bash
+jls run
+jls build
+jls compile
+jls test
+jls fmt
+jls lint
+jls doctor
+jls dev
 ```
 
-Mais informações:
-
-**https://blog-jlscript.netlify.app/bibliotecas**
+A CLI faz parte do objetivo de transformar JLScript em um ecossistema completo para desenvolvimento.
 
 ---
 
-# JLAI Support Backend
+# 🧩 Ecossistema JLScript
 
-Este repositório contém o backend de suporte da **JLAI**, ferramenta integrada ao ecossistema JLScript.
+O projeto não é composto apenas pela linguagem.
 
-O backend foi desenvolvido em Python e funciona com uma base local de conhecimento.
+O ecossistema inclui iniciativas como:
 
-Ele **não utiliza OpenAI, Gemini, Claude ou outras APIs externas de inteligência artificial por padrão**.
+### JLScript
 
-As respostas são geradas a partir de uma base estruturada em JSON formada por informações públicas e documentação do JLScript.
+A linguagem de programação.
 
----
+### JLShell
 
-## 🎯 Escopo da JLAI
+Ambiente e ferramentas de terminal do ecossistema JLScript.
 
-A JLAI responde perguntas relacionadas ao JLScript, incluindo:
+### JLS AI
 
-- instalação;
-- arquivos `.jls`;
-- sintaxe;
-- CLI;
-- módulos;
-- bibliotecas;
-- APIs;
-- erros;
-- documentação;
-- extensão do VS Code;
-- história do projeto;
-- downloads;
-- portal;
-- ferramentas do ecossistema.
+Projeto de assistência para desenvolvimento em JLScript.
 
-Perguntas fora desse escopo recebem uma resposta informando que o assunto não faz parte da base da JLAI.
+### VS Code Extension
 
----
+Ferramentas para trabalhar com arquivos `.jls` dentro do Visual Studio Code.
 
-## 📁 Estrutura do projeto
+Entre os objetivos estão:
 
-```text
-backend/
-├── app.py
-├── config.py
-├── models.py
-│
-├── ai/
-│
-├── knowledge/
-│   └── knowledge.json
-│
-└── tests/
-
-frontend-integration/
-├── Jlai.jsx
-├── MarkdownMessage.jsx
-├── useJlaiStream.js
-└── jlai-ai.css
-```
-
----
-
-## 🚀 Rodando no Windows
-
-Entre na pasta do backend:
-
-```powershell
-cd backend
-```
-
-Crie o ambiente virtual:
-
-```powershell
-python -m venv .venv
-```
-
-Ative:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-Instale as dependências:
-
-```powershell
-pip install -r requirements.txt
-```
-
-Inicie o servidor:
-
-```powershell
-python -m uvicorn app:app --host 127.0.0.1 --port 8765 --reload
-```
-
-Também é possível utilizar:
-
-```powershell
-.\run.ps1
-```
-
----
-
-## 🔍 Testando a API
-
-Health check:
-
-```text
-http://127.0.0.1:8765/api/health
-```
-
-Documentação automática:
-
-```text
-http://127.0.0.1:8765/docs
-```
-
----
-
-## ⚛️ Integração com React + Vite
-
-Os arquivos disponíveis em:
-
-```text
-frontend-integration/
-```
-
-podem ser integrados ao frontend React.
-
-Configure no `.env`:
-
-```env
-VITE_JLAI_API_URL=http://127.0.0.1:8765
-```
-
-O frontend utiliza:
-
-```text
-POST /api/chat/stream
-```
-
-e recebe respostas através de streaming NDJSON.
-
-Isso permite exibir respostas progressivamente, incluindo blocos de código.
-
----
-
-## 🌍 Produção
-
-Um site público não consegue acessar diretamente:
-
-```text
-127.0.0.1
-```
-
-do computador do desenvolvedor.
-
-Para utilização pública, o backend deve ser hospedado em um ambiente compatível com Python ou Docker.
-
-Depois altere:
-
-```env
-VITE_JLAI_API_URL=https://sua-api.com
-```
-
-Também configure:
-
-```env
-JLAI_ALLOWED_ORIGINS=https://seu-site.com
-```
-
----
-
-## 🔐 Segurança e privacidade
-
-O projeto utiliza algumas medidas básicas de proteção:
-
-- nenhuma chave externa de IA é necessária;
-- conversas não são gravadas em disco por padrão;
-- limite de tamanho para perguntas;
-- rate limit simples em memória;
-- CORS configurável;
-- bloqueio de perguntas fora do escopo;
-- nenhuma parte do código-fonte privado do núcleo JLScript está incluída neste repositório.
-
----
-
-# ⚠️ JLScript não é open source
-
-O fato de existirem repositórios públicos, exemplos, documentação e ferramentas relacionadas ao JLScript **não significa que o núcleo da linguagem seja open source**.
-
-A implementação principal do JLScript é atualmente **closed source**.
-
-Este repositório contém apenas componentes públicos relacionados ao ecossistema e à JLAI.
-
-O código interno e privado da linguagem não faz parte deste repositório.
-
-Projetos criados por usuários em `.jls` podem possuir suas próprias licenças.
-
----
-
-## 🧪 Testes
-
-Instale as dependências de desenvolvimento:
-
-```powershell
-pip install -r requirements-dev.txt
-```
-
-Execute:
-
-```powershell
-pytest -q
-```
-
----
-
-# 🔗 Links importantes
-
-### Portal JLScript
-
-https://blog-jlscript.netlify.app/
-
-### Aprender JLScript
-
-https://blog-jlscript.netlify.app/aprender
-
-### Sintaxe
-
-https://blog-jlscript.netlify.app/sintaxe
-
-### Bibliotecas
-
-https://blog-jlscript.netlify.app/bibliotecas
-
-### Projetos
-
-https://blog-jlscript.netlify.app/projetos
-
-### CLI
-
-https://blog-jlscript.netlify.app/cli
-
-### Ecossistema
-
-https://blog-jlscript.netlify.app/ecossistema
-
-### História
-
-https://blog-jlscript.netlify.app/historia
-
-### Recursos
-
-https://blog-jlscript.netlify.app/recursos
-
----
-
-## Sobre o projeto
-
-O JLScript nasceu da ideia de entender como linguagens de programação funcionam e experimentar uma linguagem com identidade própria.
-
-O projeto evoluiu para um ecossistema envolvendo:
-
-- JLScript;
-- JLShell;
-- JLS AI / JLAI;
-- CLI;
-- extensão para VS Code;
-- módulos;
-- bibliotecas;
-- documentação;
-- portal;
+- syntax highlighting;
+- autocomplete;
+- snippets;
+- hover;
+- execução de arquivos;
+- ajuda com bibliotecas;
 - ferramentas de desenvolvimento.
 
 ---
 
-## JLScript
+# 🇧🇷 Português e inglês
 
-**Código que fala a sua língua.**
+Uma das características do JLScript é permitir construções em português e inglês.
 
-🌐 https://blog-jlscript.netlify.app/
-```powershell
+Exemplo em português:
+
+```jls
+se (ativo) {
+    mostrar("Executando")
+} senao {
+    mostrar("Parado")
+}
+```
+
+Equivalente em inglês:
+
+```jls
+if (ativo) {
+    mostrar("Running")
+} else {
+    mostrar("Stopped")
+}
+```
+
+Outros exemplos:
+
+```text
+se          / if
+senao       / else
+enquanto    / while
+para        / for
+escolha     / switch
+caso        / case
+padrao      / default
+pare        / break
+continuar   / continue
+tente       / try
+capture     / catch
+finalmente  / finally
+```
+
+---
+
+# 🚧 Desenvolvimento
+
+JLScript ainda está em desenvolvimento ativo.
+
+A linguagem, suas bibliotecas, ferramentas e documentação continuam recebendo melhorias.
+
+O projeto busca evoluir em áreas como:
+
+- bibliotecas;
+- desenvolvimento web;
+- APIs;
+- ferramentas de terminal;
+- interface;
+- desenvolvimento de aplicações;
+- integração com editores;
+- inteligência artificial;
+- experiência de desenvolvimento.
+
+---
+
+# 🔒 Código-fonte
+
+**JLScript não é um projeto open source.**
+
+O núcleo atual da linguagem possui código-fonte fechado.
+
+Documentação, exemplos, sintaxe e alguns recursos públicos podem ser disponibilizados para usuários e desenvolvedores, mas isso não significa que a implementação interna completa da linguagem seja aberta.
+
+Projetos escritos por usuários utilizando `.jls` podem utilizar suas próprias licenças.
+
+---
+
+# 🔗 Links oficiais
+
+## Portal oficial
+
+https://jlscript-oficial.lucasaguiel5.workers.dev/
+
+## Blog e notícias
+
+https://blog-jlscript.netlify.app/
+
+## Aprender JLScript
+
+https://blog-jlscript.netlify.app/aprender
+
+## Sintaxe e documentação
+
+https://jlscripter.netlify.app/
+
+---
+
+# 👨‍💻 Criador
+
+JLScript foi criado por **Lucas Aguiel**.
+
+O projeto começou a partir do interesse em entender como linguagens de programação funcionam e evoluiu para uma linguagem com sintaxe própria, bibliotecas, CLI, documentação e ferramentas.
+
+O nome **JLScript** representa:
+
+- **J** → Joicy Costa
+- **L** → Lucas Aguiel
+- **Script** → a linguagem
+
+---
+
+# JLScript
+
+```jls
+va mensagem = "Código que fala a sua língua."
+
+mostrar(mensagem)
+```
+
+**JLScript: código que fala a sua língua.**
+
+🌐 https://jlscript-oficial.lucasaguiel5.workers.dev/
