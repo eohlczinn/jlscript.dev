@@ -3838,17 +3838,2629 @@ A identidade da linguagem está em tornar esses conceitos próximos do programad
 
 <div align="center">
 
-## Você não aprende JLScript decorando sintaxe.
+# JLScript 4.2.0
 
-### Você aprende entendendo a lógica e usando a sintaxe para expressá-la.
+## Parte 3 — Terminal, ferramentas e ecossistema
 
-**JLScript 4.2.0**
+### JLShell · CLI · comandos · projetos · pacotes · JLS AI · Registry · VS Code
 
-### Fim da Parte 2 — Sintaxe, lógica e programação
+> Escrever código é apenas metade do trabalho.  
+> A outra metade é executar, testar, organizar, corrigir, compilar e manter esse código.
+
+</div>
 
 ---
 
-**Próxima parte:** JLShell, comandos, CLI, terminal, execução, build, JLS AI, Registry, configuração e fluxo completo de desenvolvimento.
+# Antes de começar
+
+Na Parte 2 vimos a lógica da linguagem.
+
+Agora muda o foco.
+
+Aqui não estamos mais perguntando apenas:
+
+> “Como escrevo JLScript?”
+
+A pergunta passa a ser:
+
+> **“Como trabalho com JLScript todos os dias?”**
+
+É aí que entram:
+
+```text
+JLShell
+CLI
+VS Code
+JLS AI
+Package Manager
+Preview
+Build
+Registry
+```
+
+Essas ferramentas não deveriam funcionar como produtos separados.
+
+A ideia da JLScript é que todas elas façam parte do mesmo ambiente.
+
+```text
+                  JLScript
+                     │
+        ┌────────────┼────────────┐
+        │            │            │
+     JLShell        CLI         VS Code
+        │            │            │
+        ├──────── Runtime ─────────┤
+        │                         │
+      JLS AI                   Preview
+        │
+     Registry
+```
+
+O runtime continua sendo a fonte principal de execução.
+
+---
+
+# Escolha o que você quer fazer
+
+<details open>
+<summary><strong>▶ Quero apenas executar um arquivo .jls</strong></summary>
+
+<br>
+
+Use:
+
+```bash
+jls run main.jls
+```
+
+Ou, dependendo do contexto:
+
+```bash
+jls main.jls
+```
+
+No VS Code, use **Executar JLS**.
+
+</details>
+
+<details>
+<summary><strong>⌨ Quero programar diretamente no terminal</strong></summary>
+
+<br>
+
+Abra o JLShell:
+
+```bash
+jls
+```
+
+ou:
+
+```bash
+jls repl
+```
+
+Você entra em uma sessão persistente onde variáveis, funções e imports continuam disponíveis.
+
+</details>
+
+<details>
+<summary><strong>🧪 Quero testar meu projeto</strong></summary>
+
+<br>
+
+```bash
+jls test
+```
+
+Para analisar código:
+
+```bash
+jls lint arquivo.jls
+```
+
+Para formatar:
+
+```bash
+jls fmt arquivo.jls
+```
+
+</details>
+
+<details>
+<summary><strong>📦 Quero instalar uma dependência</strong></summary>
+
+<br>
+
+```bash
+jls install nome-do-pacote
+```
+
+Exemplo:
+
+```bash
+jls install postgresql
+```
+
+</details>
+
+<details>
+<summary><strong>🤖 Quero usar a JLS AI</strong></summary>
+
+<br>
+
+```bash
+jls ai
+```
+
+Também pode ser acessada dentro do JLShell:
+
+```text
+.ai
+```
+
+</details>
+
+<details>
+<summary><strong>🖥 Quero abrir uma interface JLScript</strong></summary>
+
+<br>
+
+Execute normalmente:
+
+```bash
+jls run app.jls
+```
+
+ou use o preview:
+
+```bash
+jls preview app.jls
+```
+
+</details>
+
+<details>
+<summary><strong>🏗 Quero gerar uma aplicação</strong></summary>
+
+<br>
+
+O fluxo de build utiliza:
+
+```bash
+jls build
+```
+
+e opções específicas de target quando necessárias.
+
+</details>
+
+---
+
+# 1. O que é o JLShell?
+
+JLShell é o terminal interativo oficial da JLScript.
+
+Ele não foi pensado apenas como:
+
+```text
+prompt que executa uma linha
+```
+
+A ideia é que ele funcione como um ambiente persistente de desenvolvimento.
+
+Você abre:
+
+```bash
+jls
+```
+
+ou:
+
+```bash
+jls repl
+```
+
+e entra em uma sessão JLScript.
+
+Exemplo:
+
+```jls
+va x = 10
+```
+
+Depois:
+
+```jls
+x
+```
+
+Resultado:
+
+```text
+10
+```
+
+Depois:
+
+```jls
+x + 5
+```
+
+Resultado:
+
+```text
+15
+```
+
+A variável continua existindo.
+
+Isso é importante.
+
+O JLShell mantém contexto.
+
+---
+
+# 2. Sessão persistente
+
+Considere:
+
+```jls
+va nome = "Lucas"
+
+func ola() {
+    mostrar("Olá, " + nome)
+}
+```
+
+Mais tarde, na mesma sessão:
+
+```jls
+ola()
+```
+
+continua funcionando.
+
+Você não precisa redefinir tudo a cada linha.
+
+O mesmo vale para:
+
+```text
+variáveis
+funções
+imports
+objetos
+listas
+estado da sessão
+```
+
+até que a sessão seja encerrada ou resetada.
+
+---
+
+# 3. `clear` não é `reset`
+
+Essa diferença é importante.
+
+## `clear`
+
+```text
+clear
+```
+
+limpa a tela.
+
+Mas preserva:
+
+```text
+variáveis
+funções
+imports
+histórico
+contexto
+```
+
+Exemplo:
+
+```jls
+va numero = 100
+```
+
+Depois:
+
+```text
+clear
+```
+
+E:
+
+```jls
+numero
+```
+
+continua retornando:
+
+```text
+100
+```
+
+---
+
+## `.reset`
+
+```text
+.reset
+```
+
+reinicia o contexto da sessão.
+
+Variáveis e funções da sessão deixam de existir.
+
+Use quando realmente quiser começar novamente.
+
+---
+
+# 4. Comandos internos do JLShell
+
+Comandos especiais normalmente começam com:
+
+```text
+.
+```
+
+Exemplo:
+
+```text
+.help
+```
+
+Eles controlam o ambiente do JLShell.
+
+Isso é diferente de código JLScript.
+
+```jls
+mostrar("Olá")
+```
+
+é código.
+
+```text
+.help
+```
+
+é comando do shell.
+
+---
+
+# 5. Ajuda
+
+Use:
+
+```text
+.help
+```
+
+para visualizar os comandos disponíveis.
+
+Para um comando específico:
+
+```text
+.help run
+```
+
+ou:
+
+```text
+.help build
+```
+
+O sistema de ajuda utiliza o registro real de comandos.
+
+A ideia é evitar uma documentação dizendo uma coisa enquanto o terminal implementa outra.
+
+---
+
+# 6. Comandos de sessão
+
+<details>
+<summary><strong>Ver comandos da sessão</strong></summary>
+
+<br>
+
+Alguns comandos importantes:
+
+```text
+.editor
+.break
+.reset
+.vars
+.modules
+.history
+.debug
+.version
+.info
+.status
+.context
+clear
+sair
+```
+
+### `.vars`
+
+Lista variáveis da sessão:
+
+```text
+.vars
+```
+
+Para inspecionar uma:
+
+```text
+.vars nome
+```
+
+### `.modules`
+
+Mostra módulos carregados:
+
+```text
+.modules
+```
+
+### `.history`
+
+Mostra o histórico:
+
+```text
+.history
+```
+
+### `.status`
+
+Mostra informações da sessão:
+
+```text
+.status
+```
+
+### `.version`
+
+```text
+.version
+```
+
+mostra a versão do ambiente.
+
+</details>
+
+---
+
+# 7. Editor multilinha
+
+Para escrever blocos maiores diretamente no terminal:
+
+```text
+.editor
+```
+
+Depois você pode escrever:
+
+```jls
+func calcular(a, b) {
+
+    va resultado = a + b
+
+    retorne resultado
+}
+```
+
+O editor continua acumulando o bloco.
+
+Quando terminar, conclua com:
+
+```text
+Ctrl + D
+```
+
+Para cancelar:
+
+```text
+Ctrl + C
+```
+
+ou:
+
+```text
+.break
+```
+
+---
+
+# 8. Atalhos do JLShell
+
+| Ação | Atalho |
+| --- | --- |
+| Cursor | `←` / `→` |
+| Palavra anterior/próxima | `Ctrl + ← / →` |
+| Início da linha | `Home` |
+| Fim da linha | `End` |
+| Histórico | `↑ / ↓` |
+| Busca no histórico | `Ctrl + R` |
+| Sugestões | `Tab` |
+| Sugestões alternativas | `Ctrl + Space` |
+| Próxima sugestão | `Tab / ↓` |
+| Sugestão anterior | `Shift + Tab / ↑` |
+| Aceitar | `Enter` |
+| Fechar sugestões | `Esc` |
+| Limpar terminal | `Ctrl + L` |
+| Interromper execução | `Ctrl + C` |
+| Sair com linha vazia | `Ctrl + D / Ctrl + Z` |
+
+---
+
+# 9. Autocomplete
+
+O JLShell possui autocomplete contextual.
+
+Imagine:
+
+```jls
+va usuarios = []
+```
+
+Depois:
+
+```text
+usuarios.
+```
+
+O shell pode sugerir métodos compatíveis com List.
+
+Exemplos:
+
+```text
+adicionar
+remover
+mapear
+filtrar
+reduzir
+tamanho
+```
+
+O autocomplete utiliza metadata da própria linguagem.
+
+Isso é importante porque evita manter manualmente uma lista diferente no terminal.
+
+---
+
+# 10. Destaque em tempo real
+
+Com cores habilitadas, o shell consegue diferenciar comandos reconhecidos enquanto você digita.
+
+Conceitualmente:
+
+```text
+comando conhecido   → destaque
+comando desconhecido → aviso visual
+```
+
+Isso não executa nada.
+
+É apenas apresentação.
+
+O parser oficial continua sendo responsável por dizer se o código realmente está correto.
+
+---
+
+# 11. Arquivos e projetos dentro do JLShell
+
+<details>
+<summary><strong>Comandos para arquivos e projeto</strong></summary>
+
+<br>
+
+```text
+.load "arquivo.jls"
+.run "arquivo.jls"
+.reload
+.time <codigo>
+
+.build
+.compile
+.test
+.fmt
+.lint
+.preview
+```
+
+### Executar
+
+```text
+.run "main.jls"
+```
+
+### Recarregar
+
+```text
+.reload
+```
+
+### Medir execução
+
+```text
+.time mostrar("teste")
+```
+
+### Testar
+
+```text
+.test
+```
+
+### Lint
+
+```text
+.lint
+```
+
+### Formatador
+
+```text
+.fmt
+```
+
+### Preview
+
+```text
+.preview
+```
+
+Esses comandos devem encaminhar para os mesmos mecanismos utilizados pela CLI.
+
+Não existe uma segunda linguagem escondida dentro do JLShell.
+
+</details>
+
+---
+
+# 12. Diretório atual
+
+Mostrar:
+
+```text
+.cwd
+```
+
+Alterar:
+
+```text
+.cd "D:/projetos/meu-app"
+```
+
+Isso permite trabalhar no projeto sem sair do shell.
+
+---
+
+# 13. Comandos de arquivos do terminal
+
+O JLShell também possui utilitários como:
+
+```text
+.ls
+.dir
+.tree
+.cat
+.open
+.which
+.where
+```
+
+Exemplo:
+
+```text
+.tree
+```
+
+pode ajudar a visualizar a estrutura do projeto.
+
+```text
+.cat "config.json"
+```
+
+pode visualizar um arquivo textual.
+
+---
+
+# 14. Comandos do sistema operacional
+
+Por segurança, texto desconhecido não é enviado automaticamente ao sistema operacional.
+
+Isso:
+
+```text
+git status
+```
+
+não deveria simplesmente virar comando de sistema.
+
+Para executar externamente:
+
+```text
+! git status
+```
+
+Outro exemplo:
+
+```text
+! npm --version
+```
+
+O prefixo:
+
+```text
+!
+```
+
+deixa sua intenção explícita.
+
+Essa é uma regra de segurança importante.
+
+---
+
+> [!WARNING]
+> Um comando depois de `!` deixa de ser código JLScript e passa a poder executar um programa do sistema operacional.
+>
+> Leia o comando antes de confirmar ou executar.
+
+---
+
+# 15. Por que não executar tudo automaticamente?
+
+Imagine digitar por engano:
+
+```text
+remove alguma-coisa
+```
+
+Se todo texto desconhecido fosse enviado para o shell do sistema, um erro de sintaxe poderia virar uma operação real no computador.
+
+Então o JLShell segue uma regra simples:
+
+```text
+JLScript é JLScript
+
+comando externo precisa ser explícito
+```
+
+---
+
+# 16. Informações do sistema
+
+O shell também possui comandos de diagnóstico:
+
+```text
+.system info
+.system cpu
+.system memory
+.system disk
+.system network
+.system processes
+```
+
+Exemplo:
+
+```text
+.system memory
+```
+
+é útil para verificar ambiente quando você está testando algo mais pesado.
+
+---
+
+# 17. CLI JLScript
+
+O JLShell é interativo.
+
+A CLI é usada diretamente no terminal do sistema:
+
+```bash
+jls <comando>
+```
+
+Exemplo:
+
+```bash
+jls run main.jls
+```
+
+A ideia é que CLI e JLShell compartilhem os mesmos handlers sempre que possível.
+
+---
+
+# 18. Comandos principais
+
+<details open>
+<summary><strong>Execução e desenvolvimento</strong></summary>
+
+<br>
+
+```bash
+jls run arquivo.jls
+jls repl
+jls preview arquivo.jls
+```
+
+</details>
+
+<details>
+<summary><strong>Análise de código</strong></summary>
+
+<br>
+
+```bash
+jls lint arquivo.jls
+jls fmt arquivo.jls
+jls fmt --check arquivo.jls
+```
+
+</details>
+
+<details>
+<summary><strong>Testes</strong></summary>
+
+<br>
+
+```bash
+jls test
+```
+
+</details>
+
+<details>
+<summary><strong>Build</strong></summary>
+
+<br>
+
+```bash
+jls build
+jls compile
+jls clean
+```
+
+</details>
+
+<details>
+<summary><strong>Projeto</strong></summary>
+
+<br>
+
+```bash
+jls new
+jls init
+```
+
+</details>
+
+<details>
+<summary><strong>Diagnóstico</strong></summary>
+
+<br>
+
+```bash
+jls doctor
+jls --version
+jls --help
+```
+
+</details>
+
+---
+
+# 19. Help da CLI
+
+Sempre que não lembrar de uma opção:
+
+```bash
+jls --help
+```
+
+Para um comando:
+
+```bash
+jls build --help
+```
+
+ou:
+
+```bash
+jls run --help
+```
+
+Isso deveria ser sua primeira tentativa antes de procurar internamente no projeto.
+
+---
+
+# 20. `run`
+
+Forma básica:
+
+```bash
+jls run main.jls
+```
+
+Arquivos interativos podem precisar de terminal real.
+
+Exemplos:
+
+```text
+chat()
+#ui
+CLI interativa
+servidor
+processo
+```
+
+A integração do VS Code analisa o programa e escolhe o ambiente adequado quando o modo automático está ativo.
+
+---
+
+# 21. Build
+
+Um projeto pode ser construído por:
+
+```bash
+jls build
+```
+
+ou com opções específicas:
+
+```bash
+jls build app.jls --target windows --release
+```
+
+Modo debug:
+
+```bash
+jls build app.jls --target windows --debug
+```
+
+Antes do executável final existir, o pipeline precisa validar:
+
+```text
+sintaxe
+imports
+dependências
+target
+assets
+configuração
+```
+
+Não faz sentido criar um executável de um programa que nem passa pelo parser.
+
+---
+
+# 22. Preview
+
+Para interfaces:
+
+```bash
+jls preview app.jls
+```
+
+Também existem opções de viewport/target em partes do sistema.
+
+Exemplo conceitual:
+
+```bash
+jls preview app.jls --device mobile --platform windows
+```
+
+Preview deve usar a mesma base de UI/Style da aplicação.
+
+Caso contrário aparece o clássico:
+
+> funciona no preview, quebra no app.
+
+Uma tradição da computação que JLScript não precisa herdar.
+
+---
+
+# 23. Package Manager
+
+JLScript possui gerenciamento de pacotes e providers.
+
+Instalar:
+
+```bash
+jls install postgresql
+```
+
+Versão específica:
+
+```bash
+jls install postgresql@1.0.0
+```
+
+Última versão disponível:
+
+```bash
+jls install postgresql@latest
+```
+
+---
+
+# 24. Confirmações
+
+Para confirmar automaticamente:
+
+```bash
+jls install postgresql --yes
+```
+
+Forma curta:
+
+```bash
+jls install postgresql -y
+```
+
+Ver o que aconteceria sem escrever nada:
+
+```bash
+jls install postgresql --dry-run
+```
+
+Esse é um comando excelente antes de alterações maiores.
+
+---
+
+# 25. Outros comandos de pacote
+
+```bash
+jls uninstall postgresql
+jls update postgresql
+jls list
+jls search database
+jls info postgresql
+```
+
+Atualizar dependências:
+
+```bash
+jls update --packages
+```
+
+---
+
+# 26. Manifesto e lock
+
+Projetos maiores podem trabalhar com:
+
+```text
+jls.json
+jls.lock
+```
+
+`jls.json` descreve o projeto e suas dependências.
+
+`jls.lock` registra versões resolvidas de forma mais precisa.
+
+Isso ajuda a evitar:
+
+```text
+funciona no meu computador
+```
+
+mas quebra no computador de outra pessoa porque uma dependência mudou.
+
+---
+
+# 27. Criando comandos próprios com `#cli`
+
+A própria JLScript pode criar aplicações de terminal.
+
+```jls
+import #cli
+
+va app = cli.criar(
+    "minha-ferramenta"
+)
+```
+
+A API de CLI possui conceitos como:
+
+```text
+comando
+arg
+flag
+versao
+executar
+```
+
+Argumentos podem chegar depois do arquivo:
+
+```bash
+jls run app.jls ola --nome Lucas
+```
+
+A ideia é construir ferramentas de terminal usando JLScript em vez de precisar escrever o CLI em outra linguagem.
+
+---
+
+# 28. O objetivo futuro dos comandos extensíveis
+
+Uma direção importante do ecossistema é permitir bibliotecas registrarem funcionalidades e comandos de forma organizada.
+
+Conceitualmente:
+
+```text
+biblioteca
+↓
+metadata
+↓
+Command Registry
+↓
+JLShell / CLI
+```
+
+Isso evita alterar o C++ do runtime só para adicionar uma ferramenta de alto nível.
+
+---
+
+# 29. Configuração
+
+Abra:
+
+```bash
+jls config
+```
+
+A configuração concentra preferências de:
+
+```text
+terminal
+JLS AI
+permissões
+comportamento
+```
+
+---
+
+# 30. Configuração do terminal
+
+```bash
+jls config terminal
+```
+
+Ler:
+
+```bash
+jls config get terminal.promptStyle
+```
+
+Alterar:
+
+```bash
+jls config set terminal.promptStyle context
+```
+
+Outro exemplo:
+
+```bash
+jls config set terminal.historyLimit 1000
+```
+
+Tema:
+
+```bash
+jls config set terminal.theme jls
+```
+
+---
+
+# 31. Preferências do JLShell
+
+Entre as configurações existentes estão conceitos como:
+
+| Configuração | Uso |
+| --- | --- |
+| `theme` | tema |
+| `promptStyle` | aparência do prompt |
+| `inlineSuggestions` | sugestões inline |
+| `syntaxHighlight` | cores da sintaxe |
+| `bracketMatching` | destaque de delimitadores |
+| `completionMenu` | menu de autocomplete |
+| `history` | histórico |
+| `historyLimit` | limite do histórico |
+| `gitContext` | contexto Git |
+| `externalCommands` | comandos com `!` |
+| `vscodeBridge` | ponte com VS Code |
+| `scrollFollowInput` | acompanhar entrada |
+
+---
+
+# 32. Temas do JLShell
+
+Exemplos:
+
+```text
+inherit
+dark
+light
+mono
+jls
+```
+
+Você pode configurar:
+
+```bash
+jls config set terminal.theme jls
+```
+
+---
+
+# 33. Prompt
+
+O prompt pode ser mais simples ou trazer contexto.
+
+Exemplo conceitual:
+
+```text
+D:\projeto >
+```
+
+ou:
+
+```text
+JLScript · meu-projeto · main >
+```
+
+O objetivo é mostrar contexto útil sem transformar cada linha em painel de avião.
+
+---
+
+# 34. VS Code + JLShell
+
+A extensão pode abrir o JLShell diretamente.
+
+Comandos disponíveis incluem:
+
+```text
+JLScript: Abrir JLShell
+
+JLScript: Executar arquivo no JLShell
+```
+
+O botão normal de execução utiliza o runtime JLScript.
+
+Programas que precisam de interação podem ser enviados ao terminal.
+
+Programas simples podem usar Output.
+
+---
+
+# 35. Execução inteligente
+
+A extensão consegue classificar o programa antes de executar.
+
+Exemplo:
+
+```text
+programa simples
+→ Output
+
+chat()
+→ terminal
+
+#ui
+→ terminal
+
+CLI
+→ terminal
+
+servidor
+→ terminal
+```
+
+A análise serve apenas para escolher o ambiente.
+
+Ela não executa o programa durante a análise.
+
+---
+
+# 36. JLS AI
+
+JLS AI é o assistente integrado ao ecossistema JLScript.
+
+Abra:
+
+```bash
+jls ai
+```
+
+Também:
+
+```text
+.ai
+```
+
+dentro do JLShell.
+
+Outros atalhos podem encaminhar para o mesmo diálogo:
+
+```text
+jlsai
+jlai
+```
+
+---
+
+# 37. O papel da JLS AI
+
+JLS AI não é necessária para executar JLScript.
+
+Ela é uma camada de assistência.
+
+Pode ajudar com:
+
+```text
+explicação
+código
+diagnóstico
+autocomplete
+erros
+propostas de alteração
+execução assistida
+```
+
+Se a IA não estiver configurada, o runtime JLScript continua existindo.
+
+Essa separação é importante.
+
+---
+
+# 38. Três papéis de modelo
+
+A arquitetura da JLS AI pode utilizar modelos diferentes para funções diferentes:
+
+```text
+chat
+code
+agent
+```
+
+### Chat
+
+Conversa e explicação.
+
+### Code
+
+Código, completions e análise.
+
+### Agent
+
+Propostas de ações, correções e operações assistidas.
+
+Isso permite escolher modelos diferentes conforme a tarefa.
+
+---
+
+# 39. Iniciando conversa
+
+```bash
+jls ai
+```
+
+Depois escreva normalmente:
+
+```text
+Como faço uma função em JLScript?
+```
+
+A resposta chega em streaming.
+
+---
+
+# 40. Comandos dentro da conversa
+
+<details>
+<summary><strong>Modo agente</strong></summary>
+
+<br>
+
+Alternar:
+
+```text
+/agent
+```
+
+ou:
+
+```text
+/agente
+```
+
+Forçar ativado:
+
+```text
+/agent on
+```
+
+Desativar:
+
+```text
+/agent off
+```
+
+</details>
+
+<details>
+<summary><strong>Executar um comando explícito</strong></summary>
+
+<br>
+
+```text
+/exec jls --version
+```
+
+O comando é explícito.
+
+Você não precisa pedir para o modelo inventar o comando.
+
+</details>
+
+<details>
+<summary><strong>Configuração</strong></summary>
+
+<br>
+
+```text
+/config
+```
+
+Exemplo:
+
+```text
+/config speed fast
+```
+
+```text
+/config speed balanced
+```
+
+```text
+/config speed quality
+```
+
+</details>
+
+<details>
+<summary><strong>Memória e histórico</strong></summary>
+
+<br>
+
+```text
+/memory
+/cache
+
+/memory clear
+/history clear
+/cache clear
+```
+
+</details>
+
+---
+
+# 41. Limpar a tela da IA
+
+Dentro da sessão:
+
+```text
+clear
+```
+
+pode limpar a apresentação da conversa conforme o modo/configuração.
+
+Para retornar ao JLShell:
+
+```text
+sair
+```
+
+---
+
+# 42. Permissões da JLS AI
+
+A JLS AI deve separar ações diferentes.
+
+Conversar não significa automaticamente permitir:
+
+```text
+ler arquivo
+enviar arquivo
+executar comando
+alterar arquivo
+aplicar diff
+```
+
+Essas ações precisam respeitar permissões próprias.
+
+Isso evita transformar:
+
+> “me explica esse erro”
+
+em:
+
+> “alterei metade do projeto enquanto você piscava”.
+
+---
+
+# 43. Execução pelo agente
+
+Quando o agente propõe executar algo, a proposta deve mostrar o comando.
+
+Exemplo:
+
+```text
+jls test
+```
+
+O usuário pode revisar.
+
+Só depois a operação é autorizada.
+
+Não existe motivo para esconder o comando real.
+
+---
+
+# 44. Uma ação por pedido
+
+O agente atual é deliberadamente limitado.
+
+Uma proposta pode executar uma ação autorizada.
+
+Isso é diferente de entregar controle irrestrito do computador para um loop autônomo.
+
+Para ferramentas de desenvolvimento, previsibilidade costuma valer mais do que espetáculo.
+
+---
+
+# 45. JLS AI e arquivos
+
+Existem comandos voltados a análise de arquivos.
+
+Exemplo:
+
+```bash
+jls ai explain arquivo.jls
+```
+
+Para diagnóstico do parser:
+
+```bash
+jls ai check arquivo.jls
+```
+
+Para pedir correção assistida:
+
+```bash
+jls ai fix arquivo.jls
+```
+
+Essas operações possuem implicações diferentes.
+
+`check`, por exemplo, pode utilizar o parser oficial sem necessariamente precisar pedir uma resposta ao modelo.
+
+---
+
+# 46. Configurando provedores
+
+A JLS AI pode trabalhar com diferentes provedores.
+
+O arquivo de ambiente pode ser localizado por:
+
+```bash
+jls ai env
+```
+
+Para escolher outro:
+
+```bash
+jls ai env use "D:/config/jls-ai.env"
+```
+
+O arquivo contém configuração e credenciais.
+
+Ele não deveria entrar no Git.
+
+---
+
+# 47. Modelos
+
+Listar:
+
+```bash
+jls ai models
+```
+
+Escolher:
+
+```bash
+jls ai model NOME
+```
+
+Status:
+
+```bash
+jls ai status
+```
+
+---
+
+# 48. GGUF local
+
+Também existe suporte para modelos GGUF locais através de um engine compatível.
+
+Exemplo conceitual:
+
+```bash
+jls ai gguf chat "conversa.gguf"
+jls ai gguf code "codigo.gguf"
+jls ai gguf agent "agente.gguf"
+```
+
+Configurar o engine:
+
+```bash
+jls ai gguf engine "llama-server.exe"
+```
+
+Consultar:
+
+```bash
+jls ai gguf
+```
+
+Assim você pode separar:
+
+```text
+modelo para conversar
+modelo para programar
+modelo para agente
+```
+
+---
+
+# 49. JLS AI e Copilot
+
+A integração com VS Code pode fornecer sugestões inline.
+
+A ideia é:
+
+```text
+código atual
++
+metadata JLScript
++
+contexto permitido
+↓
+sugestão
+```
+
+Mas sugestões locais da própria extensão não precisam obrigatoriamente de IA.
+
+Autocomplete da linguagem e Copilot são coisas diferentes.
+
+---
+
+# 50. Autocomplete não é IA
+
+Essa distinção é importante.
+
+Quando você escreve:
+
+```jls
+lista.
+```
+
+e aparece:
+
+```text
+adicionar
+mapear
+filtrar
+```
+
+isso pode vir da metadata oficial da linguagem.
+
+Não significa que um modelo de IA precisou pensar na resposta.
+
+Esse tipo de autocomplete deve continuar funcionando mesmo sem API de IA.
+
+---
+
+# 51. Registry de pacotes x JLS Registry
+
+Existe uma diferença importante.
+
+## Package Registry
+
+É a infraestrutura usada pelo gerenciador de pacotes/providers.
+
+Exemplo:
+
+```bash
+jls install postgresql
+```
+
+## JLS Registry
+
+É a ideia maior de um serviço conectado ao ecossistema para publicar bibliotecas e APIs JLScript.
+
+Eles não devem ser confundidos.
+
+---
+
+# 52. JLS Registry
+
+> [!CAUTION]
+> **O JLS Registry descrito nesta seção ainda está em desenvolvimento e não deve ser tratado como serviço pronto.**
+
+A ideia do Registry é criar uma ponte entre:
+
+```text
+programador
+↓
+JLShell
+↓
+Registry
+↓
+bibliotecas / APIs
+↓
+outros projetos JLScript
+```
+
+O objetivo é permitir publicar recursos diretamente do ambiente JLScript.
+
+---
+
+# 53. Fluxo pensado para login
+
+Conceito:
+
+```bash
+jlsr login google
+```
+
+ou:
+
+```bash
+jlsr login github
+```
+
+Atalhos planejados:
+
+```text
+g
+gh
+f
+```
+
+para provedores suportados.
+
+O terminal gera/recebe uma autorização e o navegador confirma a conta.
+
+A ideia é evitar copiar tokens manualmente sem necessidade.
+
+---
+
+# 54. Publicando biblioteca
+
+Fluxo conceitual:
+
+```bash
+jlsr send minha-lib.jls --lib
+```
+
+Antes da publicação, o sistema deve verificar:
+
+```text
+login
+nome
+versão
+arquivo
+sintaxe
+metadata
+conflitos
+segurança
+```
+
+Se o código não for válido, publicação deve falhar.
+
+Não faz sentido armazenar biblioteca quebrada apenas porque o upload chegou ao servidor.
+
+---
+
+# 55. Publicando API
+
+Conceito:
+
+```bash
+jlsr send api.jls --api
+```
+
+API e biblioteca são dois tipos diferentes.
+
+O Registry não precisa virar uma gaveta genérica de qualquer arquivo.
+
+O foco é:
+
+```text
+biblioteca
+API
+```
+
+---
+
+# 56. Verificando uma publicação
+
+Conceito:
+
+```bash
+jlsr minha-api --api check
+```
+
+ou:
+
+```bash
+jlsr minha-lib --lib check
+```
+
+Para APIs hospedadas futuramente, também foi pensado algo na linha de:
+
+```bash
+jlsr minha-api --api port
+```
+
+Esses comandos representam o desenho do sistema.
+
+Não são apresentados aqui como garantia de serviço público já operacional.
+
+---
+
+# 57. Configurações do Registry
+
+A ideia também inclui:
+
+```bash
+jlsr setting
+```
+
+para configurações como:
+
+```text
+segurança
+confirmações
+publicação
+criptografia
+conta
+```
+
+Operações sensíveis devem exigir confirmação clara.
+
+---
+
+# 58. Instalação de bibliotecas publicadas
+
+O objetivo futuro é aproximar:
+
+```bash
+jls install biblioteca
+```
+
+do Registry/ecossistema.
+
+Fluxo:
+
+```text
+buscar
+↓
+resolver versão
+↓
+validar pacote
+↓
+verificar integridade
+↓
+instalar
+↓
+registrar lock
+```
+
+A instalação não deveria ser simplesmente “baixar um ZIP e torcer”.
+
+---
+
+# 59. Como tudo se conecta
+
+```text
+                   VS Code
+                      │
+                      ▼
+                  JLShell
+                      │
+          ┌───────────┼───────────┐
+          │           │           │
+          ▼           ▼           ▼
+       Runtime      JLS AI       CLI
+          │                       │
+          │                       ▼
+          │                   Packages
+          │
+          ├─────────────┐
+          │             │
+          ▼             ▼
+         UI          API/Server
+          │
+          ▼
+       Preview
+
+              Futuro
+                │
+                ▼
+           JLS Registry
+```
+
+---
+
+# 60. Um fluxo real de desenvolvimento
+
+Imagine que você quer criar:
+
+```text
+meu-app/
+```
+
+Primeiro:
+
+```bash
+jls init
+```
+
+Depois escreve:
+
+```text
+main.jls
+```
+
+Executa:
+
+```bash
+jls run main.jls
+```
+
+Analisa:
+
+```bash
+jls lint main.jls
+```
+
+Formata:
+
+```bash
+jls fmt main.jls
+```
+
+Testa:
+
+```bash
+jls test
+```
+
+Se tiver interface:
+
+```bash
+jls preview main.jls
+```
+
+Depois:
+
+```bash
+jls build
+```
+
+Esse é o tipo de fluxo que a CLI tenta organizar.
+
+---
+
+# 61. Trabalhando dentro do JLShell
+
+Também seria possível ficar dentro da sessão:
+
+```text
+.run "main.jls"
+
+.lint
+
+.test
+
+.preview
+
+.build
+```
+
+O objetivo é evitar sair constantemente do ambiente para tarefas básicas.
+
+---
+
+# 62. Quando usar CLI e quando usar JLShell?
+
+Use a CLI quando:
+
+```text
+script automatizado
+CI
+comando único
+build
+instalação
+execução externa
+```
+
+Use JLShell quando:
+
+```text
+exploração
+REPL
+debug
+teste manual
+sessão persistente
+desenvolvimento interativo
+```
+
+Nenhum substitui completamente o outro.
+
+---
+
+# 63. Quando usar JLS AI?
+
+Use quando você precisa:
+
+```text
+entender erro
+revisar código
+explicar recurso
+gerar ideia
+propor correção
+analisar saída
+```
+
+Não use como substituto de:
+
+```text
+parser
+testes
+lint
+documentação
+controle de versão
+```
+
+A IA pode sugerir.
+
+O runtime decide se o código realmente funciona.
+
+---
+
+# 64. Regra de ouro: teste o que a IA escreveu
+
+Mesmo quando uma resposta parece perfeita:
+
+```bash
+jls lint arquivo.jls
+jls test
+```
+
+Depois execute.
+
+Código convincente ainda pode estar errado.
+
+Essa frase vale para qualquer linguagem, qualquer modelo e, infelizmente, praticamente qualquer ser humano com acesso a teclado.
+
+---
+
+# 65. Dicas importantes para usar o terminal melhor
+
+## Aprenda `.help`
+
+Não tente decorar todos os comandos.
+
+```text
+.help
+```
+
+existe justamente para isso.
+
+---
+
+## Use histórico
+
+Se acabou de executar um comando grande:
+
+```text
+↑
+```
+
+é melhor do que digitar tudo novamente.
+
+---
+
+## Use `Ctrl + R`
+
+Procure no histórico em vez de repetir comandos manualmente.
+
+---
+
+## Não confunda `clear` com `.reset`
+
+```text
+clear
+```
+
+limpa visual.
+
+```text
+.reset
+```
+
+limpa contexto.
+
+---
+
+## Use `.vars`
+
+Quando estiver perdido sobre o estado da sessão:
+
+```text
+.vars
+```
+
+---
+
+## Use `.status`
+
+Para descobrir o estado do ambiente antes de culpar o código.
+
+Às vezes o problema é realmente o código.
+
+Às vezes é o terminal.
+
+E às vezes, numa demonstração excepcional de cooperação, são os dois.
+
+---
+
+# 66. Dicas para escrever comandos melhores
+
+Se você criar uma CLI com JLScript:
+
+### Tenha `--help`
+
+O usuário não deveria precisar abrir seu código para descobrir como usar o programa.
+
+### Tenha mensagens de erro claras
+
+Ruim:
+
+```text
+erro
+```
+
+Melhor:
+
+```text
+Arquivo config.json não encontrado.
+Use --config <arquivo> ou crie config.json no diretório atual.
+```
+
+### Use exit codes corretamente
+
+Automação depende deles.
+
+### Não misture saída normal com erro
+
+Quando possível, mantenha a separação conceitual.
+
+### Não peça confirmação em CI
+
+Ofereça opções como:
+
+```text
+--yes
+--dry-run
+```
+
+---
+
+# 67. Mais dicas para ser um programador melhor
+
+## Entenda a ferramenta antes de automatizá-la
+
+Se você não consegue explicar manualmente o processo, automatizar costuma apenas esconder a confusão.
+
+---
+
+## Leia a mensagem de erro inteira
+
+Programadores têm uma tradição quase religiosa de ler a primeira linha e ignorar as oito linhas que explicam exatamente o problema.
+
+Evite essa tradição.
+
+---
+
+## Corrija a causa, não apenas o sintoma
+
+Se toda execução exige reiniciar o terminal, não aceite isso como “normal”.
+
+Descubra por quê.
+
+Esse princípio foi importante no próprio desenvolvimento do JLShell.
+
+---
+
+## Teste o caminho feliz e o caminho ruim
+
+Não teste apenas:
+
+```text
+arquivo existe
+API responde 200
+usuário digita corretamente
+```
+
+Teste também:
+
+```text
+arquivo não existe
+API responde 500
+timeout
+entrada inválida
+permissão negada
+```
+
+---
+
+## Escreva programas que expliquem seus erros
+
+Uma aplicação profissional não deve simplesmente morrer.
+
+Ela deve dizer:
+
+```text
+o que aconteceu
+onde aconteceu
+o que era esperado
+o que pode ser feito
+```
+
+---
+
+# 68. Não dependa da memória
+
+Se uma configuração é importante para o projeto, registre-a.
+
+Use:
+
+```text
+manifest
+config
+lockfile
+documentação
+```
+
+Não:
+
+> “eu lembro como configurei isso três meses atrás.”
+
+Você não vai lembrar.
+
+Ninguém lembra.
+
+---
+
+# 69. Antes de instalar alguma coisa
+
+Pergunte:
+
+```text
+eu realmente preciso disso?
+```
+
+Uma dependência nova traz:
+
+```text
+código
+versão
+manutenção
+bugs
+segurança
+compatibilidade
+```
+
+Uma biblioteca útil vale a pena.
+
+Uma dependência usada para evitar escrever três linhas talvez não.
+
+---
+
+# 70. Use `--dry-run`
+
+Quando disponível:
+
+```bash
+jls install pacote --dry-run
+```
+
+Veja o plano antes da alteração.
+
+Essa prática é especialmente útil em:
+
+```text
+instalações
+atualizações
+builds
+deploys
+migrações
+```
+
+---
+
+# 71. Proteja credenciais
+
+Nunca coloque:
+
+```text
+API key
+token
+senha
+credencial
+```
+
+diretamente em:
+
+```text
+README
+Git
+biblioteca pública
+comando compartilhado
+screenshot
+log
+```
+
+Use configuração apropriada.
+
+---
+
+# 72. Não execute comando que você não entende
+
+Especialmente:
+
+```text
+! alguma-coisa-enorme
+```
+
+e propostas de agente.
+
+Leia.
+
+Entenda pelo menos:
+
+```text
+programa
+argumentos
+diretório
+efeito esperado
+```
+
+Depois execute.
+
+---
+
+# 73. Deixe o terminal ajudar
+
+Use:
+
+```text
+autocomplete
+history
+help
+doctor
+status
+lint
+test
+```
+
+Essas ferramentas existem para reduzir erro humano.
+
+Não existe prêmio por fazer tudo manualmente.
+
+---
+
+# 74. Não trate warning como decoração
+
+Um warning normalmente significa:
+
+> “Ainda funciona, mas existe alguma coisa suspeita.”
+
+Ignorar todos os warnings porque o programa “roda” é uma excelente estratégia para criar um problema que aparece três semanas depois.
+
+---
+
+# 75. Tenha pequenos ciclos
+
+Em vez de:
+
+```text
+programar por 4 horas
+↓
+executar
+↓
+descobrir 37 erros
+```
+
+prefira:
+
+```text
+alteração pequena
+↓
+run
+↓
+lint
+↓
+test
+↓
+próxima alteração
+```
+
+Isso reduz muito o espaço onde o bug pode estar.
+
+---
+
+# 76. Não faça build final para testar sintaxe
+
+Durante desenvolvimento:
+
+```bash
+jls run
+```
+
+ou:
+
+```bash
+jls lint
+```
+
+são mais rápidos.
+
+Build final deve vir depois que a base já está funcionando.
+
+---
+
+# 77. Saiba quando reiniciar uma sessão
+
+JLShell é persistente.
+
+Isso é vantagem.
+
+Mas também significa que você pode estar carregando:
+
+```text
+variáveis antigas
+imports antigos
+estado anterior
+```
+
+Se o comportamento ficar estranho:
+
+```text
+.status
+.vars
+.modules
+```
+
+e, quando necessário:
+
+```text
+.reset
+```
+
+---
+
+# 78. Depois de atualizar o runtime
+
+Uma sessão antiga pode continuar usando uma build anterior já carregada.
+
+Depois de mudanças profundas no runtime, abra uma nova sessão quando necessário.
+
+O mesmo vale para extensões do VS Code que já estavam carregadas na memória.
+
+---
+
+# 79. Faça o terminal trabalhar para você
+
+O terminal não precisa ser só:
+
+```text
+digitar comando
+esperar resultado
+```
+
+Ele pode ser:
+
+```text
+editor
+REPL
+debugger leve
+gerenciador de projeto
+entrada para build
+entrada para AI
+entrada para Registry
+```
+
+É por isso que o JLShell ocupa uma posição central no ecossistema JLScript.
+
+---
+
+# 80. Regra final do JLShell
+
+O terminal deve facilitar o uso da linguagem.
+
+Não criar uma segunda linguagem para aprender.
+
+```text
+mesmo runtime
+mesmos módulos
+mesmos comandos principais
+mesmos diagnósticos
+mesma metadata
+```
+
+Quanto menos diferenças existirem entre:
+
+```text
+arquivo
+REPL
+VS Code
+terminal
+build
+```
+
+mais previsível a linguagem se torna.
+
+---
+
+<div align="center">
+
+# JLScript não termina no `.jls`.
+
+O código precisa de um ambiente para:
+
+**executar · testar · corrigir · organizar · instalar · compilar · publicar**
+
+E é esse o papel do ecossistema ao redor da linguagem.
+
+---
+
+### JLScript 4.2.0
+
+## Fim da Parte 3 — JLShell, CLI, JLS AI e Registry
+
+---
+
+**Parte 1**  
+Projeto, história e identidade.
+
+**Parte 2**  
+Sintaxe, lógica e programação.
+
+**Parte 3**  
+Terminal, ferramentas e ecossistema.
 
 </div>
 
